@@ -19,7 +19,7 @@ $id = intval($id);
 // якщо ІД - істина, то берем інфу з БД
     if ($id) {
 
-
+//echo 'id='.$id;
 $db = Db::getConnection();
      //   $db = new PDO("mysql:host=$host;dbname=$dbname",USER,PASSWORD);
      $result = $db->query('SELECT * from news WHERE id='.$id);

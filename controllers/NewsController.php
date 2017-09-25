@@ -12,31 +12,33 @@ class NewsController
 {
     public function actionIndex()
     {
-       echo '<br><br>Список новин';
+       //echo '<br><br>Список новин';
         $newsList = array();
         $newsList = News::getNewsList();
 
-        echo '<pre>';
+        require_once (ROOT.'/views/news/index.php');
+
+        /*echo '<pre>';
         print_r($newsList);
-        echo '</pre>';
+        echo '</pre>';*/
         //echo '<br><br>Список новин';
         return true;
     }
 
-    public function actionView($category, $id)
+    public function actionView($id)
     {
         if ($id) {
             $newsItem=News::getNewsItemById($id);
-        echo '<pre>';
+       /* echo '<pre>';
         print_r($newsItem);
         echo '</pre>';
-        echo 'actionView';
+        echo 'actionView';*/
         }
 
       /*  echo '<br>'.$category;
         echo '<br>'.$id;*/
 
-        echo 'перегляд однієї новини';
+       // echo 'перегляд однієї новини';
         return true;
     }
 }
