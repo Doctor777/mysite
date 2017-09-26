@@ -1,40 +1,40 @@
 <html>
 <head>
-    <title>Мій сайт новин на mvc</title>
+    <title>Мій сайт на mvc</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="/template/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+<table width="100%" height="150px" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
         <td background="/template/images/index_02.gif">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <!--<td width="38%"><img src="/template/images/index_01.gif" width="380" height="166" alt=""></td-->
-                    <td class="c_header">Мій сайт новин на mvc</td>
-                    <td width="62%">
-                        <table class="c_header_right"width="100%" border="0" cellspacing="10" cellpadding="0">
+                    <td class="c_header">Мій сайт на mvc</td>
+                    <!--<td width="62%">-->
+                        <!--<table class="c_header_right"width="100%" border="0" cellspacing="10" cellpadding="0">
                             <tr>
                         <!--        <td width="47%" class="white-text">your very cool description goes here</td>-->
-                                <td width="53%">
+                               <!-- <td width="53%">
                                     <table width="100%" border="0" cellspacing="10" cellpadding="0">
                                         <tr>
                                            <td width="7%"><img src="/template/images/index_05.jpg" width="33"
                                                                 height="32" alt=""></td>
-                                            <td width="93%" class="white-text">Tel. +421 47 4514 161<br>
-                                                info@yourverycool.com
+                                            <td width="93%" class="white-text">Tel. +38-097-7772998<br>
+                                                aptekasbt@gmail.com
                                             </td>
                                         </tr>
                                     </table>
                                 </td>
                             </tr>
-                        </table>
+                        </table>-->
                     </td>
                 </tr>
             </table>
         </td>
     </tr>
-    <tr>
+    <!--<tr>
         <td height="231" background="/template/images/index_08.jpg" class="c_header_up">
             <table width="100%" border="0" cellspacing="10" cellpadding="0">
                 <tr>
@@ -68,13 +68,113 @@
                             </tr>
                         </table>
                     </td>
-                </tr>
+                </tr>-->
             </table>
         </td>
     </tr>
-    <tr>
+
+<div class="container">
+    <nav>
+        <ul class="mcd-menu">
+            <li>
+                <a href="">
+                    <i class="fa fa-home"></i>
+                    <strong>На головну</strong>
+                    <small>home page</small>
+                </a>
+            </li>
+            <li>
+                <a href="" >
+                    <i class="fa fa-edit"></i>
+                    <strong>Про нас</strong>
+                    <small>about us</small>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="fa fa-gift"></i>
+                    <strong>Улюблене</strong>
+                    <small>favorite</small>
+                </a>
+            </li>
+            <li>
+                <a href="" class="active">
+                    <i class="fa fa-globe"></i>
+                    <strong>Новини</strong>
+                    <small>news</small>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="fa fa-comments-o"></i>
+                    <strong>Блог</strong>
+                    <small>blog</small>
+                </a>
+                <ul>
+                    <li><a href="#"><i class="fa fa-globe"></i>Подія №1</a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-group"></i>Подія №2</a>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-female"></i>Подія №3</a></li>
+                            <li>
+                                <a href="#"><i class="fa fa-male"></i>Подія №4</a>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-leaf"></i>About</a></li>
+                                    <li><a href="#"><i class="fa fa-tasks"></i>Skills</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><i class="fa fa-female"></i>Viktoria Gibbers</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fa fa-trophy"></i>Rewards</a></li>
+                    <li><a href="#"><i class="fa fa-certificate"></i>Certificates</a></li>
+                </ul>
+            </li>
+ <!--           <li>
+                <a href="">
+                    <i class="fa fa-picture-o"></i>
+                    <strong>Portfolio</strong>
+                    <small>sweet home</small>
+                </a>
+            </li>-->
+<!--            <li>
+                <a href="">
+                    <i class="fa fa-envelope-o"></i>
+                    <strong>Contacts</strong>
+                    <small>drop a line</small>
+                </a>
+            </li>-->
+            <li class="float">
+                <a class="search">
+                    <input type="text" value="search ...">
+                    <button type="submit"><i class="fa fa-search">пошук</i></button>
+                </a>
+                <a href="" class="search-mobile">
+                    <i class="fa fa-search"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<!--<nav role="navigation">
+    <ul>
+        <li><a href="/">Главная</a></li>
+        <li><a href="#">О блоге</a>
+            <ul>
+                <li><a href="/about">Об авторе</a></li>
+                <li><a href="/history">История блога</a></li>
+                <li><a href="/privacy-policy">Политика конфиденциальности</a></li>
+                <li><a href="/disclaimer">Отказ от ответственности</a></li>
+            </ul>
+        </li>
+        <li><a href="/sitemap">Карта сайта</a></li>
+        <li><a href="/contact">Обратная связь</a></li>
+    </ul>
+    </nav>-->
+
+    <!--<tr>
         <td>
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <table class="c_table" width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td><a href="#"><img src="/template/images/index_09.gif" alt="" width="197" height="41" border="0"></a>
                     </td>
@@ -84,22 +184,22 @@
                     </td>
                     <td><a href="#"><img src="/template/images/index_12.gif" alt="" width="129" height="41" border="0"></a>
                     </td>
-                    <td><img src="/template/images/index_13.jpg" width="414" height="41" alt=""></td>
-                </tr>
+                    <!--<td><img src="/template/images/index_13.jpg" width="414" height="41" alt=""></td>-->
+               <!-- </tr>
             </table>
         </td>
-    </tr>
-    <tr>
+    </tr>-->
+    <!--<tr>
         <td><img src="/template/images/index_14.jpg" width="1000" height="44" alt=""></td>
-    </tr>
+    </tr>-->
 </table>
-<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
+<table width="100%" border="0" align="center" cellpadding="10" cellspacing="20">
+    <!--<tr>
         <td>
-            <table width="100%" border="0" cellspacing="10" cellpadding="0">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td width="29%" align="center" valign="top">
-                        <table width="211" border="0" cellspacing="0" cellpadding="0">
+                    <td width="100%" align="center" valign="top">-->
+                        <!--<table width="211" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td><a href="#"><img src="/template/images/index_20.gif" alt="" width="211" height="30"
                                                      border="0"></a></td>
@@ -120,9 +220,9 @@
                                 <td><a href="#"><img src="/template/images/index_28.gif" alt="" width="211" height="42"
                                                      border="0"></a></td>
                             </tr>
-                        </table>
+                        </table>-->
                     </td>
-                    <td width="71%" valign="top">
+                    <td width="100%" valign="top">
                         <table class="c_news" width = "100%" border = "0" cellspacing = "10" cellpadding = "0" >
                         <?php foreach ($newsList as $newsItem):?>
 
