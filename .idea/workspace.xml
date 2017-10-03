@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ace5f485-0a76-40b8-9a43-e06febe36c2c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/LoginController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/Router.php" afterPath="$PROJECT_DIR$/components/Router.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/NewsController.php" afterPath="$PROJECT_DIR$/controllers/NewsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/News.php" afterPath="$PROJECT_DIR$/models/News.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/css/style.css" afterPath="$PROJECT_DIR$/template/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/news/index.php" afterPath="$PROJECT_DIR$/views/news/index.php" />
-    </list>
+    <list default="true" id="ace5f485-0a76-40b8-9a43-e06febe36c2c" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -278,12 +270,12 @@
       <workItem from="1506453229478" duration="8984000" />
       <workItem from="1506943471438" duration="3338000" />
       <workItem from="1507033399409" duration="2778000" />
-      <workItem from="1507057696639" duration="8080000" />
+      <workItem from="1507057696639" duration="8284000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34594000" />
+    <option name="totallyTimeSpent" value="34798000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="100" y="1071" width="1303" height="780" extended-state="6" />
