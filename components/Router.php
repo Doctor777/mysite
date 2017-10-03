@@ -45,18 +45,8 @@ public function run()
             //те саме робимо з екшинами
             $actionName = 'action'.ucfirst(array_shift($segments));
 
- /*           echo '<br>controller name:'.$controllerName;
-            echo '<br>action name:'.$actionName;
-            echo '<br>internalRoute:'.$internalRoute;
-            echo '<br>uri:'.$uri;*/
             // все що залишилося в масиві після array_shift - це параметри
             $parameters = $segments;
-
-            /*echo '<pre>';
-            echo 'parameters: ';
-            print_r($parameters);
-            echo '</pre>';*/
-            //die;
 
             //підключаємо файл класу контроллера
             $controllerFile = ROOT.'/controllers/'.$controllerName.'.php';
@@ -66,30 +56,21 @@ public function run()
             }
             //створюємо об"єкт класу контроллера
             $controllerObject = new $controllerName;
-            //$result = $controllerObject->$actionName($parameters);
+
             $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+
+
             if ($result != null) {
                 break;  // перериває наш цикл пошуку співпадінь роутів
             }
 
 
-          // echo '<pre>';
-         //  print_r($path);
-          /* print_r($controllerName);
-           echo '<br>';
-           print_r($actionName);
 
-           // echo '+';*/
         }
 
  }
 
-/*      print_r($this->routes);
-    echo '<br>';
-    print_r($uriPattern.'=>'.$path);*/
-//echo '<br>Class Router, method run';*/
 
-//  echo $uri;
 
 }
 

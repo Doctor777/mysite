@@ -11,46 +11,48 @@ class News
 {
 
 
-public static function getNewsItemById($id)
-{
-    //вертаємо цілочисельне значення ІД
-$id = intval($id);
+    public static function getNewsItemById($id)
+    {
+        //вертаємо цілочисельне значення ІД
+        $id = intval($id);
 
 // якщо ІД - істина, то берем інфу з БД
-    if ($id) {
+        if ($id) {
 
 //echo 'id='.$id;
-$db = Db::getConnection();
-     //   $db = new PDO("mysql:host=$host;dbname=$dbname",USER,PASSWORD);
-     $result = $db->query('SELECT * from news WHERE id='.$id);
-     $result->setFetchMode(PDO::FETCH_ASSOC);
-     $newsItem = $result->fetch();
+            $db = Db::getConnection();
+            $result = $db->query('SELECT * from news WHERE id=' . $id);
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            $newsItem = $result->fetch();
 
-     return $newsItem;
+            return $newsItem;
 
+        }
+        //запрос до БД
     }
-    //запрос до БД
-}
-public static function getNewsList()
-{
-    //запрос до БД
 
-    $db = Db::getConnection();
+    public static function getNewsList()
+    {
+        //запрос до БД
 
-    $newslist = array();
+        $db = Db::getConnection();
 
-    $result = $db->query('SELECT id, title, date, short_content FROM news ORDER BY date DESC LIMIT 10');
+        $newslist = array();
 
-    $i = 0;
+        $result = $db->query('SELECT id, title, date, short_content FROM news ORDER BY date DESC LIMIT 10');
+        //  $result = $db->query('SELECT id, title, date, content, SUBSTRING(content,10,100) FROM news ORDER BY date DESC LIMIT 10');
+        $i = 0;
 //var_dump($result);
-    while ($row = $result->fetch()){
-        $newslist[$i]['id'] = $row['id'];
-        $newslist[$i]['title'] = $row['title'];
-        $newslist[$i]['date'] = $row['date'];
-        $newslist[$i]['short_content'] = $row['short_content'];
-        $i++;
-    }
-     return $newslist;
 
-}
+        while ($row = $result->fetch()) {
+            //var_dump($row);
+            $newslist[$i]['id'] = $row['id'];
+            $newslist[$i]['title'] = $row['title'];
+            $newslist[$i]['date'] = $row['date'];
+            $newslist[$i]['short_content'] = $row['short_content'];
+            $i++;
+        }
+        return $newslist;
+
+    }
 }
