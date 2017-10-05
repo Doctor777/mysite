@@ -9,6 +9,7 @@ error_reporting(E_ALL); // вмикаємо відображення всіх п
 define('ROOT', dirname(__FILE__));
 require_once (ROOT.'/components/Router.php');
 require_once (ROOT.'/components/Db.php');
+require (ROOT.'/components/Session.php');
 
 
 //виклик Router

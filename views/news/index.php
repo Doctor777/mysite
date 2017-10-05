@@ -15,7 +15,7 @@
                     </td>
                     <td>
                         <div class="c_avtoriz">
-                            <form  action="login" method="post">
+                            <form  action="#" method="post">
                            <!-- <i>Авторизація</i><br>-->
                             <input type="text" placeholder="login...">
                             <input type="password" placeholder="*******">

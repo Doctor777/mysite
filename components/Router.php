@@ -47,11 +47,18 @@ public function run()
 
             // все що залишилося в масиві після array_shift - це параметри
             $parameters = $segments;
-
+echo '<pre>';
+echo $uri;
+            echo var_dump('controllerName '.$controllerName);
+echo var_dump('actionName '.$actionName);
+echo 'parameters '.var_dump($parameters);
+//echo $_POST['login'];
+echo '</pre>';
             //підключаємо файл класу контроллера
             $controllerFile = ROOT.'/controllers/'.$controllerName.'.php';
+            echo var_dump($controllerFile);
             if (file_exists($controllerFile)) {
-              /*  echo 'file exist';*/
+                echo 'file exist';
                 include_once ($controllerFile);
             }
             //створюємо об"єкт класу контроллера
