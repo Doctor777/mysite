@@ -6,45 +6,50 @@
  * Time: 0:35
  */
 //echo ("LoginContoller is run");
+
 class LoginController
 {
-    public function actionLogin(){
+    public static function actionLogin()
+    {
 
-        $login='';
-        $password='';
+        $login = '';
+        $password = '';
+        echo var_dump($_POST);
+        if (isset($_POST['vhod'])) {
 
-        if (isset($_POST['submit'])){
-
-            $login=$_POST['login'];
-            $password=$_POST['password'];
-            $errors=false;
-
+            $login = $_POST['login'];
+            $password = md5($_POST['password']);
+            $errors[] = false;
+//echo 'here';
             /*if (!User::checkLogin($login)){
 $errors='невірний логін або пароль'
 
             */
-$userId=LoginController::CheckUserData($login, $password);
-if ($userId == false) {
+            $userId = LoginController::CheckUserData($login, $password);
+            if ($userId == false) {
 
-    $errors = 'невірний логін або пароль';
-
-}
-else
-    LoginController::auth($userId);
-header("Location: /news/");
-
+                $errors[] = 'невірний логін або пароль';
+                header("Location: ".$_SERVER['HTTP_REFERER']);
+//echo $errors;
+            } else
+                LoginController::auth($userId);
+           header("Location: ".$_SERVER['HTTP_REFERER']);
+            echo 'logged!';
+            return true;
         }
-return true;
-    }
-
-    public static function auth($userId){
-session_start();
-$_SESSION['user']=$userId;
-
 
     }
 
-    public static function checkLogged(){
+    public static function auth($userId)
+    {
+        session_start();
+        $_SESSION['user'] = $userId;
+
+
+    }
+
+    public static function checkLogged()
+    {
         session_start();
         if (isset($_SESSION['user'])) {
             return $_SESSION['user'];
@@ -55,46 +60,32 @@ $_SESSION['user']=$userId;
 
     public static function CheckUserData($login, $password)
     {
-  $db = Db::getConnection();
-  $sql = 'SELECT * FROM users WHERE login= :login AND password= :password';
-$result = $db->prepare($sql);
-$result->bindParam(':login', $login, PDO::PARAM_INT);
+        $db = Db::getConnection();
+        $sql = 'SELECT * FROM users WHERE login= :login AND password= :password';
+        $result = $db->prepare($sql);
+        $result->bindParam(':login', $login, PDO::PARAM_INT);
         $result->bindParam(':password', $password, PDO::PARAM_INT);
-$result->execute();
+        $result->execute();
 
-$user = $result->fetch();
-if ($user) {
-    return $user['id'];
-}
-return false;
+        $user = $result->fetch();
+        if ($user) {
+            return $user['id'];
+        }
+        return false;
 //echo print_r($_POST);
     }
 
+
+    public static function actionLogOut()
+    {
+
+        unset($_SESSION['user']);
+        session_destroy();
+        header("Location: ".$_SERVER['HTTP_REFERER']);
+        return true;
+    }
+
 }
-
-
-
-
-/*public function actionRun() {
-  $sth = $this->db->prepare("SELECT id FROM users WHERE login = :login AND password = MD5(:password)");
-  $sth->execute(array(
-   ':login' => $_POST['login'],
-   ':password' => $_POST['password']
-  ));
-
-  $data = $sth->fetchAll();
-  $count = $sth = rowCount();
-  if($count > 0) {
-   Session::init();
-   Session::set('loggedIn', true);
-
-   /*header('Location: ../dashboard');
-  } else {
-   header('Location: ../login');*/
-
-/*  }
-    return true;
-}*/
 
 
 

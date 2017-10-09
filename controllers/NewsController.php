@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: bogdan
- * Date: 19.09.17
- * Time: 15:13
- */
-
 include_once ROOT . '/models/News.php';
 
 class NewsController
@@ -26,6 +19,7 @@ class NewsController
         if ($id) {
             $newsItem = News::getNewsItemById($id);
         }
+        require_once(ROOT . '/views/news/index.php');
         // echo 'перегляд однієї новини';
         return true;
     }
