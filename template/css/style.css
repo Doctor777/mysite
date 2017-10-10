@@ -3,6 +3,14 @@ background: #E4F3BC;
     overflow-x:hidden;
 }
 
+.userhead{
+    color: white;
+    font-size: 16px;
+    font-family: "Times New Roman";
+    font-style: italic;
+    text-shadow: 0px 3px 0px #b2a98f;
+}
+
 .c_header_up {
 
     border-radius: 20px;
@@ -40,14 +48,15 @@ h1, h2, h3, h4, h5 {
 #news_title {
     font-style: italic;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 25px;
     text-align: center;
 }
 
 #news_date {
     font-size: small;
-    font-style: italic;
+    font-style: bold italic;
     text-align: right;
+    margin-right: 20px;
 }
 
 #news_short_content {
@@ -57,6 +66,13 @@ h1, h2, h3, h4, h5 {
     text-indent: 1.5em;
 }
 
+.news_content {
+   margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: justify;
+
+}
 h1 {
     font-size: 35px;
 }

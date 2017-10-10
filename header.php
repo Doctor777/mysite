@@ -39,10 +39,16 @@ if (isset($errors) && is_array($errors)): ?>
                                     <!--</button>-->
                                 </form>
 
-                        <?php else:?>
+                        <?php else: ?>
+                            <span class="userhead">Ви зайшли як  <?php echo ($_SESSION['login']. "</br>")?>
+                    <?php if (!empty($_SESSION['user'])) {
+                        echo('Ваш IP :' . $_SERVER["REMOTE_ADDR"]. "</br>");
+                    }?>
+                                <br>
+
                         <form  action="" method="post">
                             <button type="submit" name='vyhod'>
-                                <i>Вихід</i>
+                                <i>Вийти</i>
                             </button>
                         </form>
                         <?php endif; ?>
@@ -55,26 +61,31 @@ if (isset($errors) && is_array($errors)): ?>
     </tr>
 </table>
 <div class="container">
+    <?php $row=$_SERVER['REQUEST_URI'];
+    $str=strpos($row, "/");
+    $row=substr($row, 0, $str);
+    ?>
+
     <nav>
         <ul class="mcd-menu">
             <li>
-                <a href="../">
+                <a href="../" <?php if ($_SERVER['REQUEST_URI']=="/"): echo ('class="active"'); endif; ?> >
                     <i class="fa fa-home"></i>
-                    <strong>На головну</strong>
+                    <strong>Головна сторінка</strong>
                     <small>home page</small>
                 </a>
             </li>
 
 
             <li>
-                <a href="../news/" class="active">
+                <a href="../news/" <?php if ($_SERVER['REQUEST_URI']=="/news/"): echo ('class="active"'); endif; ?> >
                     <i class="fa fa-globe"></i>
                     <strong>Новини</strong>
                     <small>news</small>
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="../blog/" <?php if ($_SERVER['REQUEST_URI']=="/blog/"): echo ('class="active"'); endif; ?>>
                     <i class="fa fa-comments-o"></i>
                     <strong>Блог</strong>
                     <small>blog</small>
@@ -100,15 +111,15 @@ if (isset($errors) && is_array($errors)): ?>
                 </ul>
             </li>
             <li>
-                <a href="">
+                <a href="../favorite/" <?php if ($_SERVER['REQUEST_URI']=="/favorite/"): echo ('class="active"'); endif; ?>>
                     <i class="fa fa-gift"></i>
                     <strong>Улюблене</strong>
                     <small>favorite</small>
                 </a>
             </li>
             <li>
-                <a href="">
-                    <i class="fa fa-edit"></i>
+                <a href="../about/" <?php if ($_SERVER['REQUEST_URI']=="/about/"): echo ('class="active"'); endif; ?>>
+                    <i class="fa fa-edit" ></i>
                     <strong>Про нас</strong>
                     <small>about us</small>
                 </a>

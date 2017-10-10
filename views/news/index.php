@@ -30,7 +30,7 @@ include_once (ROOT.'/header.php');
     </div>
     <img class="news_left_img" src="/template/images/index_32.jpg" alt="">
 
-    <div id="news_content">
+    <div class="news_content">
         <?php echo $newsItem['content']; ?>
     </div>
     <br>

@@ -44,7 +44,7 @@ $errors='невірний логін або пароль'
     {
         session_start();
         $_SESSION['user'] = $userId;
-
+        $_SESSION['login']=$_POST['login'];
 
     }
 
@@ -80,6 +80,7 @@ $errors='невірний логін або пароль'
     {
 
         unset($_SESSION['user']);
+        unset($_SESSION['login']);
         session_destroy();
         header("Location: ".$_SERVER['HTTP_REFERER']);
         return true;

@@ -57,17 +57,21 @@ class Router
 
                 // все що залишилося в масиві після array_shift - це параметри
                 $parameters = $segments;
+                if (SERVICE==1){
                 echo '<pre>';
                 echo $uri;
                 echo var_dump('controllerName ' . $controllerName);
                 echo var_dump('actionName ' . $actionName);
                 echo 'parameters ' . var_dump($parameters);
                 echo '</pre>';
+                }
                 //підключаємо файл класу контроллера
                 $controllerFile = ROOT . '/controllers/' . $controllerName . '.php';
-                echo var_dump($controllerFile);
+                if (SERVICE==1) {
+                    echo var_dump($controllerFile);
+                }
                 if (file_exists($controllerFile)) {
-                    echo 'file exist';
+                  //  echo 'file exist';
                     include_once($controllerFile);
                 }
                 //створюємо об"єкт класу контроллера
