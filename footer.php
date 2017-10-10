@@ -1,5 +1,5 @@
-<html>
-
+<div>
+    <body>
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
         <td height="53" background="/template/images/index_48.gif">
@@ -12,5 +12,5 @@
         </td>
     </tr>
 </table>
-
-</html>
+    </body>
+</div>

@@ -57,29 +57,36 @@ class Router
 
                 // все що залишилося в масиві після array_shift - це параметри
                 $parameters = $segments;
-                if (SERVICE==1){
-                echo '<pre>';
-                echo $uri;
-                echo var_dump('controllerName ' . $controllerName);
-                echo var_dump('actionName ' . $actionName);
-                echo 'parameters ' . var_dump($parameters);
-                echo '</pre>';
+                if (SERVICE == 1) {
+                    echo '<pre>';
+                    echo $uri;
+                    echo var_dump('controllerName ' . $controllerName);
+                    echo var_dump('actionName ' . $actionName);
+                    echo 'parameters ' . var_dump($parameters);
+                    echo '</pre>';
                 }
                 //підключаємо файл класу контроллера
                 $controllerFile = ROOT . '/controllers/' . $controllerName . '.php';
-                if (SERVICE==1) {
+
+                if (SERVICE == 1) { // якщо сервісний режим, то виводимо інфо для відладки
                     echo var_dump($controllerFile);
                 }
                 if (file_exists($controllerFile)) {
-                  //  echo 'file exist';
+                    //  echo 'file exist';
                     include_once($controllerFile);
+                } else {
+                    Router::ErrorPage404();
                 }
                 //створюємо об"єкт класу контроллера
                 $controllerObject = new $controllerName;
 
-                //$result = $controllerObject->$actionName($parameters);
-              $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+                if (method_exists($controllerObject, $actionName)) {
 
+
+                    $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+                } else {
+                    Router::ErrorPage404();
+                }
 //echo var_dump($result);
                 if ($result != null) {
                     break;  // перериває наш цикл пошуку співпадінь роутів
@@ -90,6 +97,16 @@ class Router
 
         }
 
+
+
     }
 
+    function ErrorPage404()
+    {
+        $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
+        header('HTTP/1.1 404 Not Found');
+        header("Status: 404 Not Found");
+        header('Location:' . $host . '404');
+
+    }
 }
