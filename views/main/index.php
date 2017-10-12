@@ -1,10 +1,20 @@
 <?php
-include_once (ROOT.'/header.php');
+require_once(ROOT . '/header.php');
+/*if (isset($_POST['registration'])) {
+    require_once(ROOT . '/views/main/registration.php');
+}*/
 ?>
-<style type="text/css">
-    body {width:100%;height:100%;overflow:hidden;margin:0px;padding:0px;font-family:'Open Sans',sans-serif;font-size:16px}
-body {background:url("/template/images/vedro.jpg") center no-repeat #333039}
 
-<?php
-include_once (ROOT.'/footer.php');
-?>
+
+    <img class="c_img" src="/template/images/vedro.jpg" alt="">
+<style>
+    .c_img{
+        width: 100%;
+        height: auto;
+        opacity: .8;
+    }
+    </style>
+
+    <?php
+    require_once ($_SERVER['DOCUMENT_ROOT'].'/footer.php');
+    ?>

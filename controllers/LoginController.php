@@ -6,29 +6,29 @@
  * Time: 0:35
  */
 //echo ("LoginContoller is run");
+include_once (ROOT.'/header.php');
 
 class LoginController
 {
+
+
     public static function actionLogin()
     {
 
         $login = '';
-        $password = '';
-        echo var_dump($_POST);
+       $password = '';
+       // echo var_dump($_POST);
         if (isset($_POST['vhod'])) {
 
             $login = $_POST['login'];
             $password = md5($_POST['password']);
-            $errors[] = false;
-//echo 'here';
-            /*if (!User::checkLogin($login)){
-$errors='невірний логін або пароль'
+            $errors = false;
 
-            */
             $userId = LoginController::CheckUserData($login, $password);
             if ($userId == false) {
 
                 $errors[] = 'невірний логін або пароль';
+                return $errors;
                 header("Location: ".$_SERVER['HTTP_REFERER']);
 //echo $errors;
             } else
@@ -84,6 +84,71 @@ $errors='невірний логін або пароль'
         session_destroy();
         header("Location: ".$_SERVER['HTTP_REFERER']);
         return true;
+    }
+
+    public static function actionRegistration()
+    {
+     unset($regerrors);
+        $name = $_POST['name'];
+        $login = $_POST['login'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $repassword = $_POST['repassword'];
+
+        function check_length($value = "", $min, $max)
+        {
+            $result = (strlen($value) < $min || strlen($value) > $max);
+            return !$result;
+        }
+
+        if (!empty($login) &&
+            !empty($name) &&
+            !empty($email) &&
+            !empty($password)&&
+        !empty($repassword)) {
+        $email_validate = filter_var($email, FILTER_VALIDATE_EMAIL);
+
+        if (!check_length($login, 5, 10)) {
+            $regerrors[] = 'Логін повинен бути довжиною від 5 до 10 символів';
+        }
+        if (!check_length($name, 5, 50)) {
+            $regerrors[] = 'Iм\'я та прізвище повинно займати від 5 до 10 символів';
+        }
+        if (!check_length($password, 5, 10) && !check_length($repassword, 5, 10)) {
+            $regerrors[] = 'Пароль повинен займати від 5 до 10 символів';
+        }
+        if (!$email_validate) {
+            $regerrors[] = 'Е-мейл не пройшов валідацію';
+        }
+        if ($password !== $repassword) {
+            $regerrors[] = 'Поля вводу пароля не співпадають';
+        }
+        if (isset($regerrors)){
+            return $regerrors;
+        }
+    } else {
+            $regerrors[] =  "Заповніть порожні поля";
+            return $regerrors;
+    }
+
+        $db = Db::getConnection();
+        $sql = 'SELECT login, email FROM users WHERE login= :login OR email= :email';
+        $result = $db->prepare($sql);
+        $result->bindParam(':login', $login, PDO::PARAM_INT);
+        $result->bindParam(':email', $email, PDO::PARAM_INT);
+        $result->execute();
+//перевірка на входження логіна чи емейла в базі даних
+        $records = $result->fetch(PDO::FETCH_ASSOC);
+        if ($records) {
+            $regerrors[] = 'Такий логін або е-мейл вже існує';
+            //header("Location: ".$_SERVER['HTTP_REFERER']);
+            return $regerrors;
+        }
+        else{
+            //запис в БД нового користувача
+
+        }
+
     }
 
 }

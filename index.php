@@ -8,6 +8,7 @@ define('SERVICE', 0); // режим відладки якщо 1
 
 // підключення файлів системи
 define('ROOT', dirname(__FILE__));
+//define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 require_once (ROOT.'/components/Router.php');
 require_once (ROOT.'/components/Db.php');
 //require (ROOT.'/components/Session.php');

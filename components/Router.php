@@ -27,15 +27,6 @@ class Router
     {
         //перевіряємо строку запроса
         $uri = $this->getURI();
-        //авторизація: підключаємо клас, перевіряємо чи юзер в сессії, обробляємо натиснуті кнопки вхід та вихід
-        include_once(ROOT . '/controllers/LoginController.php');
-        LoginController::checkLogged();
-        if (isset($_POST['vhod'])) {
-            echo 'submit pressed !';
-            LoginController::actionLogin();
-        } elseif (isset($_POST['vyhod'])) {
-            LoginController::actionLogOut();
-        }
 
         // перевіряємо чи є такий запрос в наших роутах
         foreach ($this->routes as $uriPattern => $path) {

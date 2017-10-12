@@ -37,6 +37,6 @@ include_once (ROOT.'/header.php');
     <br>
 <?php endif; ?>
 <?php
-require_once (ROOT.'/footer.php');
+include_once (ROOT.'/footer.php');
 ?>
 

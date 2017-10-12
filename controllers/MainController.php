@@ -1,6 +1,6 @@
 <?php
 
-include_once (ROOT.'/models/Main.php');
+//include_once (ROOT.'/models/Main.php');
 
 class MainController
 {
@@ -10,5 +10,10 @@ class MainController
 return true;
     }
 
+    public function actionReg()
+    {
+        require_once(ROOT . '/views/main/registration.php');
+        return true;
+    }
 
 }

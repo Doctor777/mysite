@@ -1,19 +1,29 @@
+<?php
+//$errors=$_SESSION['errors'];
+include_once(ROOT . '/controllers/LoginController.php');
+//$lc= new LoginController;
+LoginController::checkLogged();
+if (isset($_POST['vhod'])) {
+    // echo 'submit pressed !';
+    $errors = LoginController::actionLogin();
+} elseif (isset($_POST['vyhod'])) {
+    LoginController::actionLogOut();
+} elseif (isset($_POST['registration'])) {
+    $regerrors = LoginController::actionRegistration();
+        if (!isset($regerrors)) {
+            echo "<script> confirm('Ви успішно зареєстровані !');</script>";
+        }
+    }
+
+//echo var_dump($errors);
+?>
+
 <html>
 <head>
     <title>Мій сайт на mvc</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="/template/css/style.css" rel="stylesheet" type="text/css">
 </head>
-
-<?php
-//$errors=$_SESSION['errors'];
-if (isset($errors) && is_array($errors)): ?>
-    <ul>
-        <?php foreach ($errors as $error): ?>
-            <li> - <?php echo $error; ?></li>
-        <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <table width="100%" height="150px" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
@@ -25,9 +35,17 @@ if (isset($errors) && is_array($errors)): ?>
                     </td>
                     <td>
                         <div class="c_avtoriz">
-                        <?php if (!isset($_SESSION['user'])):?>
-
-                                <form  action="" method="post">
+                            <?php if (!isset($_SESSION['user'])): ?>
+                                <div class="c_errors">
+                                    <?php if (isset($errors) && is_array($errors)): ?>
+                                        <ul>
+                                            <?php foreach ($errors as $error): ?>
+                                                <li> - <?php echo $error; ?></li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
+                                </div>
+                                <form action="" method="post">
                                     <!-- <i>Авторизація</i><br>-->
                                     <input type="text" name="login" placeholder="login...">
                                     <input type="password" name="password" placeholder="*******">
@@ -35,23 +53,23 @@ if (isset($errors) && is_array($errors)): ?>
                                         <i>Вхід</i>
                                     </button>
                                     <!--<button type="submit"-->
-                                    <br><a href="#"><i>Зареєструватися</i></a>
+                                    <br><a href="../reg/"><i>Зареєструватися</i></a>
                                     <!--</button>-->
                                 </form>
 
-                        <?php else: ?>
-                            <span class="userhead">Ви зайшли як  <?php echo ($_SESSION['login']. "</br>")?>
-                    <?php if (!empty($_SESSION['user'])) {
-                        echo('Ваш IP :' . $_SERVER["REMOTE_ADDR"]. "</br>");
-                    }?>
+                            <?php else: ?>
+                            <span class="userhead">Ви зайшли як <?php echo($_SESSION['login'] . "</br>") ?>
+                                <?php if (!empty($_SESSION['user'])) {
+                                    echo('Ваш IP :' . $_SERVER["REMOTE_ADDR"] . "</br>");
+                                } ?>
                                 <br>
 
-                        <form  action="" method="post">
+                        <form action="" method="post">
                             <button type="submit" name='vyhod'>
                                 <i>Вийти</i>
                             </button>
                         </form>
-                        <?php endif; ?>
+                                <?php endif; ?>
                         </div>
                     </td>
                 </tr>
@@ -61,15 +79,15 @@ if (isset($errors) && is_array($errors)): ?>
     </tr>
 </table>
 <div class="container">
-    <?php $row=$_SERVER['REQUEST_URI'];
-    $str=strpos($row, "/");
-    $row=substr($row, 0, $str);
+    <?php $row = $_SERVER['REQUEST_URI'];
+    $str = strpos($row, "/");
+    $row = substr($row, 0, $str);
     ?>
 
     <nav>
         <ul class="mcd-menu">
             <li>
-                <a href="../" <?php if ($_SERVER['REQUEST_URI']=="/"): echo ('class="active"'); endif; ?> >
+                <a href="../" <?php if ($_SERVER['REQUEST_URI'] == "/"): echo('class="active"'); endif; ?> >
                     <i class="fa fa-home"></i>
                     <strong>Головна сторінка</strong>
                     <small>home page</small>
@@ -78,14 +96,14 @@ if (isset($errors) && is_array($errors)): ?>
 
 
             <li>
-                <a href="../news/" <?php if ($_SERVER['REQUEST_URI']=="/news/"): echo ('class="active"'); endif; ?> >
+                <a href="../news/" <?php if ($_SERVER['REQUEST_URI'] == "/news/"): echo('class="active"'); endif; ?> >
                     <i class="fa fa-globe"></i>
                     <strong>Новини</strong>
                     <small>news</small>
                 </a>
             </li>
             <li>
-                <a href="../blog/" <?php if ($_SERVER['REQUEST_URI']=="/blog/"): echo ('class="active"'); endif; ?>>
+                <a href="../blog/" <?php if ($_SERVER['REQUEST_URI'] == "/blog/"): echo('class="active"'); endif; ?>>
                     <i class="fa fa-comments-o"></i>
                     <strong>Блог</strong>
                     <small>blog</small>
@@ -111,15 +129,15 @@ if (isset($errors) && is_array($errors)): ?>
                 </ul>
             </li>
             <li>
-                <a href="../favorite/" <?php if ($_SERVER['REQUEST_URI']=="/favorite/"): echo ('class="active"'); endif; ?>>
+                <a href="../favorite/" <?php if ($_SERVER['REQUEST_URI'] == "/favorite/"): echo('class="active"'); endif; ?>>
                     <i class="fa fa-gift"></i>
                     <strong>Улюблене</strong>
                     <small>favorite</small>
                 </a>
             </li>
             <li>
-                <a href="../about/" <?php if ($_SERVER['REQUEST_URI']=="/about/"): echo ('class="active"'); endif; ?>>
-                    <i class="fa fa-edit" ></i>
+                <a href="../about/" <?php if ($_SERVER['REQUEST_URI'] == "/about/"): echo('class="active"'); endif; ?>>
+                    <i class="fa fa-edit"></i>
                     <strong>Про нас</strong>
                     <small>about us</small>
                 </a>
