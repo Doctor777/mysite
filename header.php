@@ -1,6 +1,7 @@
 <?php
 //$errors=$_SESSION['errors'];
 include_once(ROOT . '/controllers/LoginController.php');
+include_once(ROOT.'/models/Blog.php');
 //$lc= new LoginController;
 LoginController::checkLogged();
 if (isset($_POST['vhod'])) {
@@ -14,6 +15,9 @@ if (isset($_POST['vhod'])) {
             echo "<script> confirm('Ви успішно зареєстровані !');</script>";
         }
     }
+/*    if (isset($_POST['search'])) {
+    include_once (ROOT.'/controllers/SearchController.php');
+    }*/
 
 //echo var_dump($errors);
 ?>
@@ -30,7 +34,7 @@ if (isset($_POST['vhod'])) {
         <td background="/template/images/index_02.gif">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td class="c_header">Мій сайт на mvc</td>
+                    <td class="c_header"><?php echo SITE_NAME ?></td>
 
                     </td>
                     <td>
@@ -90,7 +94,7 @@ if (isset($_POST['vhod'])) {
                 <a href="../" <?php if ($_SERVER['REQUEST_URI'] == "/"): echo('class="active"'); endif; ?> >
                     <i class="fa fa-home"></i>
                     <strong>Головна сторінка</strong>
-                    <small>home page</small>
+                    <small>Home page</small>
                 </a>
             </li>
 
@@ -99,60 +103,58 @@ if (isset($_POST['vhod'])) {
                 <a href="../news/" <?php if ($_SERVER['REQUEST_URI'] == "/news/"): echo('class="active"'); endif; ?> >
                     <i class="fa fa-globe"></i>
                     <strong>Новини</strong>
-                    <small>news</small>
+                    <small>News</small>
                 </a>
             </li>
             <li>
                 <a href="../blog/" <?php if ($_SERVER['REQUEST_URI'] == "/blog/"): echo('class="active"'); endif; ?>>
                     <i class="fa fa-comments-o"></i>
                     <strong>Блог</strong>
-                    <small>blog</small>
+                    <small>Blog</small>
                 </a>
+                <?php $MenuBlogList=Blog::getBlogList(); ?>
+                <?php if (isset($MenuBlogList)): ?>
                 <ul>
-                    <li><a href="#"><i class="fa fa-globe"></i>Подія №1</a></li>
-                    <li>
-                        <a href="#"><i class="fa fa-group"></i>Подія №2</a>
-                        <ul>
-                            <li><a href="#"><i class="fa fa-female"></i>Подія №3</a></li>
-                            <li>
-                                <a href="#"><i class="fa fa-male"></i>Подія №4</a>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-leaf"></i>About</a></li>
-                                    <li><a href="#"><i class="fa fa-tasks"></i>Skills</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><i class="fa fa-female"></i>Viktoria Gibbers</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><i class="fa fa-trophy"></i>Rewards</a></li>
-                    <li><a href="#"><i class="fa fa-certificate"></i>Certificates</a></li>
+                    <?php $i=0; ?>
+                    <?php foreach ($MenuBlogList as $MenuBlogItem): ?>
+                    <?php if ($i++ == 5) break; ?>
+                    <li><a href="/blog/<?php echo $MenuBlogItem['id']; ?>"><i class="fa fa-globe"></i><?php echo $MenuBlogItem['title']; ?></a></li>
+                    <?php endforeach;?>
                 </ul>
+                <?php endif;?>
             </li>
+            <?php if (isset($_SESSION['user'])): ?>
             <li>
-                <a href="../favorite/" <?php if ($_SERVER['REQUEST_URI'] == "/favorite/"): echo('class="active"'); endif; ?>>
+                <a href="../adminpanel/" <?php if ($_SERVER['REQUEST_URI'] == "/adminpanel/"): echo('class="active"'); endif; ?>>
                     <i class="fa fa-gift"></i>
-                    <strong>Улюблене</strong>
-                    <small>favorite</small>
+                    <strong>Особистий кабінет</strong>
+                    <small>Your account</small>
                 </a>
             </li>
+            <?php endif; ?>
             <li>
                 <a href="../about/" <?php if ($_SERVER['REQUEST_URI'] == "/about/"): echo('class="active"'); endif; ?>>
                     <i class="fa fa-edit"></i>
                     <strong>Про нас</strong>
-                    <small>about us</small>
+                    <small>About us</small>
                 </a>
             </li>
-
+            <form action="../search/" method="post">
             <li class="float">
                 <i class="c_search"></i>
-                <input type="text" placeholder="search...">
-                <button type="submit" class="c_search"><i>пошук</i>
+                <input  class = "c_search_inp" type="text" name="search_text" placeholder="search...">
+           <!--     <select name="logic">
+                    <option value="OR">шукати будь-яке зі слів
+                    <option value="AND">шукати всі слова
+                </select>-->
+                <button type="submit" class="c_search" name="search"><i>пошук</i>
                 </button>
                 </a>
-                <a href="" class="search-mobile">
+             <!--   <a href="" class="search-mobile">
                     <i class="fa fa-search"></i>
-                </a>
+                </a>-->
             </li>
+            </form>
         </ul>
     </nav>
 </div>

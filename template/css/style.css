@@ -7,6 +7,22 @@ body {
         background: center;*/
 }
 
+.c_search_inp {
+    position: relative;
+    margin-top: 25px;
+    margin-right: 5px;
+    width: 60%;
+    /*    -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;*/
+}
+
+/*
+!* When the input field gets focus, change its width to 100% *!
+.c_search_inp:focus {
+    width: 100%;
+}
+*/
+
 .userhead {
     color: yellow;
     font-size: 16px;
@@ -54,7 +70,7 @@ body {
 
 .c_errors li {
     position: relative;
-    padding-right:  2%;
+    padding-right: 2%;
     color: yellow;
     list-style-type: none;
     font-size: medium;
@@ -77,7 +93,7 @@ h1, h2, h3, h4, h5 {
     margin: 0px;
 }
 
-#news {
+#news #blog {
     display: block;
     background-color: #e0e6a5;
     border-radius: 10px;
@@ -95,14 +111,14 @@ h1, h2, h3, h4, h5 {
     /*-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);*/
 }
 
-#news_title {
+#news_title #blog_title {
     font-style: italic;
     font-weight: bold;
     font-size: 25px;
     text-align: center;
 }
 
-#news_date {
+#news_date #blog_date {
     font-size: small;
     font-style: italic;
     font-stretch: expanded;
@@ -110,14 +126,14 @@ h1, h2, h3, h4, h5 {
     margin-right: 20px;
 }
 
-#news_short_content {
+#news_short_content #blog_short_content {
     margin-top: 5%;
     font-style: normal;
     text-align: justify;
     text-indent: 1.5em;
 }
 
-.news_content {
+.news_content .blog_content {
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
@@ -129,14 +145,14 @@ h1 {
     font-size: 35px;
 }
 
-.news_left_img {
+.news_left_img .blog_left_img {
     float: left; /* Выравнивание по правому краю  */
     margin: 27px 20px 7px 7px;
     width: 200px;
     height: auto;
 }
 
-.c_news {
+.c_news .c_blog {
 
     /*margin: 20px;*/
     padding-bottom: 40px;
@@ -873,12 +889,6 @@ a.b1 {
         left: 10%;
         top: -8px;
     }
-}
-
-.c_search {
-    position: relative;
-    margin-top: 25px;
-    margin-right: 10px;
 }
 
 .c_avtoriz {

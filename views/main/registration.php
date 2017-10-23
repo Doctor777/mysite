@@ -22,7 +22,7 @@ require_once(ROOT . '/header.php');
             <li><input type="email" name="email" placeholder="E-mail"/></li>
             <li><input type="password" name="password" placeholder="Пароль"/></li>
             <li><input type="password" name="repassword" placeholder="Повторіть введення пароля"/></li>
-            <li><input id="inp" type="submit" name="registration"/></li>
+            <li><input id="inp" type="submit" name="registration" value="Зареєструватися"/></li>
         </ul>
     </form>
     </div>

@@ -63,8 +63,8 @@ class LoginController
         $db = Db::getConnection();
         $sql = 'SELECT * FROM users WHERE login= :login AND password= :password';
         $result = $db->prepare($sql);
-        $result->bindParam(':login', $login, PDO::PARAM_INT);
-        $result->bindParam(':password', $password, PDO::PARAM_INT);
+        $result->bindParam(':login', $login, PDO::PARAM_STR);
+        $result->bindParam(':password', $password, PDO::PARAM_STR);
         $result->execute();
 
         $user = $result->fetch();
@@ -134,8 +134,8 @@ class LoginController
         $db = Db::getConnection();
         $sql = 'SELECT login, email FROM users WHERE login= :login OR email= :email';
         $result = $db->prepare($sql);
-        $result->bindParam(':login', $login, PDO::PARAM_INT);
-        $result->bindParam(':email', $email, PDO::PARAM_INT);
+        $result->bindParam(':login', $login, PDO::PARAM_STR);
+        $result->bindParam(':email', $email, PDO::PARAM_STR);
         $result->execute();
 //перевірка на входження логіна чи емейла в базі даних
         $records = $result->fetch(PDO::FETCH_ASSOC);
