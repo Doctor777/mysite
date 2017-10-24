@@ -15,6 +15,10 @@ if (isset($_POST['vhod'])) {
             echo "<script> confirm('Ви успішно зареєстровані !');</script>";
         }
     }
+elseif (isset($_POST['publicate_blog_comment'])){
+
+    Blog::AddBlogComment($_POST['id'], $_POST['comment_area'] );
+}
 /*    if (isset($_POST['search'])) {
     include_once (ROOT.'/controllers/SearchController.php');
     }*/
@@ -98,14 +102,6 @@ if (isset($_POST['vhod'])) {
                 </a>
             </li>
 
-
-            <li>
-                <a href="../news/" <?php if ($_SERVER['REQUEST_URI'] == "/news/"): echo('class="active"'); endif; ?> >
-                    <i class="fa fa-globe"></i>
-                    <strong>Новини</strong>
-                    <small>News</small>
-                </a>
-            </li>
             <li>
                 <a href="../blog/" <?php if ($_SERVER['REQUEST_URI'] == "/blog/"): echo('class="active"'); endif; ?>>
                     <i class="fa fa-comments-o"></i>

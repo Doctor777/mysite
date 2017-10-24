@@ -1,8 +1,5 @@
 <?php
 include_once (ROOT.'/header.php');
-if (isset($_POST['publicate_blog_comment'])){
-    Blog::AddBlogComment($_POST['id'], $_POST['comment_area'] );
-}
 ?>
 
 
@@ -38,16 +35,27 @@ if (isset($_POST['publicate_blog_comment'])){
     </div>
 <br>
     <br>
+    <hr>
+    <p align="center"><b>Коментарі : </b></p><br>
+<?php $blogCommentlist = Blog::getBlogCommentsList($blogItem['id'])?>
+<?php if ($blogCommentlist): ?>
+<?php foreach ($blogCommentlist as $blogCommentItem): ?>
+    <?php echo $blogCommentItem['created']; ?><br>
+    <?php echo $blogCommentItem['username']; ?><br>
+    <?php echo $blogCommentItem['comment']; ?><br>
+            <br>
+  <?php endforeach; ?>
+        <?php else:?>
+        <?php echo '<p align="center"><b>Поки що ніхто не додав жодного коментаря</b></p><br>'; ?>
+    <?php endif;    ?>
     <?php if (isset($_SESSION['user'])): ?>
-        <hr>
-        <p align="center"><b>Коментарі : </b></p><br>
 
         <form name="comment_blog" method="post" action="">
 
            <input  type="hidden" name="id" value=<?php echo $blogItem['id']?>>
             </p>
             <p><b>Ваше ім'я :</b>   <?php echo $_SESSION['login']?><br>
-                <textarea name="comment_area" cols="40" rows="5" placeholder="Введіть текст коментаря"> </textarea> </p>
+                <textarea name="comment_area" cols="40" rows="5" placeholder="Введіть текст коментаря"></textarea> </p>
             <p><input type="submit" name="publicate_blog_comment" value="Опублікувати">
                 <input type="reset" value="Очистити"> </p>
         </form>

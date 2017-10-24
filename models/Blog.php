@@ -55,14 +55,48 @@ class Blog
     }
 
     public static function AddBlogComment($id, $comment){
-        $db = Db::getConnection();
-        $data = $db->prepare('INSERT INTO blog_comments VALUES (:id, :comment, :username)');
-        $data->bindParam(':id',$id);
-        $data->bindParam(':comment', $comment);
-        $data->bindParam('username', $_SESSION['user']);
-        $result = $data->execute();
+        unset($result);
+        if ((!empty($comment))&&(strlen($comment)>5)) {
+            $db = Db::getConnection();
+            $data = $db->prepare('INSERT INTO blog_comments (blog_id, comment, username, created) VALUES (?, ?, ?, CURRENT_TIMESTAMP ) ');
+            $data->bindValue(1, $id);
+            $data->bindValue(2, $comment);
+            $data->bindValue(3, $_SESSION['login']);
+            $data->execute();
+          //  header("Location: ".$_SERVER['HTTP_REFERER']);
 
-        return $result;
+        }
+        else{
+             $result[]='Помилка! Порожній або надто короткий коментар !';
+             return $result;
+        }
+
+    }
+
+    public static function getBlogCommentsList($id)
+    {
+        //запрос до БД
+
+        $db = Db::getConnection();
+
+        $blogCommentlist = array();
+
+        $result = $db->query('SELECT blog_id, comment, username, created FROM blog_comments WHERE blog_id ='. $id);
+       // $result->setFetchMode(PDO::FETCH_ASSOC);
+        //$blogCommentlist = $result->fetch();
+
+        $i = 0;
+//var_dump($result);
+
+        while ($row = $result->fetch()) {
+            //var_dump($row);
+            $blogCommentlist[$i]['username'] = $row['username'];
+            $blogCommentlist[$i]['comment'] = $row['comment'];
+            $blogCommentlist[$i]['created'] = $row['created'];
+            $i++;
+        }
+
+        return $blogCommentlist;
 
     }
 
