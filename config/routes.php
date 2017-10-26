@@ -3,6 +3,8 @@
 
 return array(
     'search'=>'search/search',
+    'addblog'=>'adminpanel/addblog',
+    'adminpanel'=>'adminpanel/index',
     'reg'=>'main/reg',
     'blog/([0-9]+)'=>'blog/view/$1',
     'blog'=> 'blog/index', //виклик екшин index в контроллері blog

@@ -50,7 +50,10 @@ class LoginController
 
     public static function checkLogged()
     {
-        session_start();
+        if (session_id() == "") {
+            session_start();
+        }
+       // session_start();
         if (isset($_SESSION['user'])) {
             return $_SESSION['user'];
 
@@ -82,7 +85,7 @@ class LoginController
         unset($_SESSION['user']);
         unset($_SESSION['login']);
         session_destroy();
-        header("Location: ".$_SERVER['HTTP_REFERER']);
+        header("Location: ".$_SERVER[HTTP_ORIGIN]);
         return true;
     }
 

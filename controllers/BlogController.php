@@ -5,7 +5,6 @@ class BlogController
 {
     public function actionIndex()
     {
-        //echo '<br><br>Список новин';
         $blogList = array();
         $blogList = Blog::getBlogList();
 

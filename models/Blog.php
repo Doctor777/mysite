@@ -38,7 +38,7 @@ class Blog
 
         $bloglist = array();
 
-        $result = $db->query('SELECT id, title, date, short_content FROM blogs ORDER BY date DESC LIMIT 10');
+        $result = $db->query('SELECT * FROM blogs ORDER BY date DESC');
         $i = 0;
 //var_dump($result);
 
@@ -48,6 +48,7 @@ class Blog
             $bloglist[$i]['title'] = $row['title'];
             $bloglist[$i]['date'] = $row['date'];
             $bloglist[$i]['short_content'] = $row['short_content'];
+            $bloglist[$i]['author_name'] = $row['author_name'];
             $i++;
         }
         return $bloglist;

@@ -16,8 +16,12 @@ class Db
 
 
         $dsn = "mysql:host={$params['host']}; dbname={$params['dbname']}";
-        $db = new PDO ($dsn, $params['user'], $params['password']);
-
+        try {
+            $db = new PDO ($dsn, $params['user'], $params['password']);
+        }
+        catch (PDOException $e){
+            die('Помилка підключення БД :'.$e->getMessage());
+        }
         return $db;
     }
 }

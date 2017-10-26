@@ -19,6 +19,7 @@ elseif (isset($_POST['publicate_blog_comment'])){
 
     Blog::AddBlogComment($_POST['id'], $_POST['comment_area'] );
 }
+
 /*    if (isset($_POST['search'])) {
     include_once (ROOT.'/controllers/SearchController.php');
     }*/
@@ -103,7 +104,7 @@ elseif (isset($_POST['publicate_blog_comment'])){
             </li>
 
             <li>
-                <a href="../blog/" <?php if ($_SERVER['REQUEST_URI'] == "/blog/"): echo('class="active"'); endif; ?>>
+                <a href="../blog/" <?php if (strstr($_SERVER['REQUEST_URI'], "/blog")): echo('class="active"'); endif; ?>>
                     <i class="fa fa-comments-o"></i>
                     <strong>Блог</strong>
                     <small>Blog</small>
@@ -119,12 +120,12 @@ elseif (isset($_POST['publicate_blog_comment'])){
                 </ul>
                 <?php endif;?>
             </li>
-            <?php if (isset($_SESSION['user'])): ?>
+            <?php if (isset($_SESSION['user']) && $_SESSION['user']==1): ?>
             <li>
                 <a href="../adminpanel/" <?php if ($_SERVER['REQUEST_URI'] == "/adminpanel/"): echo('class="active"'); endif; ?>>
                     <i class="fa fa-gift"></i>
-                    <strong>Особистий кабінет</strong>
-                    <small>Your account</small>
+                    <strong>Адміністрування</strong>
+                    <small>AdminPanel</small>
                 </a>
             </li>
             <?php endif; ?>
