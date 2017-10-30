@@ -22,6 +22,7 @@ include_once (ROOT.'/header.php');
 <?php else: ?>
     <br>
     <br>
+<div id="blog">
     <div id="blog_title">
         <?php echo $blogItem['title']; ?>
     </div>
@@ -33,18 +34,23 @@ include_once (ROOT.'/header.php');
     <div class="blog_content">
         <?php echo $blogItem['content']; ?>
     </div>
+</div>
 <br>
     <br>
     <hr>
     <p align="center"><b>Коментарі : </b></p><br>
+
 <?php $blogCommentlist = Blog::getBlogCommentsList($blogItem['id'])?>
 <?php if ($blogCommentlist): ?>
 <?php foreach ($blogCommentlist as $blogCommentItem): ?>
-    <?php echo $blogCommentItem['created']; ?><br>
+            <div id="blog_comment">
+            <?php echo $blogCommentItem['created']; ?><br>
     <?php echo $blogCommentItem['username']; ?><br>
     <?php echo $blogCommentItem['comment']; ?><br>
+            </div>
             <br>
   <?php endforeach; ?>
+
         <?php else:?>
         <?php echo '<p align="center"><b>Поки що ніхто не додав жодного коментаря</b></p><br>'; ?>
     <?php endif;    ?>
