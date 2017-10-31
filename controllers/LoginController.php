@@ -42,7 +42,9 @@ class LoginController
 
     public static function auth($userId)
     {
-        session_start();
+        if (session_id() == "") {
+            session_start();
+        }
         $_SESSION['user'] = $userId;
         $_SESSION['login']=$_POST['login'];
 

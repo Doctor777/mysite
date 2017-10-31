@@ -10,12 +10,12 @@ class Search{
     public static function getSearch($search_q){
 
         $db = Db::getConnection();
-        $sql = "SELECT * FROM news WHERE title OR content LIKE '%$search_q%'";
+        $sql = "SELECT * FROM blogs WHERE title OR content LIKE '%$search_q%'";
         $result = $db->prepare($sql);
        // $result->bindParam(':title', $title, PDO::PARAM_STR);
         //$result->bindParam(':content', $content, PDO::PARAM_STR);
         $result->execute();
-//перевірка на входження логіна чи емейла в базі даних
+
         $records = $result->fetchAll(PDO::FETCH_ASSOC);
        /* echo 'результати пошуку :';
        foreach ($records as $record) {

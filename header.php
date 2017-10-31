@@ -96,7 +96,7 @@ elseif (isset($_POST['publicate_blog_comment'])){
     <nav>
         <ul class="mcd-menu">
             <li>
-                <a href="../" <?php if ($_SERVER['REQUEST_URI'] == "/"): echo('class="active"'); endif; ?> >
+                <a href="/" <?php if ($_SERVER['REQUEST_URI'] == "/"): echo('class="active"'); endif; ?> >
                     <i class="fa fa-home"></i>
                     <strong>Головна сторінка</strong>
                     <small>Home page</small>
@@ -104,7 +104,7 @@ elseif (isset($_POST['publicate_blog_comment'])){
             </li>
 
             <li>
-                <a href="../blog/" <?php if (strstr($_SERVER['REQUEST_URI'], "/blog")): echo('class="active"'); endif; ?>>
+                <a href="/blog/" <?php if (strstr($_SERVER['REQUEST_URI'], "/blog/")): echo('class="active"'); endif; ?>>
                     <i class="fa fa-comments-o"></i>
                     <strong>Блог</strong>
                     <small>Blog</small>
@@ -122,7 +122,7 @@ elseif (isset($_POST['publicate_blog_comment'])){
             </li>
             <?php if (isset($_SESSION['user']) && $_SESSION['user']==1): ?>
             <li>
-                <a href="../adminpanel/" <?php if ($_SERVER['REQUEST_URI'] == "/adminpanel/"): echo('class="active"'); endif; ?>>
+                <a href="/adminpanel/" <?php if (strstr($_SERVER['REQUEST_URI'], "/adminpanel")): echo('class="active"'); endif; ?>>
                     <i class="fa fa-gift"></i>
                     <strong>Адміністрування</strong>
                     <small>AdminPanel</small>
@@ -136,7 +136,7 @@ elseif (isset($_POST['publicate_blog_comment'])){
                     <small>About us</small>
                 </a>
             </li>
-            <form action="../search/" method="post">
+            <form action="/search/" method="post">
             <li class="float">
                 <i class="c_search"></i>
                 <input  class = "c_search_inp" type="text" name="search_text" placeholder="search...">

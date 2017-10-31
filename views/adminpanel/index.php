@@ -67,18 +67,21 @@ $blogList = Blog::getBlogList();
 								<th width="110" class="ac">Керування контентом</th>
 							</tr>
                             <?php if (isset($blogList)): ?>
-                            <?php foreach ($blogList as $blogItem): ?>
+                            <form action="" name="blog_list_form" method="post">
+                                <?php foreach ($blogList as $blogItem): ?>
 
 							<tr>
 								<td><input type="checkbox" class="checkbox" /></td>
 								<td><h3><a href="/blog/<?php echo $blogItem['id']; ?>"><?php echo $blogItem['title']; ?></a></h3></td>
 								<td><?php echo $blogItem['date']; ?></td>
-								<td><a href="#"><?php echo $blogItem['author_name']; ?></a></td>
-								<td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+								<td><a href="/blogedit/<?php echo $blogItem['id']; ?>"><?php echo $blogItem['author_name']; ?></a></td>
+								<td><a href="/adminpanel/blogdelete/<?php echo $blogItem['id']; ?>" class="ico del">Delete</a><a href="/adminpanel/blogedit/<?php echo $blogItem['id']; ?>" class="ico edit">Edit</a></td>
 							</tr>
 							    <?php endforeach; ?>
+                            </form>>
                             <?php endif; ?>
 						</table>
+
 
 
 						<!-- Pagging -->
