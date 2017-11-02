@@ -33,10 +33,25 @@ body {
 }
 
 .c_img {
+    position: relative;
     background-image: url('/template/images/vedro.jpg');
     width: 100%;
     height: 80%;
     opacity: .8;
+    z-index: 0;
+}
+
+.banner{
+    position: absolute;
+    padding: 30px;
+    z-index: 10;
+}
+
+#kurs-com-ua{
+       position: absolute;
+    margin-top: 190px;
+    padding: 30px;
+    z-index: 10;
 }
 
 .c_registr input:not([id]) {
@@ -98,15 +113,16 @@ h1, h2, h3, h4, h5 {
     background-color: #e0e6a5;
     border-radius: 10px;
     position: relative;
-    margin: 2% 1% 2% 1%;
+    margin: 1%;
     top: 5px;
     /*margin: 20px;*/
-    width: auto;
+    width: 95%;
     height: auto;
-    padding: 10px;
+    padding: 30px;
     overflow: visible;
     z-index: 1;
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+    float: left;
     /*-moz-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);*/
     /*-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);*/
 }
@@ -128,20 +144,16 @@ h1, h2, h3, h4, h5 {
     margin-right: 20px;
 }
 
-#blog_short_content {
-    margin-top: 5%;
-    font-style: normal;
-    text-align: justify;
-    text-indent: 1.5em;
-}
 
-.blog_content {
+
+#blog_content {
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
     text-align: justify;
-
+    height: auto;
 }
+
 
 h1 {
     font-size: 35px;
@@ -149,7 +161,7 @@ h1 {
 
 .blog_left_img {
     float: left; /* Выравнивание по правому краю  */
-    margin: 27px 20px 7px 7px;
+    margin: 5px 20px 7px 7px;
     width: 200px;
     height: auto;
 }

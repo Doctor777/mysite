@@ -4,8 +4,10 @@
 
 
 include_once (ROOT.'/header.php');
-
-$blogList = Blog::getBlogList();
+if (!isset($_POST['admin_search_input'])) {
+    $blogList = Blog::getBlogList();
+}
+$usersList = Adminpanel::getUsersList();
 ?>
 
 <link rel="stylesheet" href="../template/css/adminpanel.css" type="text/css" media="all" />
@@ -46,11 +48,14 @@ $blogList = Blog::getBlogList();
 				<div class="box">
 					<!-- Box Head -->
 					<div class="box-head">
-						<h2 class="left">Список блогів</h2>
+						<h2 class="left"><?php if (isset($_POST['admin_search_input'])) { echo 'Результати пошуку: ' ;} else{echo 'Список блогів'; }?></h2>
 						<div class="right">
+                            <form action="/searchadm/" method="post">
 							<label>пошук блогу</label>
-							<input type="text" class="field small-field" />
+							<input type="text" name="admin_search_input" class="field small-field" />
 							<input type="submit" class="button" value="пошук" />
+                                <a href="/adminpanel/"><input type="button" class="button" value="скидання" /></a>
+                            </form>
 						</div>
 					</div>
 					<!-- End Box Head -->
@@ -66,10 +71,12 @@ $blogList = Blog::getBlogList();
 								<th>Автор</th>
 								<th width="110" class="ac">Керування контентом</th>
 							</tr>
+
                             <?php if (isset($blogList)): ?>
+                                <?php $n=0;?>
                             <form action="" name="blog_list_form" method="post">
                                 <?php foreach ($blogList as $blogItem): ?>
-
+                                <?php  $n++; ?>
 							<tr>
 								<td><input type="checkbox" class="checkbox" /></td>
 								<td><h3><a href="/blog/<?php echo $blogItem['id']; ?>"><?php echo $blogItem['title']; ?></a></h3></td>
@@ -79,6 +86,7 @@ $blogList = Blog::getBlogList();
 							</tr>
 							    <?php endforeach; ?>
                             </form>>
+
                             <?php endif; ?>
 						</table>
 
@@ -86,7 +94,7 @@ $blogList = Blog::getBlogList();
 
 						<!-- Pagging -->
 						<div class="pagging">
-							<div class="left">Showing 1-12 of 44</div>
+							<div class="left">Showing <?php echo $n; ?> of <?php echo $n; ?></div>
 							<div class="right">
 								<a href="#">Previous</a>
 								<a href="#">1</a>
@@ -179,11 +187,39 @@ $blogList = Blog::getBlogList();
 					</div>
 				</div>
 				<!-- End Box -->
+
+
+                <div class="box">
+
+                    <!-- Box Head -->
+                    <div class="box-head">
+                        <h2>Користувачі</h2>
+                    </div>
+
+
+                <div class="box-content">
+                        <table width="50%" border="0" cellspacing="0" cellpadding="0">
+                                <?php if (isset($usersList)): ?>
+                                    <?php foreach ($usersList as $userItem): ?>
+
+                            <tr>
+                                <td><h3><?php echo $userItem['id']; ?></h3></td>
+                                <td><?php echo $userItem['login']; ?></td>
+                                <td><?php echo $userItem['email']; ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+<?php endif;?>
+                        </table>
+
+                </div>
+
+                </div>
+
 			</div>
 			<!-- End Sidebar -->
 
-			<div class="cl">&nbsp;</div>
-		</div>
+
+    <!-- End Box -->
 		<!-- Main -->
 	</div>
 </div>

@@ -4,21 +4,27 @@ include_once (ROOT.'/header.php');
 
 
 <?php if (isset($blogList)): ?>
+
     <?php foreach ($blogList as $blogItem): ?>
         <div id="blog">
             <div id="blog_title">
                 <?php echo $blogItem['title']; ?>
             </div>
-            <img class="blog_left_img" src="/template/images/index_32.jpg" alt="">
+
             <div id="blog_date">
                 <?php echo $blogItem['date']; ?>
             </div>
-            <div id="blog_short_content">
+            <div id="blog_content">
+                <img src="/template/images/index_32.jpg" alt="">
+
                 <?php echo $blogItem['short_content']; ?>
                 <a href="/blog/<?php echo $blogItem['id']; ?>">читати далі...</a>
+
             </div>
         </div>
+
     <?php endforeach; ?>
+
 <?php else: ?>
     <br>
     <br>
@@ -29,10 +35,11 @@ include_once (ROOT.'/header.php');
     <div id="blog_date">
         <?php echo $blogItem['date']; ?>
     </div>
+    <div class="blog_content">
     <img class="blog_left_img" src="/template/images/index_32.jpg" alt="">
 
-    <div class="blog_content">
-        <?php echo $blogItem['content']; ?>
+
+        <?php echo htmlspecialchars_decode($blogItem['content'], ENT_QUOTES); ?>
     </div>
 </div>
 <br>

@@ -44,7 +44,7 @@ class AdminpanelController
         }
 
 
-        if (check_length($_POST['blog_title'], 5, 100)
+        if (isset($_POST['blog_title']) && check_length($_POST['blog_title'], 5, 100)
             && check_length($_POST['blog_content'], 5, 10000)) {
             Adminpanel::Addblog();
             require_once(ROOT . '/views/adminpanel/index.php');
@@ -89,5 +89,22 @@ header("Location: ".$_SERVER['HTTP_REFERER']);
                     }
                 }
  }
+
+    public function actionSearchadm()
+    {
+        if (isset($_POST['admin_search_input'])) {
+
+            $context=$_POST['admin_search_input'];
+            $context = substr($context, 0, 64);
+//вирізаємо всі ненормальні символи
+            $context = strip_tags($context);
+            //include_once ROOT . '/models/Adminpanel.php';
+            $blogList = Adminpanel::getBlogItemBySearch($context);
+            require_once(ROOT . '/views/adminpanel/index.php');
+            return true;
+        }
+        require_once(ROOT . '/views/blog/index.php');
+        return true;
+    }
 
 }

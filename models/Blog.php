@@ -30,6 +30,7 @@ class Blog
         //запрос до БД
     }
 
+
     public static function getBlogList()
     {
         //запрос до БД
