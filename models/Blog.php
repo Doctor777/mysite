@@ -50,6 +50,7 @@ class Blog
             $bloglist[$i]['date'] = $row['date'];
             $bloglist[$i]['short_content'] = $row['short_content'];
             $bloglist[$i]['author_name'] = $row['author_name'];
+            $bloglist[$i]['preview'] = $row ['preview'];
             $i++;
         }
         return $bloglist;

@@ -34,7 +34,7 @@ class LoginController
             } else
                 LoginController::auth($userId);
            header("Location: ".$_SERVER['HTTP_REFERER']);
-            echo 'logged!';
+          //  echo 'logged!';
             return true;
         }
 
@@ -47,6 +47,12 @@ class LoginController
         }
         $_SESSION['user'] = $userId;
         $_SESSION['login']=$_POST['login'];
+                   $db = Db::getConnection();
+            $sql = 'UPDATE users SET online = 1 WHERE id = '.$userId ;
+
+            $data = $db->prepare($sql);
+            $data->execute();
+                return true;
 
     }
 
@@ -66,7 +72,7 @@ class LoginController
     public static function CheckUserData($login, $password)
     {
         $db = Db::getConnection();
-        $sql = 'SELECT * FROM users WHERE login= :login AND password= :password';
+        $sql = 'SELECT * FROM users WHERE login= :login AND password= :password AND banned !=1';
         $result = $db->prepare($sql);
         $result->bindParam(':login', $login, PDO::PARAM_STR);
         $result->bindParam(':password', $password, PDO::PARAM_STR);
@@ -84,10 +90,18 @@ class LoginController
     public static function actionLogOut()
     {
 
+
+        $userId = $_SESSION['user'];
+        $db = Db::getConnection();
+        $sql = 'UPDATE users SET online = 0 WHERE id ='. $userId;
+
+        $data = $db->prepare($sql);
+        $data->execute();
         unset($_SESSION['user']);
         unset($_SESSION['login']);
         session_destroy();
-        header("Location: ".$_SERVER[HTTP_ORIGIN]);
+     header("Location: ".$_SERVER['HTTP_REFERER']);
+        //header("Location: ".$_SERVER[HTTP_ORIGIN]);
         return true;
     }
 
@@ -151,6 +165,18 @@ class LoginController
         }
         else{
             //запис в БД нового користувача
+            $db = Db::getConnection();
+            $data = $db->prepare('INSERT INTO users (login, username, email, password, created, permissions, changed, banned) 
+VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, "user permissions", CURRENT_TIMESTAMP, 0)');
+            $data->bindValue(1, $login);
+            // $data->bindValue(2, $_POST['blog_content']);
+            $data->bindValue(2, $name);
+            $data->bindValue(3, $email);
+            $data->bindValue(4, md5($password));
+            if ($data->execute()) {
+                $regerrors[] = 'Вітаємо, Ви успішно зареєструвалися !';
+            }
+            return $regerrors;
 
         }
 

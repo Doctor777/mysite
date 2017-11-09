@@ -36,23 +36,24 @@ class AdminpanelController
     public function actionAddblog()
     {
 //unset($add_blog_errors);
+        if ($this->isAdmin()) {
+            function check_length($value = "", $min, $max)
+            {
+                $result = (strlen($value) < $min || strlen($value) > $max);
+                return !$result;
+            }
 
-        function check_length($value = "", $min, $max)
-        {
-            $result = (strlen($value) < $min || strlen($value) > $max);
-            return !$result;
-        }
 
-
-        if (isset($_POST['blog_title']) && check_length($_POST['blog_title'], 5, 100)
-            && check_length($_POST['blog_content'], 5, 10000)) {
-            Adminpanel::Addblog();
-            require_once(ROOT . '/views/adminpanel/index.php');
-            return true;
-        } else {
-            $add_blog_errors[] = 'Помилка! Недозволена кількість символів в тексті або назві !';
-            require_once(ROOT . '/views/adminpanel/index.php');
-            return $add_blog_errors;
+            if (isset($_POST['blog_title']) && check_length($_POST['blog_title'], 5, 100)
+                && check_length($_POST['blog_content'], 5, 10000)) {
+                Adminpanel::Addblog();
+                require_once(ROOT . '/views/adminpanel/index.php');
+                return true;
+            } else {
+                $add_blog_errors[] = 'Помилка! Недозволена кількість символів в тексті або назві !';
+                require_once(ROOT . '/views/adminpanel/index.php');
+                return $add_blog_errors;
+            }
         }
     }
 
@@ -92,19 +93,44 @@ header("Location: ".$_SERVER['HTTP_REFERER']);
 
     public function actionSearchadm()
     {
-        if (isset($_POST['admin_search_input'])) {
+        if ($this->isAdmin()) {
+            if (isset($_POST['admin_search_input'])) {
 
-            $context=$_POST['admin_search_input'];
-            $context = substr($context, 0, 64);
+                $context = $_POST['admin_search_input'];
+                $context = substr($context, 0, 64);
 //вирізаємо всі ненормальні символи
-            $context = strip_tags($context);
-            //include_once ROOT . '/models/Adminpanel.php';
-            $blogList = Adminpanel::getBlogItemBySearch($context);
-            require_once(ROOT . '/views/adminpanel/index.php');
+                $context = strip_tags($context);
+                //include_once ROOT . '/models/Adminpanel.php';
+                $blogList = Adminpanel::getBlogItemBySearch($context);
+                require_once(ROOT . '/views/adminpanel/index.php');
+                return true;
+            }
+            require_once(ROOT . '/views/blog/index.php');
             return true;
         }
-        require_once(ROOT . '/views/blog/index.php');
-        return true;
     }
+
+    public function actionUserban($id) {
+     if ($this->isAdmin()){
+         Adminpanel::Userban($id);
+         header("Location: ".$_SERVER['HTTP_REFERER']);
+         return true;
+
+
+     }
+
+    }
+
+    public function actionUserdelete($id) {
+        if ($this->isAdmin()){
+            Adminpanel::Userdelete($id);
+            header("Location: ".$_SERVER['HTTP_REFERER']);
+            return true;
+
+
+        }
+
+    }
+
 
 }

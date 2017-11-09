@@ -15,8 +15,10 @@ include_once (ROOT.'/header.php');
                 <?php echo $blogItem['date']; ?>
             </div>
             <div id="blog_content">
-                <img src="/template/images/index_32.jpg" alt="">
-
+            <?php if ($blogItem['preview']!=""):?>
+                <?php echo '<img class="blog_left_img" src='.$blogItem['preview'].'>'; ?>
+                <?php else: echo '<img class="blog_left_img" src="/template/images/noimage.png">'; ?>
+                <?php endif;?>
                 <?php echo $blogItem['short_content']; ?>
                 <a href="/blog/<?php echo $blogItem['id']; ?>">читати далі...</a>
 
@@ -36,8 +38,10 @@ include_once (ROOT.'/header.php');
         <?php echo $blogItem['date']; ?>
     </div>
     <div class="blog_content">
-    <img class="blog_left_img" src="/template/images/index_32.jpg" alt="">
-
+        <?php if ($blogItem['preview']!=""):?>
+            <?php echo '<img class="blog_left_img" src='.$blogItem['preview'].'>'; ?>
+        <?php else: echo '<img class="blog_left_img" src="/template/images/noimage.png">'; ?>
+        <?php endif;?>
 
         <?php echo htmlspecialchars_decode($blogItem['content'], ENT_QUOTES); ?>
     </div>

@@ -3,6 +3,8 @@
 
 return array(
     'adminpanel/blogedit/([0-9]+)'=>'adminpanel/blogedit/$1',
+    'adminpanel/userban/([0-9]+)'=>'adminpanel/userban/$1',
+    'adminpanel/userdelete/([0-9]+)'=>'adminpanel/userdelete/$1',
     'adminpanel/blogdelete/([0-9]+)'=>'adminpanel/blogdelete/$1',
     'searchadm'=>'adminpanel/searchadm',
     'addblog'=>'adminpanel/addblog',

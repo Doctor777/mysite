@@ -13,6 +13,7 @@ return true;
     public function actionReg()
     {
         require_once(ROOT . '/views/main/registration.php');
+
         return true;
     }
 

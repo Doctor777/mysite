@@ -64,13 +64,16 @@ $usersList = Adminpanel::getUsersList();
 
                     <div class="table">
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
-							<tr>
-								<th width="13"><input type="checkbox" class="checkbox" /></th>
-								<th>Назва</th>
-								<th>Дата</th>
+
+                                <tr>
+								<th width="13"></th>
+                                    <th>Назва</th>
+                                    <th>Дата</th>
+
 								<th>Автор</th>
 								<th width="110" class="ac">Керування контентом</th>
 							</tr>
+
 
                             <?php if (isset($blogList)): ?>
                                 <?php $n=0;?>
@@ -123,7 +126,7 @@ $usersList = Adminpanel::getUsersList();
 					</div>
 					<!-- End Box Head -->
 
-					<form action="/addblog/" name="add_blog" method="post">
+					<form action="/addblog/" enctype="multipart/form-data" name="add_blog" method="post">
 
 						<!-- Form -->
 						<div class="form">
@@ -138,7 +141,10 @@ $usersList = Adminpanel::getUsersList();
 									<textarea name="blog_content" class="field size1" placeholder="мін 5 та макс 100 символів" rows="10" cols="30"></textarea>
 								</p>
 
-						</div>
+                            <p><label>Загрузка фото</label></p>
+                           <!-- <textarea name="upload"></textarea>-->
+                            <p><input style="width: 240px" type="file" name="photo" multiple accept="image/*,image/jpeg">
+                </div>
 						<!-- End Form -->
 
 						<!-- Form Buttons -->
@@ -198,15 +204,25 @@ $usersList = Adminpanel::getUsersList();
 
 
                 <div class="box-content">
-                        <table width="50%" border="0" cellspacing="0" cellpadding="0">
+                        <table width="50%" border="0" cellspacing="5" cellpadding="0">
                                 <?php if (isset($usersList)): ?>
                                     <?php foreach ($usersList as $userItem): ?>
 
                             <tr>
                                 <td><h3><?php echo $userItem['id']; ?></h3></td>
-                                <td><?php echo $userItem['login']; ?></td>
+                                <td><?php if ($userItem['banned']!=1):echo $userItem['login']; else: echo "<del><font color = 'red'>".$userItem['login']."</font></del>"; endif; ?></td>
                                 <td><?php echo $userItem['email']; ?></td>
+                                <?php if ($userItem['online']==1):?>
+                                    <td>online</td>
+                                <?php endif;?>
+                                <?php if ($userItem['id']!='1'):?>
+                                    <td><a href="/adminpanel/userdelete/<?php echo $userItem['id']?>">видалити</a></td>
+                                    <td><a href="/adminpanel/userban/<?php echo $userItem['id']?>">забанити</a></td>
+                                    <td><a href="/adminpanel/userpermissions/<?php echo $userItem['id']?>">права</a></td>
+                                            <?php endif;?>
                             </tr>
+
+
                             <?php endforeach; ?>
 <?php endif;?>
                         </table>
