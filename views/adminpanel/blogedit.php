@@ -11,7 +11,7 @@ include_once (ROOT.'/header.php');
     </div>
     <?php if (isset($blogItem)): ?>
         <div class="form">
-            <form action="/adminpanel/blogedit/<?php echo $blogItem['id']?>" method="post">
+            <form action="/adminpanel/blogedit/<?php echo $blogItem['id']?>" enctype="multipart/form-data"  method="post">
 
     <!-- Form -->
 
@@ -26,18 +26,27 @@ include_once (ROOT.'/header.php');
             <textarea name="blog_content" class="field size1" placeholder="мін 5 та макс 100 символів" rows="10" cols="30"><?php echo $blogItem['content']?></textarea>
         </p>
 
-    </div>
+                <p><label>Загрузка фото</label></p>
+                <!-- <textarea name="upload"></textarea>-->
+                <?php if ($blogItem['preview']!=""):?>
+                    <?php echo '<img class="blog_edit_img"  src='.$blogItem['preview'].'>'; ?>
+                <?php endif;?>
+                <p><input style="width: 240px" type="file" name="photo" multiple accept="image/*,image/jpeg" value="<?php echo $blogItem['preview']?>"></p>
+
+
 
     <div class="buttons">
         <input type="button" class="button" value="перегляд" />
         <input type="submit" name="edit_blog" class="button" value="опублікувати" />
     </div>
+
     <?php else : echo $res; ?>
 </form>
-</div>
+
 
 <?php endif;?>
-
+        </div>
+    </div>
 <?php
 include_once (ROOT.'/footer.php');
 ?>

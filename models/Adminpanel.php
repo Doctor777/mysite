@@ -41,25 +41,32 @@ class Adminpanel
         return $new_name;
     }
 
-    public static function Addblog()
+    private static function Setphoto()
     {
-        if (session_id() == "") {
-            session_start();
-        }
-        if(isset($_FILES['photo'])) {
+        if (isset($_FILES['photo'])) {
             // проверяем, можно ли загружать изображение
             $check = Adminpanel::can_upload($_FILES['photo']);
 
-            if($check === true){
+            if ($check === true) {
                 // загружаем изображение на сервер
-               $new_name = Adminpanel::make_upload($_FILES['photo']);
-               // echo "<strong>Файл успешно загружен!</strong>";
+                $new_name = Adminpanel::make_upload($_FILES['photo']);
+                // echo "<strong>Файл успешно загружен!</strong>";
+            } else {
+                $new_name = "";
             }
-           /* else{
-                // выводим сообщение об ошибке
-                echo "<strong>$check</strong>";
-            }*/
+            return $new_name;
         }
+    }
+
+    public static function Addblog()
+    {
+        $new_name = Adminpanel::Setphoto();
+        if (session_id() == "") {
+            session_start();
+        }
+
+
+
         $db = Db::getConnection();
         $data = $db->prepare('INSERT INTO blogs (title, content, short_content, author_name, preview) 
 VALUES (?, ?, ?, ?, ?) ');
@@ -79,7 +86,11 @@ VALUES (?, ?, ?, ?, ?) ');
 
     public static function BlogEdit($id)
     {
-
+        //if ($_POST['preview']=='') {
+            $new_name = Adminpanel::Setphoto();
+        //}else{
+         //   $new_name = $_POST['preview'];
+        //}
         //вертаємо цілочисельне значення ІД
         $id = intval($id);
 
@@ -102,7 +113,7 @@ WHERE id = :id';
             //$data->bindValue(':content', $_POST['blog_content']);
             $data->bindValue(':short_content', mb_substr($_POST['blog_content'], 0, 80));
             $data->bindValue(':author_name', $_SESSION['login']);
-            $data->bindValue(':preview', '../шлях до картинки');
+            $data->bindValue(':preview', $new_name);
             $data->bindValue(':id', $id, PDO::PARAM_INT);
 
             if ($data->execute()) {
@@ -230,4 +241,31 @@ WHERE id = :id';
         }
 
     }
+
+    public static function getUsersPermissionsList()
+    {
+        //запрос до БД
+
+        $db = Db::getConnection();
+
+        $userslist = array();
+
+        $result = $db->query('SELECT * FROM users ORDER BY login ASC');
+        $i = 0;
+//var_dump($result);
+
+        while ($row = $result->fetch()) {
+            //var_dump($row);
+            $userslist[$i]['id'] = $row['id'];
+            $userslist[$i]['login'] = $row['login'];
+            $userslist[$i]['email'] = $row['email'];
+            $userslist[$i]['permissions'] = $row['permissions'];
+            $userslist[$i]['banned'] = $row['banned'];
+            $userslist[$i]['online'] = $row['online'];
+            $i++;
+        }
+        return $userslist;
+
+    }
+
 }

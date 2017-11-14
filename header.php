@@ -130,7 +130,7 @@ elseif (isset($_POST['publicate_blog_comment'])){
             </li>
             <?php endif; ?>
             <li>
-                <a href="../about/" <?php if ($_SERVER['REQUEST_URI'] == "/about/"): echo('class="active"'); endif; ?>>
+                <a href="/about/" <?php if ($_SERVER['REQUEST_URI'] == "/about/"): echo('class="active"'); endif; ?>>
                     <i class="fa fa-edit"></i>
                     <strong>Про нас</strong>
                     <small>About us</small>

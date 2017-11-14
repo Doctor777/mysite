@@ -132,5 +132,15 @@ header("Location: ".$_SERVER['HTTP_REFERER']);
 
     }
 
+    public function actionUserpermissions(){
+        if ($this->isAdmin()){
+           $userslist= Adminpanel::getUsersPermissionsList();
+            require_once(ROOT . '/views/adminpanel/userpermissions.php');
+          //  header("Location: ".$_SERVER['HTTP_REFERER']);
+            return $userslist;
+        }
+
+    }
+
 
 }

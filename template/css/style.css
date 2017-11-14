@@ -114,7 +114,8 @@ h1, h2, h3, h4, h5 {
     border-radius: 10px;
     position: relative;
     margin: 1%;
-    top: 5px;
+    /*top: 2px;*/
+    right: 10px;
     /*margin: 20px;*/
     width: 95%;
     height: auto;
@@ -127,7 +128,9 @@ h1, h2, h3, h4, h5 {
     /*-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);*/
 }
 
-
+.blog_edit_img {
+    width:  100px;
+}
 
 #blog_title {
     font-style: italic;
@@ -146,13 +149,15 @@ h1, h2, h3, h4, h5 {
 
 
 
-#blog_content {
+#blog .blog_short_content {
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 100px;
     margin-right: 20px;
     text-align: justify;
     height: auto;
+    padding-left: 50px;
 }
+
 
 
 h1 {
@@ -164,6 +169,12 @@ h1 {
     margin: 5px 20px 7px 7px;
     width: 200px;
     height: auto;
+}
+
+#blog #blog_content .blog_left_img {
+    position: absolute;
+    top:10px;
+    width: 100px ;
 }
 
 .c_blog {

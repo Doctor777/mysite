@@ -88,7 +88,7 @@ $usersList = Adminpanel::getUsersList();
 								<td><a href="/adminpanel/blogdelete/<?php echo $blogItem['id']; ?>" class="ico del">Delete</a><a href="/adminpanel/blogedit/<?php echo $blogItem['id']; ?>" class="ico edit">Edit</a></td>
 							</tr>
 							    <?php endforeach; ?>
-                            </form>>
+                            </form>
 
                             <?php endif; ?>
 						</table>
@@ -218,7 +218,7 @@ $usersList = Adminpanel::getUsersList();
                                 <?php if ($userItem['id']!='1'):?>
                                     <td><a href="/adminpanel/userdelete/<?php echo $userItem['id']?>">видалити</a></td>
                                     <td><a href="/adminpanel/userban/<?php echo $userItem['id']?>">забанити</a></td>
-                                    <td><a href="/adminpanel/userpermissions/<?php echo $userItem['id']?>">права</a></td>
+                                    <td><a href="/adminpanel/userpermissions/">права</a></td>
                                             <?php endif;?>
                             </tr>
 

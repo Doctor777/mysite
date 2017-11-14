@@ -16,12 +16,13 @@ include_once (ROOT.'/header.php');
             </div>
             <div id="blog_content">
             <?php if ($blogItem['preview']!=""):?>
-                <?php echo '<img class="blog_left_img" src='.$blogItem['preview'].'>'; ?>
+                <?php echo '<img class="blog_left_img" id="blog_list_img" src='.$blogItem['preview'].'>'; ?>
                 <?php else: echo '<img class="blog_left_img" src="/template/images/noimage.png">'; ?>
                 <?php endif;?>
+                <div class="blog_short_content">
                 <?php echo $blogItem['short_content']; ?>
-                <a href="/blog/<?php echo $blogItem['id']; ?>">читати далі...</a>
-
+                <a href="/blog/<?php echo $blogItem['id']; ?>">   читати далі...</a>
+                </div>
             </div>
         </div>
 
@@ -39,7 +40,7 @@ include_once (ROOT.'/header.php');
     </div>
     <div class="blog_content">
         <?php if ($blogItem['preview']!=""):?>
-            <?php echo '<img class="blog_left_img" src='.$blogItem['preview'].'>'; ?>
+            <?php echo '<img class="blog_left_img"  src='.$blogItem['preview'].'>'; ?>
         <?php else: echo '<img class="blog_left_img" src="/template/images/noimage.png">'; ?>
         <?php endif;?>
 
