@@ -7,11 +7,11 @@ include_once (ROOT.'/header.php');
     <div class="box">
     <!-- Box Head -->
     <div class="box-head">
-        <h2>Редагувати права користувачів</h2>
+        <h2>Редагувати групи користувачів</h2>
     </div>
 
         <div class="box-content">
-            <form method="post">
+            <form name="user_group_edit" method="post">
             <table width="30%" border="0" cellspacing="5" cellpadding="0">
                 <tr>
                     <th width="5">id</th>
@@ -35,14 +35,9 @@ include_once (ROOT.'/header.php');
                             <?php endif;?>
                             <td><select>
                                     <option>user</option>
-                                    <option>privileged user</option>
                                     <option>admin</option>
                                 </select></td>
-                            <td><input type="checkbox"  {
 
-                            }"></td>
-                            <td><input type="checkbox"></td><td>
-                               <td><input type="checkbox"></td>
                         </tr>
 
 
@@ -50,6 +45,47 @@ include_once (ROOT.'/header.php');
                 <?php endif;?>
             </table>
                 <p><input type="submit" value="Внести зміни"></p>
+            </form>
+        </div>
+    </div>
+<!--блок редагування прав груп пористувачів-->
+    <div class="box">
+        <!-- Box Head -->
+        <div class="box-head">
+            <h2>Редагувати права груп користувачів</h2>
+        </div>
+
+        <div class="box-content">
+            <form name="permissions_group_edit" method="post">
+                <table width="30%" border="0" cellspacing="5" cellpadding="0">
+                    <tr>
+                        <th width="5">id</th>
+                        <th>Група</th>
+
+                        <th>Права</th>
+                        <th>Права</th>
+                        <th>Права</th>
+                        <th>Видалити групу</th>
+                    </tr>
+                            <tr>
+                                <td>id</td>
+                                <td>user</td>
+
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><button type="submit" name="delete_group"> Видалити </button></td>
+
+                            </tr>
+                    <table width="30%" border="0" cellspacing="5" cellpadding="0">
+                        <tr><td><label>Додати нову групу користувачів</label></td></tr>
+<td><input type="text" placeholder="Назва групи" />
+                        <button type="submit" name="Add_group">Додати</button></td>
+</tr>
+
+                </table>
+                    <br>
+                <p><input type="submit" name="edit_rules" value="Внести зміни"></p>
             </form>
         </div>
     </div>
