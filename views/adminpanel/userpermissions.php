@@ -56,30 +56,37 @@ include_once (ROOT.'/header.php');
         </div>
 
         <div class="box-content">
-            <form name="permissions_group_edit" method="post">
+            <form action="" name="permissions_group_edit" method="post">
                 <table width="30%" border="0" cellspacing="5" cellpadding="0">
+                <?php $rolelist = Adminpanel::getRolesList()?>
+
+
                     <tr>
                         <th width="5">id</th>
                         <th>Група</th>
 
-                        <th>Права</th>
-                        <th>Права</th>
-                        <th>Права</th>
+                        <th>Бачити коментарі</th>
+                        <th>Редагувати коментарі</th>
+                        <th>Видаляти коментарі</th>
                         <th>Видалити групу</th>
                     </tr>
+                         <?php if (isset($rolelist)): ?>
+                    <?php foreach ($rolelist as $roleItem): ?>
                             <tr>
-                                <td>id</td>
-                                <td>user</td>
+                                <td><?php echo $roleItem['id']?></td>
+                                <td><?php echo $roleItem['role']?></td>
 
-                                <td><input type="checkbox"></td>
-                                <td><input type="checkbox"></td>
-                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" name="view_comments=<?php echo $roleItem['id']?>"></td>
+                                <td><input type="checkbox" name="edit_comments=<?php echo $roleItem['id']?>"></td>
+                                <td><input type="checkbox" name="delete_comments=<?php echo $roleItem['id']?>"></td>
                                 <td><button type="submit" name="delete_group"> Видалити </button></td>
 
                             </tr>
+                            <?php endforeach;?>
+                            <?php endif;?>
                     <table width="30%" border="0" cellspacing="5" cellpadding="0">
                         <tr><td><label>Додати нову групу користувачів</label></td></tr>
-<td><input type="text" placeholder="Назва групи" />
+<td><input type="text" name="add_group_name" placeholder="Назва групи" />
                         <button type="submit" name="Add_group">Додати</button></td>
 </tr>
 
