@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ace5f485-0a76-40b8-9a43-e06febe36c2c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Adminpanel.php" afterPath="$PROJECT_DIR$/models/Adminpanel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/adminpanel/userpermissions.php" afterPath="$PROJECT_DIR$/views/adminpanel/userpermissions.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -481,7 +479,7 @@
       <workItem from="1511264119453" duration="2874000" />
       <workItem from="1511267262975" duration="7947000" />
       <workItem from="1511295217368" duration="12266000" />
-      <workItem from="1511474392644" duration="9884000" />
+      <workItem from="1511474392644" duration="9901000" />
     </task>
     <task id="LOCAL-00001" summary="301017">
       <created>1509390688928</created>
@@ -553,11 +551,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511225202418</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="241117">
+      <created>1511484289965</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1511484289965</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="283628000" />
+    <option name="totallyTimeSpent" value="283645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="33" y="1059" width="1303" height="780" extended-state="6" />
@@ -596,7 +601,8 @@
     <MESSAGE value="141117" />
     <MESSAGE value="151117" />
     <MESSAGE value="211117" />
-    <option name="LAST_COMMIT_MESSAGE" value="211117" />
+    <MESSAGE value="241117" />
+    <option name="LAST_COMMIT_MESSAGE" value="241117" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
