@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ace5f485-0a76-40b8-9a43-e06febe36c2c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/Adminpanel.php" afterPath="$PROJECT_DIR$/models/Adminpanel.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,47 +31,53 @@
       <file leaf-file-name="Adminpanel.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/Adminpanel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="352" column="6" lean-forward="false" selection-start-line="352" selection-start-column="6" selection-end-line="352" selection-end-column="6" />
+            <state relative-caret-position="219">
+              <caret line="300" column="32" lean-forward="false" selection-start-line="300" selection-start-column="32" selection-end-line="300" selection-end-column="32" />
               <folding>
-                <marker date="1511484270117" expanded="true" signature="2086:2181" ph="INSERT INTO blogs... " />
-                <marker date="1511484270117" expanded="true" signature="3067:3085" ph="UPDATE blogs... " />
-                <marker date="1511484270117" expanded="true" signature="3067:3090" ph="UPDATE blogs... " />
-                <marker date="1511484270117" expanded="true" signature="3067:3100" ph="UPDATE blogs... " />
-                <marker date="1511484270117" expanded="true" signature="3067:3121" ph="UPDATE blogs... " />
-                <marker date="1511484270117" expanded="true" signature="3067:3219" ph="UPDATE blogs... " />
-                <marker date="1511484270117" expanded="true" signature="3136:3215" ph="UPDATE blogs... " />
-                <marker date="1511484270117" expanded="true" signature="3136:3219" ph="UPDATE blogs... " />
-                <marker date="1511484270117" expanded="true" signature="4229:4261" ph="DELETE FROM " />
-                <marker date="1511484270117" expanded="true" signature="4240:4261" ph="UPDATE blogs... " />
-                <marker date="1511484270117" expanded="true" signature="4577:4608" ph="SELECT * fro... blogs" />
-                <marker date="1511484270117" expanded="true" signature="4577:4609" ph="SELECT * fro... blogs" />
-                <marker date="1511484270117" expanded="true" signature="4577:4624" ph="SELECT * fro... blogs" />
-                <marker date="1511484270117" expanded="true" signature="4577:4627" ph="SELECT * fro... blogs" />
-                <marker date="1511484270117" expanded="true" signature="4577:4635" ph="SELECT * fro... blogs" />
-                <marker date="1511484270117" expanded="true" signature="4577:4636" ph="SELECT * fro... blogs" />
-                <marker date="1511484270117" expanded="true" signature="4577:4637" ph="SELECT * fro... blogs" />
-                <marker date="1511484270117" expanded="true" signature="5023:5061" ph="SELECT * FRO... users" />
-                <marker date="1511484270117" expanded="true" signature="5821:5882" ph="UPDATE users... " />
-                <marker date="1511484270117" expanded="true" signature="5821:5883" ph="UPDATE users... " />
-                <marker date="1511484270117" expanded="true" signature="5827:5882" ph="DELETE FROM " />
-                <marker date="1511484270117" expanded="true" signature="6836:6868" ph="DELETE FROM " />
-                <marker date="1511484270117" expanded="true" signature="7181:7213" ph="SELECT role roles" />
-                <marker date="1511484270117" expanded="true" signature="7181:7214" ph="SELECT role roles" />
-                <marker date="1511484270117" expanded="true" signature="7181:7225" ph="SELECT role roles" />
-                <marker date="1511484270117" expanded="true" signature="7181:7226" ph="SELECT role roles" />
-                <marker date="1511484270117" expanded="true" signature="7610:7645" ph="INSERT INTO roles... " />
-                <marker date="1511484270117" expanded="true" signature="7928:8007" ph="SELECT * FRO... roles" />
-                <marker date="1511484270117" expanded="true" signature="7928:8009" ph="SELECT * FRO... roles" />
-                <marker date="1511484270117" expanded="true" signature="8610:8629" ph="SELECT * FRO... priv" />
-                <marker date="1511484270117" expanded="true" signature="8610:8646" ph="SELECT * FRO... priv" />
-                <marker date="1511484270117" expanded="true" signature="9469:9508" ph="UPDATE priv " />
-                <marker date="1511484270117" expanded="true" signature="9469:9531" ph="UPDATE priv " />
-                <marker date="1511484270117" expanded="true" signature="9469:9532" ph="UPDATE priv " />
-                <marker date="1511484270117" expanded="true" signature="9735:9808" ph="INSERT INTO priv... " />
-                <marker date="1511484270117" expanded="true" signature="9735:9809" ph="INSERT INTO blogs... " />
-                <marker date="1511484270117" expanded="true" signature="10406:10464" ph="INSERT INTO priv... " />
-                <marker date="1511484270117" expanded="true" signature="10978:11016" ph="SELECT * FRO... users" />
+                <marker date="1511521028130" expanded="true" signature="2086:2181" ph="INSERT INTO blogs... " />
+                <marker date="1511521028130" expanded="true" signature="3067:3085" ph="UPDATE blogs... " />
+                <marker date="1511521028130" expanded="true" signature="3067:3090" ph="UPDATE blogs... " />
+                <marker date="1511521028130" expanded="true" signature="3067:3100" ph="UPDATE blogs... " />
+                <marker date="1511521028130" expanded="true" signature="3067:3121" ph="UPDATE blogs... " />
+                <marker date="1511521028130" expanded="true" signature="3067:3219" ph="UPDATE blogs... " />
+                <marker date="1511521028130" expanded="true" signature="3136:3215" ph="UPDATE blogs... " />
+                <marker date="1511521028130" expanded="true" signature="3136:3219" ph="UPDATE blogs... " />
+                <marker date="1511521028130" expanded="true" signature="4229:4261" ph="DELETE FROM " />
+                <marker date="1511521028130" expanded="true" signature="4240:4261" ph="UPDATE blogs... " />
+                <marker date="1511521028130" expanded="true" signature="4577:4608" ph="SELECT * fro... blogs" />
+                <marker date="1511521028130" expanded="true" signature="4577:4609" ph="SELECT * fro... blogs" />
+                <marker date="1511521028130" expanded="true" signature="4577:4624" ph="SELECT * fro... blogs" />
+                <marker date="1511521028130" expanded="true" signature="4577:4627" ph="SELECT * fro... blogs" />
+                <marker date="1511521028130" expanded="true" signature="4577:4635" ph="SELECT * fro... blogs" />
+                <marker date="1511521028130" expanded="true" signature="4577:4636" ph="SELECT * fro... blogs" />
+                <marker date="1511521028130" expanded="true" signature="4577:4637" ph="SELECT * fro... blogs" />
+                <marker date="1511521028130" expanded="true" signature="5023:5061" ph="SELECT * FRO... users" />
+                <marker date="1511521028130" expanded="true" signature="5821:5882" ph="UPDATE users... " />
+                <marker date="1511521028130" expanded="true" signature="5821:5883" ph="UPDATE users... " />
+                <marker date="1511521028130" expanded="true" signature="5827:5882" ph="DELETE FROM " />
+                <marker date="1511521028130" expanded="true" signature="6467:6499" ph="DELETE FROM " />
+                <marker date="1511521028130" expanded="true" signature="6812:6844" ph="SELECT role roles" />
+                <marker date="1511521028130" expanded="true" signature="6812:6845" ph="SELECT role roles" />
+                <marker date="1511521028130" expanded="true" signature="6812:6856" ph="SELECT role roles" />
+                <marker date="1511521028130" expanded="true" signature="6812:6857" ph="SELECT role roles" />
+                <marker date="1511521028130" expanded="true" signature="7241:7276" ph="INSERT INTO roles... " />
+                <marker date="1511521028130" expanded="true" signature="7559:7638" ph="SELECT * FRO... roles" />
+                <marker date="1511521028130" expanded="true" signature="7559:7640" ph="SELECT * FRO... roles" />
+                <marker date="1511521028130" expanded="true" signature="8609:8628" ph="SELECT * FRO... priv" />
+                <marker date="1511521028130" expanded="true" signature="8609:8645" ph="SELECT * FRO... priv" />
+                <marker date="1511521028130" expanded="true" signature="9468:9507" ph="UPDATE priv " />
+                <marker date="1511521028130" expanded="true" signature="9468:9530" ph="UPDATE priv " />
+                <marker date="1511521028130" expanded="true" signature="9468:9531" ph="UPDATE priv " />
+                <marker date="1511521028130" expanded="true" signature="9734:9800" ph="INSERT INTO priv... " />
+                <marker date="1511521028130" expanded="true" signature="9734:9804" ph="INSERT INTO priv... " />
+                <marker date="1511521028130" expanded="true" signature="9734:9805" ph="INSERT INTO blogs... " />
+                <marker date="1511521028130" expanded="true" signature="10612:10641" ph="INSERT INTO priv... " />
+                <marker date="1511521028130" expanded="true" signature="10612:10659" ph="INSERT INTO priv... " />
+                <marker date="1511521028130" expanded="true" signature="10612:10664" ph="INSERT INTO priv... " />
+                <marker date="1511521028130" expanded="true" signature="10612:10673" ph="INSERT INTO priv... " />
+                <marker date="1511521028130" expanded="true" signature="10612:10674" ph="INSERT INTO priv... " />
+                <marker date="1511521028130" expanded="true" signature="10612:10678" ph="INSERT INTO priv... " />
+                <marker date="1511521028130" expanded="true" signature="11192:11230" ph="SELECT * FRO... users" />
               </folding>
             </state>
           </provider>
@@ -119,7 +126,7 @@
       <file leaf-file-name="userpermissions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/adminpanel/userpermissions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="1494">
               <caret line="83" column="212" lean-forward="false" selection-start-line="83" selection-start-column="212" selection-end-line="83" selection-end-column="212" />
               <folding />
             </state>
@@ -129,8 +136,8 @@
       <file leaf-file-name="Router.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/Router.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+            <state relative-caret-position="468">
+              <caret line="58" column="52" lean-forward="true" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -139,7 +146,7 @@
       <file leaf-file-name="AdminpanelController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/AdminpanelController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
+            <state relative-caret-position="201">
               <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
               <folding />
             </state>
@@ -149,7 +156,7 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
+            <state relative-caret-position="414">
               <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
@@ -284,7 +291,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="PhpDebugGeneral" xdebug_debug_port="9009" listening_started="true" />
+  <component name="PhpDebugGeneral" xdebug_debug_port="9009" />
   <component name="PhpServers">
     <servers>
       <server host="http://" id="805ac0b6-b7b3-40b8-be26-628af5acf677" name="Unnamed" />
@@ -317,8 +324,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -389,6 +394,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -479,7 +486,8 @@
       <workItem from="1511264119453" duration="2874000" />
       <workItem from="1511267262975" duration="7947000" />
       <workItem from="1511295217368" duration="12266000" />
-      <workItem from="1511474392644" duration="9901000" />
+      <workItem from="1511474392644" duration="9917000" />
+      <workItem from="1511519187207" duration="1841000" />
     </task>
     <task id="LOCAL-00001" summary="301017">
       <created>1509390688928</created>
@@ -558,17 +566,24 @@
       <option name="project" value="LOCAL" />
       <updated>1511484289965</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="241117">
+      <created>1511484298968</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1511484298968</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="283645000" />
+    <option name="totallyTimeSpent" value="285502000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="33" y="1059" width="1303" height="780" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31075698" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31633466" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39968896" sideWeight="0.5059761" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -624,13 +639,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/models/Adminpanel.php</url>
-          <line>357</line>
-          <option name="timeStamp" value="162" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/models/Adminpanel.php</url>
-          <line>348</line>
-          <option name="timeStamp" value="164" />
+          <line>300</line>
+          <option name="timeStamp" value="165" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -641,7 +651,7 @@
           <properties />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="165" />
+      <option name="time" value="166" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
@@ -825,10 +835,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/BlogController.php">
+    <entry file="file://$PROJECT_DIR$/views/adminpanel/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+        <state relative-caret-position="3870">
+          <caret line="215" column="51" lean-forward="false" selection-start-line="215" selection-start-column="51" selection-end-line="215" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -848,6 +858,38 @@
             <marker date="1510781121372" expanded="true" signature="2177:2260" ph="SELECT id, c... blogs" />
             <marker date="1510781121372" expanded="true" signature="2177:2261" ph="SELECT blog_... blog_comments" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/blog/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="54" column="24" lean-forward="false" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/adminpanel/userpermissions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1494">
+          <caret line="83" column="212" lean-forward="false" selection-start-line="83" selection-start-column="212" selection-end-line="83" selection-end-column="212" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/BlogController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -872,41 +914,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/adminpanel/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3870">
-          <caret line="215" column="51" lean-forward="false" selection-start-line="215" selection-start-column="51" selection-end-line="215" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/blog/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="54" column="24" lean-forward="false" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/adminpanel/userpermissions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="83" column="212" lean-forward="false" selection-start-line="83" selection-start-column="212" selection-end-line="83" selection-end-column="212" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/AdminpanelController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
+        <state relative-caret-position="201">
           <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
           <folding />
         </state>
@@ -914,55 +924,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/Router.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        <state relative-caret-position="468">
+          <caret line="58" column="52" lean-forward="true" selection-start-line="58" selection-start-column="52" selection-end-line="58" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/Adminpanel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="352" column="6" lean-forward="false" selection-start-line="352" selection-start-column="6" selection-end-line="352" selection-end-column="6" />
+        <state relative-caret-position="219">
+          <caret line="300" column="32" lean-forward="false" selection-start-line="300" selection-start-column="32" selection-end-line="300" selection-end-column="32" />
           <folding>
-            <marker date="1511484270117" expanded="true" signature="2086:2181" ph="INSERT INTO blogs... " />
-            <marker date="1511484270117" expanded="true" signature="3067:3085" ph="UPDATE blogs... " />
-            <marker date="1511484270117" expanded="true" signature="3067:3090" ph="UPDATE blogs... " />
-            <marker date="1511484270117" expanded="true" signature="3067:3100" ph="UPDATE blogs... " />
-            <marker date="1511484270117" expanded="true" signature="3067:3121" ph="UPDATE blogs... " />
-            <marker date="1511484270117" expanded="true" signature="3067:3219" ph="UPDATE blogs... " />
-            <marker date="1511484270117" expanded="true" signature="3136:3215" ph="UPDATE blogs... " />
-            <marker date="1511484270117" expanded="true" signature="3136:3219" ph="UPDATE blogs... " />
-            <marker date="1511484270117" expanded="true" signature="4229:4261" ph="DELETE FROM " />
-            <marker date="1511484270117" expanded="true" signature="4240:4261" ph="UPDATE blogs... " />
-            <marker date="1511484270117" expanded="true" signature="4577:4608" ph="SELECT * fro... blogs" />
-            <marker date="1511484270117" expanded="true" signature="4577:4609" ph="SELECT * fro... blogs" />
-            <marker date="1511484270117" expanded="true" signature="4577:4624" ph="SELECT * fro... blogs" />
-            <marker date="1511484270117" expanded="true" signature="4577:4627" ph="SELECT * fro... blogs" />
-            <marker date="1511484270117" expanded="true" signature="4577:4635" ph="SELECT * fro... blogs" />
-            <marker date="1511484270117" expanded="true" signature="4577:4636" ph="SELECT * fro... blogs" />
-            <marker date="1511484270117" expanded="true" signature="4577:4637" ph="SELECT * fro... blogs" />
-            <marker date="1511484270117" expanded="true" signature="5023:5061" ph="SELECT * FRO... users" />
-            <marker date="1511484270117" expanded="true" signature="5821:5882" ph="UPDATE users... " />
-            <marker date="1511484270117" expanded="true" signature="5821:5883" ph="UPDATE users... " />
-            <marker date="1511484270117" expanded="true" signature="5827:5882" ph="DELETE FROM " />
-            <marker date="1511484270117" expanded="true" signature="6836:6868" ph="DELETE FROM " />
-            <marker date="1511484270117" expanded="true" signature="7181:7213" ph="SELECT role roles" />
-            <marker date="1511484270117" expanded="true" signature="7181:7214" ph="SELECT role roles" />
-            <marker date="1511484270117" expanded="true" signature="7181:7225" ph="SELECT role roles" />
-            <marker date="1511484270117" expanded="true" signature="7181:7226" ph="SELECT role roles" />
-            <marker date="1511484270117" expanded="true" signature="7610:7645" ph="INSERT INTO roles... " />
-            <marker date="1511484270117" expanded="true" signature="7928:8007" ph="SELECT * FRO... roles" />
-            <marker date="1511484270117" expanded="true" signature="7928:8009" ph="SELECT * FRO... roles" />
-            <marker date="1511484270117" expanded="true" signature="8610:8629" ph="SELECT * FRO... priv" />
-            <marker date="1511484270117" expanded="true" signature="8610:8646" ph="SELECT * FRO... priv" />
-            <marker date="1511484270117" expanded="true" signature="9469:9508" ph="UPDATE priv " />
-            <marker date="1511484270117" expanded="true" signature="9469:9531" ph="UPDATE priv " />
-            <marker date="1511484270117" expanded="true" signature="9469:9532" ph="UPDATE priv " />
-            <marker date="1511484270117" expanded="true" signature="9735:9808" ph="INSERT INTO priv... " />
-            <marker date="1511484270117" expanded="true" signature="9735:9809" ph="INSERT INTO blogs... " />
-            <marker date="1511484270117" expanded="true" signature="10406:10464" ph="INSERT INTO priv... " />
-            <marker date="1511484270117" expanded="true" signature="10978:11016" ph="SELECT * FRO... users" />
+            <marker date="1511521028130" expanded="true" signature="2086:2181" ph="INSERT INTO blogs... " />
+            <marker date="1511521028130" expanded="true" signature="3067:3085" ph="UPDATE blogs... " />
+            <marker date="1511521028130" expanded="true" signature="3067:3090" ph="UPDATE blogs... " />
+            <marker date="1511521028130" expanded="true" signature="3067:3100" ph="UPDATE blogs... " />
+            <marker date="1511521028130" expanded="true" signature="3067:3121" ph="UPDATE blogs... " />
+            <marker date="1511521028130" expanded="true" signature="3067:3219" ph="UPDATE blogs... " />
+            <marker date="1511521028130" expanded="true" signature="3136:3215" ph="UPDATE blogs... " />
+            <marker date="1511521028130" expanded="true" signature="3136:3219" ph="UPDATE blogs... " />
+            <marker date="1511521028130" expanded="true" signature="4229:4261" ph="DELETE FROM " />
+            <marker date="1511521028130" expanded="true" signature="4240:4261" ph="UPDATE blogs... " />
+            <marker date="1511521028130" expanded="true" signature="4577:4608" ph="SELECT * fro... blogs" />
+            <marker date="1511521028130" expanded="true" signature="4577:4609" ph="SELECT * fro... blogs" />
+            <marker date="1511521028130" expanded="true" signature="4577:4624" ph="SELECT * fro... blogs" />
+            <marker date="1511521028130" expanded="true" signature="4577:4627" ph="SELECT * fro... blogs" />
+            <marker date="1511521028130" expanded="true" signature="4577:4635" ph="SELECT * fro... blogs" />
+            <marker date="1511521028130" expanded="true" signature="4577:4636" ph="SELECT * fro... blogs" />
+            <marker date="1511521028130" expanded="true" signature="4577:4637" ph="SELECT * fro... blogs" />
+            <marker date="1511521028130" expanded="true" signature="5023:5061" ph="SELECT * FRO... users" />
+            <marker date="1511521028130" expanded="true" signature="5821:5882" ph="UPDATE users... " />
+            <marker date="1511521028130" expanded="true" signature="5821:5883" ph="UPDATE users... " />
+            <marker date="1511521028130" expanded="true" signature="5827:5882" ph="DELETE FROM " />
+            <marker date="1511521028130" expanded="true" signature="6467:6499" ph="DELETE FROM " />
+            <marker date="1511521028130" expanded="true" signature="6812:6844" ph="SELECT role roles" />
+            <marker date="1511521028130" expanded="true" signature="6812:6845" ph="SELECT role roles" />
+            <marker date="1511521028130" expanded="true" signature="6812:6856" ph="SELECT role roles" />
+            <marker date="1511521028130" expanded="true" signature="6812:6857" ph="SELECT role roles" />
+            <marker date="1511521028130" expanded="true" signature="7241:7276" ph="INSERT INTO roles... " />
+            <marker date="1511521028130" expanded="true" signature="7559:7638" ph="SELECT * FRO... roles" />
+            <marker date="1511521028130" expanded="true" signature="7559:7640" ph="SELECT * FRO... roles" />
+            <marker date="1511521028130" expanded="true" signature="8609:8628" ph="SELECT * FRO... priv" />
+            <marker date="1511521028130" expanded="true" signature="8609:8645" ph="SELECT * FRO... priv" />
+            <marker date="1511521028130" expanded="true" signature="9468:9507" ph="UPDATE priv " />
+            <marker date="1511521028130" expanded="true" signature="9468:9530" ph="UPDATE priv " />
+            <marker date="1511521028130" expanded="true" signature="9468:9531" ph="UPDATE priv " />
+            <marker date="1511521028130" expanded="true" signature="9734:9800" ph="INSERT INTO priv... " />
+            <marker date="1511521028130" expanded="true" signature="9734:9804" ph="INSERT INTO priv... " />
+            <marker date="1511521028130" expanded="true" signature="9734:9805" ph="INSERT INTO blogs... " />
+            <marker date="1511521028130" expanded="true" signature="10612:10641" ph="INSERT INTO priv... " />
+            <marker date="1511521028130" expanded="true" signature="10612:10659" ph="INSERT INTO priv... " />
+            <marker date="1511521028130" expanded="true" signature="10612:10664" ph="INSERT INTO priv... " />
+            <marker date="1511521028130" expanded="true" signature="10612:10673" ph="INSERT INTO priv... " />
+            <marker date="1511521028130" expanded="true" signature="10612:10674" ph="INSERT INTO priv... " />
+            <marker date="1511521028130" expanded="true" signature="10612:10678" ph="INSERT INTO priv... " />
+            <marker date="1511521028130" expanded="true" signature="11192:11230" ph="SELECT * FRO... users" />
           </folding>
         </state>
       </provider>

@@ -219,21 +219,7 @@ WHERE id = :id';
 
     }
 
-    private static function WorkVithPriv($sql)
-    {
-        $db = Db::getConnection();
 
-
-        // умова в  mysql якщо 1, то 0, /якщо 0, то 1
-
-        $data = $db->prepare($sql);
-        //$data->bindValue(':id', $id, PDO::PARAM_INT);
-        // $data->bindValue(':banned', 1, PDO::PARAM_INT);
-
-        if ($data->execute()) {
-            return true;
-        }
-    }
 
     public static function Userdelete($id)
     {
@@ -305,6 +291,21 @@ WHERE id = :id';
 
     }
 
+    private static function WorkVithPriv($sql)
+    {
+        $db = Db::getConnection();
+
+
+        // умова в  mysql якщо 1, то 0, /якщо 0, то 1
+
+        $data = $db->prepare($sql);
+        //$data->bindValue(':id', $id, PDO::PARAM_INT);
+        // $data->bindValue(':banned', 1, PDO::PARAM_INT);
+
+        if ($data->execute()) {
+            return true;
+        }
+    }
 
 private static function UpdateRules()
 {
@@ -342,15 +343,16 @@ private static function UpdateRules()
         } else {
             // (нема такого ід в таких рулах, значить інсерт в базу
             $val=1;
-            $sql = "INSERT INTO priv SET (id = $searched_id, rule = $searched_rule, val=$val)";
+            $sql = "INSERT INTO priv SET id = $searched_id, rule =$searched_rule, val=$val";
             Adminpanel::WorkVithPriv($sql);
         }
-       // $values3=array($values[$searched_rule]);
-      /*  if(($key = array_search($searched_rule, array($values[$searched_rule])) !== false)) {
-            unset($values[$searched_rule][$key]);
-        }*/
 
-      unset($values[$searched_rule][$searched_id]);//!!! треба видалити по значенню
+       // $value_to_delete = $searched_id; //Элемент с этим значением нужно удалить
+        $values[$searched_rule] = array_flip($values[$searched_rule]); //Меняем местами ключи и значения
+        unset ($values[$searched_rule][$searched_id]) ; //Удаляем элемент массива
+        $values[$searched_rule] = array_flip($values[$searched_rule]);
+        //  $array = array_flip($array); //Меняем местами ключи и значения
+      //unset($values[$searched_rule][$searched_id]);//!!! треба видалити по значенню
        // $values = array_diff($values3, $searched_id);
         $a++;
 
@@ -359,7 +361,7 @@ private static function UpdateRules()
         foreach ($values as $key => $value ) {
             foreach ($value as $key2 =>$value2){
                 $val=1;
-                $sql = "INSERT INTO priv SET (id = $value2, rule = $key, val=$val)";
+                $sql = "INSERT INTO priv SET id = $value2, rule = $key, val = $val";
                 Adminpanel::WorkVithPriv($sql);
 
             }
