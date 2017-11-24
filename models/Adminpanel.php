@@ -219,6 +219,21 @@ WHERE id = :id';
 
     }
 
+    private static function WorkVithPriv($sql)
+    {
+        $db = Db::getConnection();
+
+
+        // умова в  mysql якщо 1, то 0, /якщо 0, то 1
+
+        $data = $db->prepare($sql);
+        //$data->bindValue(':id', $id, PDO::PARAM_INT);
+        // $data->bindValue(':banned', 1, PDO::PARAM_INT);
+
+        if ($data->execute()) {
+            return true;
+        }
+    }
 
     public static function Userdelete($id)
     {
@@ -273,7 +288,7 @@ WHERE id = :id';
 
         $rolelist = array();
 
-        $result = $db->query('SELECT * FROM roles ORDER BY id ASC');
+        $result = $db->query("SELECT * FROM roles INNER JOIN priv ON priv.id = roles.id ORDER BY roles.id ASC");
         $i = 0;
 //var_dump($result);
 
@@ -281,6 +296,8 @@ WHERE id = :id';
             //var_dump($row);
             $rolelist[$i]['id'] = $row['id'];
             $rolelist[$i]['role'] = $row['role'];
+            $rolelist[$i]['rule'] = $row['rule'];
+            $rolelist[$i]['val'] = $row['val'];
             $i++;
         }
         return $rolelist;
@@ -288,51 +305,70 @@ WHERE id = :id';
 
     }
 
-    public static function getRulesList(){
 
-            //дописати
-    }
+private static function UpdateRules()
+{
 
-    private static function UpdateRules()
-    {
-        $db = Db::getConnection();
+// затираємо два нам непотрібних останніх елементи масиву (службові)
+    $values = array();
+    $values = $_POST;
+    array_splice($values, -2);
 
-        foreach ($_POST as $key => $item) {
-            //$id = stristr($key, '=');
-            $id = substr($key, strpos($key, '=') + 1);
-            //$rule = stristr($key, '=',true);
-            $rule = substr($key, 0, strpos($key, '='));
-            if ($item == 'on') {
+    $db = Db::getConnection();
+
+    $sql = "SELECT * FROM priv ORDER BY rule ASC ";
+    // $row = $result->fetch();
+    $result = $db->prepare($sql);
+    //$result->bindParam(':group_name', $group_name, PDO::PARAM_STR);
+    $result->execute();
+    $records = $result->fetchAll(PDO::FETCH_ASSOC);
+    $a = 0;
+    //селектимо з бази всі рули, і перебираємо в циклі, порівнюючи чи є
+    //в нашому масиві з ПОСТу співпадіння по рулу та ід.
+    // оскільки в ПОСТ попадає тільки лог 1, то якщо відсутній рул в СЕЛЕКТі, пишемо 0 в базу
+
+    foreach ($records as $record => $rec_val) {
+        $searched_rule = $records[$a]['rule'];
+        $searched_id = $records[$a]['id'];
+
+        if (in_array($searched_id, $values[$searched_rule])) {
+//echo 'true';
+// перевіряємо значення пишемо апдейт в базу, якщо в базі 0
+            if ($records[$a]['val'] == 0) {
                 $val = 1;
-            } else {
-                $val = 0;
+                $sql = "UPDATE priv SET val = $val WHERE id = $searched_id AND rule = $searched_rule";
+                Adminpanel::WorkVithPriv($sql);
             }
-
-            $sql_sel = "SELECT * FROM priv WHERE (id = :id) AND (rule = :rule)";
-            $result = $db->prepare($sql_sel);
-            $result->bindValue(':id', $id, PDO::PARAM_INT);
-            $result->bindValue(':rule', $rule, PDO::PARAM_STR);
-            $result->execute();
-            if($row = $result->fetchAll()) {
-             $sql_upd = 'UPDATE priv SET val = :val WHERE id = :id, rule = :rule';
-             $update = $db->prepare($sql_upd);
-             $update->bindValue(':id', $id, PDO::PARAM_INT);
-             $update->bindValue(':rule', $rule, PDO::PARAM_STR);
-             $update->bindValue(':val', $val, PDO::PARAM_INT);
-             $update->execute();
-         }
-         else{
-                $sql = 'INSERT INTO priv (id, rule, val) VALUES (:id, :rule, :val)';
-
-
-                $data = $db->prepare($sql);
-                $data->bindValue(':id', $id, PDO::PARAM_INT);
-                $data->bindValue(':rule', $rule, PDO::PARAM_STR);
-                $data->bindValue(':val', $val, PDO::PARAM_INT);
-                $data->execute();
-            }
+        } else {
+            // (нема такого ід в таких рулах, значить інсерт в базу
+            $val=1;
+            $sql = "INSERT INTO priv SET (id = $searched_id, rule = $searched_rule, val=$val)";
+            Adminpanel::WorkVithPriv($sql);
         }
+       // $values3=array($values[$searched_rule]);
+      /*  if(($key = array_search($searched_rule, array($values[$searched_rule])) !== false)) {
+            unset($values[$searched_rule][$key]);
+        }*/
+
+      unset($values[$searched_rule][$searched_id]);//!!! треба видалити по значенню
+       // $values = array_diff($values3, $searched_id);
+        $a++;
+
     }
+    if (!empty($values)){
+        foreach ($values as $key => $value ) {
+            foreach ($value as $key2 =>$value2){
+                $val=1;
+                $sql = "INSERT INTO priv SET (id = $value2, rule = $key, val=$val)";
+                Adminpanel::WorkVithPriv($sql);
+
+            }
+
+        }
+
+    }
+
+}
 
 
 
