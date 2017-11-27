@@ -56,7 +56,7 @@ include_once (ROOT.'/header.php');
         </div>
 
         <div class="box-content">
-            <form action="" name="permissions_group_edit" method="post">
+            <form name="permissions_group_edit" method="post">
                 <table width="30%" border="0" cellspacing="5" cellpadding="0">
                 <?php $rolelist = Adminpanel::getRolesList()?>
 
@@ -71,33 +71,41 @@ include_once (ROOT.'/header.php');
                         <th>Видалити групу</th>
                     </tr>
                          <?php if (isset($rolelist)): ?>
-                    <?php foreach ($rolelist as $roleItem): ?>
+                    <?php foreach ($rolelist as $roleItem => $value): ?>
+                        <?php foreach ($value as $key => $value2): ?>
                             <tr>
-                                <td><?php echo $roleItem['id']?></td>
-                                <td><?php echo $roleItem['role']?></td>
+                                <td><?php echo $roleItem;?></td>
+                                <td><?php echo $key;?></td>
 
                                <!-- <td><input type="checkbox"  <?php /*if ($roleItem['rule']=='view_comments'&& $roleItem['val']== 1):echo 'checked'; endif;*/?> name='view_comments=<?php /*echo "data[".$roleItem['id']."]"*/?>'></td>
                                 <td><input type="checkbox"  <?php /*if ($roleItem['rule']=='edit_comments'&& $roleItem['val']== 1):echo 'checked'; endif;*/?> name='edit_comments=<?php /*echo "data[".$roleItem['id']."]"*/?>'></td>
                                 <td><input type="checkbox"  <?php /*if ($roleItem['rule']=='delete_comments'&& $roleItem['val']== 1):echo 'checked'; endif;*/?> name='delete_comments=<?php /*echo "data[".$roleItem['id']."]"*/?>'></td>-->
 
-                                <td><input type="checkbox"  <?php if ($roleItem['rule']=='view_comments'&& $roleItem['val']== 1):echo 'checked'; endif;?> name='view_comments[]' value=<?php echo $roleItem['id']?>></td>
-                                <td><input type="checkbox"  <?php if ($roleItem['rule']=='edit_comments'&& $roleItem['val']== 1):echo 'checked'; endif;?> name='edit_comments[]' value=<?php echo $roleItem['id']?>></td>
-                                <td><input type="checkbox"  <?php if ($roleItem['rule']=='delete_comments'&& $roleItem['val']== 1):echo 'checked'; endif;?> name='delete_comments[]' value=<?php echo $roleItem['id']?>></td>
+                                <td><input type="checkbox"  <?php if (isset($value2['view_comments'])&& $value2['view_comments']== 1):echo 'checked'; endif;?> name='view_comments[]' value=<?php echo $roleItem ?>></td>
+                                <td><input type="checkbox"  <?php if (isset($value2['edit_comments'])&& $value2['edit_comments']== 1):echo 'checked'; endif;?> name='edit_comments[]' value=<?php echo $roleItem ?>></td>
+                                <td><input type="checkbox"  <?php if (isset($value2['delete_comments'])&& $value2['delete_comments']== 1):echo 'checked'; endif;?> name='delete_comments[]' value=<?php echo $roleItem ?>></td>
 
-                                <td><button type="submit" name="delete_group"> Видалити </button></td>
+                                <td><a href="/adminpanel/roledelete/<?php echo $roleItem?>"><button type="submit" name="delete_group"> Видалити </button></a></td>
 
                             </tr>
                             <?php endforeach;?>
+                             <?php endforeach;?>
                             <?php endif;?>
-                    <table width="30%" border="0" cellspacing="5" cellpadding="0">
+                    <form name="add_group_name" method="post">
+
+                   <table width="30%" border="0" cellspacing="5" cellpadding="0">
+
                         <tr><td><label>Додати нову групу користувачів</label></td></tr>
-<td><input type="text" name="add_group_name" placeholder="Назва групи" />
+
+                        <td><input type="text" name="add_group_name" placeholder="Назва групи" />
                         <button type="submit" name="Add_group">Додати</button></td>
 </tr>
 
                 </table>
+
                     <br>
                 <p><input type="submit" name="edit_rules" value="Внести зміни"></p>
+            </form>
             </form>
         </div>
     </div>

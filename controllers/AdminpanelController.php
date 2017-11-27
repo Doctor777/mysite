@@ -132,11 +132,21 @@ header("Location: ".$_SERVER['HTTP_REFERER']);
 
     }
 
+    public function actionRoledelete($id) {
+        if ($this->isAdmin()){
+            Adminpanel::Roledelete($id);
+            header("Location: ".$_SERVER['HTTP_REFERER']);
+            return true;
+
+
+        }
+
+    }
+
     public function actionUserpermissions(){
         if ($this->isAdmin()){
            $userslist= Adminpanel::getUsersPermissionsList();
             require_once(ROOT . '/views/adminpanel/userpermissions.php');
-          //  header("Location: ".$_SERVER['HTTP_REFERER']);
             return $userslist;
         }
 
