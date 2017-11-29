@@ -184,7 +184,7 @@ WHERE id = :id';
             $userslist[$i]['id'] = $row['id'];
             $userslist[$i]['login'] = $row['login'];
             $userslist[$i]['email'] = $row['email'];
-            $userslist[$i]['permissions'] = $row['permissions'];
+          //  $userslist[$i]['role'] = $row['role'];
             $userslist[$i]['banned'] = $row['banned'];
             $userslist[$i]['online'] = $row['online'];
             $i++;
@@ -286,24 +286,12 @@ $new_group_name = $_POST['add_group_name'];
 
         $result = $db->query("SELECT * FROM roles INNER JOIN priv ON roles.id = priv.id ORDER BY roles.role ASC");
         $i = 0;
-//var_dump($result);
-//$rolelist = $result->fetchAll(PDO::FETCH_ASSOC);
-        $temp = 0;
        while ($row = $result->fetch()) {
-            //var_dump($row);
-         //  if($temp != $row['id']) {
-               //  $rolelist['id'] = $row['id'];
-                // $rolelist[$i]['role'] = $row['role'];
-         //  }
-           $rolelist[$row['id']][$row['role']][$row['rule']] = $row['val'];
-           // $rolelist[$row['id']]['val'] = $row['val'];
-            //$temp = $row['id'];
 
+           $rolelist[$row['id']][$row['role']][$row['rule']] = $row['val'];
             $i++;
         }
         return $rolelist;
-
-
     }
 
     private static function WorkWithPriv($sql, $id, $rule, $val)
@@ -415,7 +403,7 @@ private static function UpdateRules()
 
         $userslist = array();
 
-        $result = $db->query('SELECT * FROM users ORDER BY login ASC');
+        $result = $db->query('SELECT * FROM users LEFT JOIN roles USING (id) ORDER BY login ASC');
         $i = 0;
 //var_dump($result);
 
@@ -424,7 +412,7 @@ private static function UpdateRules()
             $userslist[$i]['id'] = $row['id'];
             $userslist[$i]['login'] = $row['login'];
             $userslist[$i]['email'] = $row['email'];
-            $userslist[$i]['permissions'] = $row['permissions'];
+            $userslist[$i]['role'] = $row['role'];
             $userslist[$i]['banned'] = $row['banned'];
             $userslist[$i]['online'] = $row['online'];
             $i++;
