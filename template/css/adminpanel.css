@@ -10,6 +10,9 @@ body {
 
 
 .c_img {
+    position: relative;
+    margin-top: 20px;
+    padding-top: 20px;
     background-image: url('/template/images/vedro.jpg');
     width: 100%;
     height: auto;

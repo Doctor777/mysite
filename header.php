@@ -32,6 +32,8 @@ elseif (isset($_POST['publicate_blog_comment'])){
     <title>Мій сайт на mvc</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="/template/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 </head>
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <table width="100%" height="150px" border="0" align="center" cellpadding="0" cellspacing="0">

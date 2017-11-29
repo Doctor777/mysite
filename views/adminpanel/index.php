@@ -166,33 +166,7 @@ $usersList = Adminpanel::getUsersList();
 				<!-- Box -->
 				<div class="box">
 
-					<!-- Box Head -->
-					<div class="box-head">
-						<h2>Керування</h2>
-					</div>
-					<!-- End Box Head-->
 
-					<div class="box-content">
-					<!--	<a href="#" class="add-button"><span>Add new Article</span></a>
-						<div class="cl">&nbsp;</div>-->
-
-						<p class="select-all"><input type="checkbox" class="checkbox" /><label>виділити все</label></p>
-						<p><a href="#">Видалити вибране</a></p>
-
-						<!-- Sort -->
-						<div class="sort">
-							<label>Сортувати за: </label>
-							<select class="field">
-								<option value="">Назвою</option>
-								<option value="">Датою</option>
-								<option value="">Автором</option>
-							</select>
-						</div>
-						<!-- End Sort -->
-
-					</div>
-				</div>
-				<!-- End Box -->
 
 
                 <div class="box">
