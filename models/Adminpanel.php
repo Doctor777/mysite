@@ -184,7 +184,7 @@ WHERE id = :id';
             $userslist[$i]['id'] = $row['id'];
             $userslist[$i]['login'] = $row['login'];
             $userslist[$i]['email'] = $row['email'];
-          //  $userslist[$i]['role'] = $row['role'];
+            $userslist[$i]['role_id'] = $row['role_id'];
             $userslist[$i]['banned'] = $row['banned'];
             $userslist[$i]['online'] = $row['online'];
             $i++;
@@ -397,6 +397,11 @@ private static function UpdateRules()
           Adminpanel::UpdateRules();
         }
 
+        if (isset($_POST['edit_roles'])){
+
+            Adminpanel::UpdateRoles();
+        }
+
         //запрос до БД
 
         $db = Db::getConnection();
@@ -412,7 +417,7 @@ private static function UpdateRules()
             $userslist[$i]['id'] = $row['id'];
             $userslist[$i]['login'] = $row['login'];
             $userslist[$i]['email'] = $row['email'];
-            $userslist[$i]['role'] = $row['role'];
+            $userslist[$i]['role_id'] = $row['role_id'];
             $userslist[$i]['banned'] = $row['banned'];
             $userslist[$i]['online'] = $row['online'];
             $i++;
@@ -443,5 +448,42 @@ private static function UpdateRules()
         }
 
     }
+
+    private static function UpdateRoles()
+    {
+
+// затираємо нам непотрібний останній елемент масиву
+        $values = array();
+        $values = $_POST;
+        //array_splice($values, -1);
+
+
+        $db = Db::getConnection();
+        foreach ($values as $id => $role) {
+            //перебираємо масив, поки ключі - цілі числа.
+if (!is_int($id)){
+    break;
+}
+if (!is_numeric($role)) {
+    $role=0;
+}
+
+
+            $sql = "UPDATE users SET role_id = IF(role_id = :role, :role, :role) WHERE id = :id ";
+
+            // умова в  mysql якщо 1, то 0, /якщо 0, то 1
+
+            $data = $db->prepare($sql);
+            $data->bindValue(':id', $id, PDO::PARAM_INT);
+            $data->bindValue(':role', $role, PDO::PARAM_STR);
+
+            $data->execute();
+
+            //    return true;
+           // }
+        }
+
+    }
+
 
 }

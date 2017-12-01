@@ -47,6 +47,7 @@ include_once (ROOT.'/header.php');
         <?php echo htmlspecialchars_decode($blogItem['content'], ENT_QUOTES); ?>
     </div>
 </div>
+    <?php if(isset($_SESSION['permissions']) && strpos(serialize($_SESSION['permissions']), 'view_comments')): ?>
 <br>
     <br>
     <hr>
@@ -66,7 +67,8 @@ include_once (ROOT.'/header.php');
         <?php else:?>
         <?php echo '<p align="center"><b>Поки що ніхто не додав жодного коментаря</b></p><br>'; ?>
     <?php endif;    ?>
-    <?php if (isset($_SESSION['user'])): ?>
+     <?php endif;    ?>
+    <?php if(isset($_SESSION['permissions']) && strpos(serialize($_SESSION['permissions']), 'add_comments')): ?>
 
         <form name="comment_blog" method="post" action="">
 
@@ -82,6 +84,7 @@ include_once (ROOT.'/header.php');
     <br>
     <br>
 <?php endif; ?>
+
 <?php
 include_once (ROOT.'/footer.php');
 ?>

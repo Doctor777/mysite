@@ -2,31 +2,31 @@
 include_once(ROOT . '/header.php');
 ?>
 
-    <link rel="stylesheet" href="/template/css/adminpanel.css" type="text/css" media="all"/>
-    <br>
-    <div class="box">
-        <!-- Box Head -->
-        <div class="box-head">
-            <h2>Редагувати групи користувачів</h2>
-        </div>
+<link rel="stylesheet" href="/template/css/adminpanel.css" type="text/css" media="all"/>
+<br>
+<div class="box">
+    <!-- Box Head -->
+    <div class="box-head">
+        <h2>Редагувати групи користувачів</h2>
+    </div>
 
-        <div class="box-content">
-            <form method="post">
-                <table width="30%" border="0" cellspacing="5" cellpadding="0">
-                    <tr>
-                        <th width="5">id</th>
-                        <th>Ім'я</th>
-                        <th>Емейл</th>
-                        <th>Статус онлайн</th>
-                        <th>Права</th>
+    <div class="box-content">
+        <form method="post">
+            <table width="30%" border="0" cellspacing="5" cellpadding="0">
+                <tr>
+                    <th width="5">id</th>
+                    <th>Ім'я</th>
+                    <th>Емейл</th>
+                    <th>Статус онлайн</th>
+                    <th>Права</th>
 
-                    </tr>
-                    <?php $rolelist = Adminpanel::getRolesList() ?>
+                </tr>
+                <?php $rolelist = Adminpanel::getRolesList() ?>
 
-                    <?php if (isset($userslist)): ?>
-                        <?php foreach ($userslist as $userItem): ?>
+                <?php if (isset($userslist)): ?>
+                    <?php foreach ($userslist as $userItem): ?>
 
-                            <tr>
+                        <tr>
                             <td><?php echo $userItem['id'] . '|'; ?></td>
                             <td><?php if ($userItem['banned'] != 1):echo $userItem['login']; else: echo "<del><font color = 'red'>" . $userItem['login'] . "</font></del>"; endif; ?></td>
                             <td><?php echo $userItem['email']; ?></td>
@@ -35,101 +35,103 @@ include_once(ROOT . '/header.php');
                             <?php else: echo "<td> </td>" ?>
                             <?php endif; ?>
                             <td>
-                            <select name="role">
-                                <option value= <?php echo $userItem['id'].' '; if($userItem['role']==null):echo 'selected'; endif;?>><?php echo "--not selected--";  ?></option>
+                                <select name="<?php echo $userItem['id']?>">
+                                    <option>--not selected--</option>
 
-                                <?php if (isset($rolelist)): ?>
-                                <?php foreach ($rolelist as $roleItem => $value): ?>
-                                    <?php foreach ($value as $key => $value2): ?>
+                                    <?php if (isset($rolelist)): ?>
+                                        <?php foreach ($rolelist as $roleItem => $value): ?>
+                                            <?php foreach ($value as $key => $value2): ?>
 
-                                                <option value = <?php echo $userItem['id'].' '; if($userItem['role']==$key):echo 'selected'; endif;?>><?php echo $key; ?></option>
+                                                <option value = <?php echo $roleItem.' '; if($userItem['role_id']==$roleItem):echo 'selected'; else : echo $key; endif;?>><?php echo $key; ?></option>
 
 
-                                    <?php endforeach; ?>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                            </select>
+                                            <?php endforeach; ?>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
                             </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </table>
-                <p><input type="submit" name="edit_roles" value="Внести зміни"></p>
-            </form>
-        </div>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </table>
+            <p><input type="submit" name="edit_roles" value="Внести зміни"></p>
+        </form>
     </div>
-    <!--блок редагування прав груп пористувачів-->
-    <div class="box">
-        <!-- Box Head -->
-        <div class="box-head">
-            <h2>Редагувати права груп користувачів</h2>
-        </div>
+</div>
+<!--блок редагування прав груп пористувачів-->
+<div class="box">
+    <!-- Box Head -->
+    <div class="box-head">
+        <h2>Редагувати права груп користувачів</h2>
+    </div>
 
-        <div class="box-content">
-            <form name="permissions_group_edit" method="post">
-                <table width="30%" border="0" cellspacing="5" cellpadding="0">
-                    <?php $rolelist = Adminpanel::getRolesList() ?>
+    <div class="box-content">
+        <form name="permissions_group_edit" method="post">
+            <table width="30%" border="0" cellspacing="5" cellpadding="0">
+                <?php $rolelist = Adminpanel::getRolesList() ?>
 
 
-                    <tr>
-                        <th width="5">id</th>
-                        <th>Група</th>
+                <tr>
+                    <th width="5">id</th>
+                    <th>Група</th>
+                    <th>Додавати коментарі</th>
+                    <th>Бачити коментарі</th>
+                    <th>Редагувати коментарі</th>
+                    <th>Видаляти коментарі</th>
+                    <th>Видалити групу</th>
+                </tr>
+                <?php if (isset($rolelist)): ?>
+                    <?php foreach ($rolelist as $roleItem => $value): ?>
+                        <?php foreach ($value as $key => $value2): ?>
+                            <tr>
+                                <td><?php echo $roleItem; ?></td>
+                                <td><?php echo $key; ?></td>
 
-                        <th>Бачити коментарі</th>
-                        <th>Редагувати коментарі</th>
-                        <th>Видаляти коментарі</th>
-                        <th>Видалити групу</th>
-                    </tr>
-                    <?php if (isset($rolelist)): ?>
-                        <?php foreach ($rolelist as $roleItem => $value): ?>
-                            <?php foreach ($value as $key => $value2): ?>
-                                <tr>
-                                    <td><?php echo $roleItem; ?></td>
-                                    <td><?php echo $key; ?></td>
-
-                                    <!-- <td><input type="checkbox"  <?php /*if ($roleItem['rule']=='view_comments'&& $roleItem['val']== 1):echo 'checked'; endif;*/ ?> name='view_comments=<?php /*echo "data[".$roleItem['id']."]"*/ ?>'></td>
+                                <!-- <td><input type="checkbox"  <?php /*if ($roleItem['rule']=='view_comments'&& $roleItem['val']== 1):echo 'checked'; endif;*/ ?> name='view_comments=<?php /*echo "data[".$roleItem['id']."]"*/ ?>'></td>
                                 <td><input type="checkbox"  <?php /*if ($roleItem['rule']=='edit_comments'&& $roleItem['val']== 1):echo 'checked'; endif;*/ ?> name='edit_comments=<?php /*echo "data[".$roleItem['id']."]"*/ ?>'></td>
                                 <td><input type="checkbox"  <?php /*if ($roleItem['rule']=='delete_comments'&& $roleItem['val']== 1):echo 'checked'; endif;*/ ?> name='delete_comments=<?php /*echo "data[".$roleItem['id']."]"*/ ?>'></td>-->
+                                <td>
+                                    <input type="checkbox" <?php if (isset($value2['add_comments']) && $value2['add_comments'] == 1):echo 'checked'; endif; ?>
+                                           name='add_comments[]' value=<?php echo $roleItem ?>></td>
+                                <td>
+                                    <input type="checkbox" <?php if (isset($value2['view_comments']) && $value2['view_comments'] == 1):echo 'checked'; endif; ?>
+                                           name='view_comments[]' value=<?php echo $roleItem ?>></td>
+                                <td>
+                                    <input type="checkbox" <?php if (isset($value2['edit_comments']) && $value2['edit_comments'] == 1):echo 'checked'; endif; ?>
+                                           name='edit_comments[]' value=<?php echo $roleItem ?>></td>
+                                <td>
+                                    <input type="checkbox" <?php if (isset($value2['delete_comments']) && $value2['delete_comments'] == 1):echo 'checked'; endif; ?>
+                                           name='delete_comments[]' value=<?php echo $roleItem ?>></td>
 
-                                    <td>
-                                        <input type="checkbox" <?php if (isset($value2['view_comments']) && $value2['view_comments'] == 1):echo 'checked'; endif; ?>
-                                               name='view_comments[]' value=<?php echo $roleItem ?>></td>
-                                    <td>
-                                        <input type="checkbox" <?php if (isset($value2['edit_comments']) && $value2['edit_comments'] == 1):echo 'checked'; endif; ?>
-                                               name='edit_comments[]' value=<?php echo $roleItem ?>></td>
-                                    <td>
-                                        <input type="checkbox" <?php if (isset($value2['delete_comments']) && $value2['delete_comments'] == 1):echo 'checked'; endif; ?>
-                                               name='delete_comments[]' value=<?php echo $roleItem ?>></td>
-
-                                    <td><a href="/adminpanel/roledelete/<?php echo $roleItem ?>">
+                                <td><a href="/adminpanel/roledelete/<?php echo $roleItem ?>">
                                         Видалити
-                                        </a></td>
+                                    </a></td>
 
-                                </tr>
-                            <?php endforeach; ?>
+                            </tr>
                         <?php endforeach; ?>
-                    <?php endif; ?>
-                    <form name="add_group_name" method="post">
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <form name="add_group_name" method="post">
 
-                        <table width="30%" border="0" cellspacing="5" cellpadding="0">
+                    <table width="30%" border="0" cellspacing="5" cellpadding="0">
 
-                            <tr>
-                                <td><label>Додати нову групу користувачів</label></td>
-                            </tr>
+                        <tr>
+                            <td><label>Додати нову групу користувачів</label></td>
+                        </tr>
 
-                            <td><input type="text" name="add_group_name" placeholder="Назва групи"/>
-                                <button type="submit" name="Add_group">Додати</button>
-                            </td>
-                            </tr>
+                        <td><input type="text" name="add_group_name" placeholder="Назва групи"/>
+                            <button type="submit" name="Add_group">Додати</button>
+                        </td>
+                        </tr>
 
-                        </table>
+                    </table>
 
-                        <br>
-                        <p><input type="submit" name="edit_rules" value="Внести зміни"></p>
-                    </form>
-            </form>
-        </div>
+                    <br>
+                    <p><input type="submit" name="edit_rules" value="Внести зміни"></p>
+                </form>
+        </form>
     </div>
+</div>
 
 
 <?php

@@ -33,6 +33,8 @@ class LoginController
 //echo $errors;
             } else
                 LoginController::auth($userId);
+           $permissions = LoginController::CheckPermissions($userId);
+            $_SESSION['permissions'] = $permissions;
            header("Location: ".$_SERVER['HTTP_REFERER']);
           //  echo 'logged!';
             return true;
@@ -52,6 +54,8 @@ class LoginController
 
             $data = $db->prepare($sql);
             $data->execute();
+
+
                 return true;
 
     }
@@ -84,6 +88,33 @@ class LoginController
         }
         return false;
 //echo print_r($_POST);
+    }
+
+    public static function CheckPermissions($userId)
+    {
+        $db = Db::getConnection();
+        //SELECT * FROM users LEFT JOIN roles USING (id) ORDER BY login ASC'
+        $sql = "SELECT rule FROM priv 
+                INNER JOIN roles ON roles.id = priv.id 
+                INNER JOIN users ON users.role_id = roles.id 
+                WHERE users.id= ? AND priv.val = '1'";
+        $result = $db->prepare($sql);
+        $result->bindParam(1, $userId);
+        $result->execute();
+        $permissions = $result->fetchAll(PDO::FETCH_ASSOC);
+        $perm=array();
+        $i=0;
+        if ($permissions) {
+            foreach ($permissions as $key){
+             $perm[$i]['rule']=$key;
+             $i++;
+            }
+            return $perm;
+        }
+        else
+            LoginController::actionLogOut();
+
+            return false;
     }
 
 
@@ -166,15 +197,15 @@ class LoginController
         else{
             //запис в БД нового користувача
             $db = Db::getConnection();
-            $data = $db->prepare('INSERT INTO users (login, username, email, password, created, permissions, changed, banned) 
-VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, "user permissions", CURRENT_TIMESTAMP, 0)');
+            $data = $db->prepare('INSERT INTO users (login, username, email, password, created, role_id, changed, banned) 
+VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 1)');
             $data->bindValue(1, $login);
             // $data->bindValue(2, $_POST['blog_content']);
             $data->bindValue(2, $name);
             $data->bindValue(3, $email);
             $data->bindValue(4, md5($password));
             if ($data->execute()) {
-                $regerrors[] = 'Вітаємо, Ви успішно зареєструвалися !';
+                $regerrors[] = 'Вітаємо, Ви успішно зареєструвалися ! Ви зможете увійти після активації Адміністратором сайту !';
             }
             return $regerrors;
 

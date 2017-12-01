@@ -204,7 +204,6 @@ $usersList = Adminpanel::getUsersList();
                 </div>
 
                 </div>
-
 			</div>
 			<!-- End Sidebar -->
 
