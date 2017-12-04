@@ -9,7 +9,7 @@ include_once(ROOT . '/header.php');
 <div id="content">
 
 <div id="about" class="page">
-    <div class="left">
+    <div align="center" class="left">
         <img src="/template/images/myphoto.jpg" alt="photo">
     </div>
     <div align="center" class="right">

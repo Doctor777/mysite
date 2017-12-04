@@ -5,8 +5,9 @@ body {
 }
 
 .left img {
-    position: relative;
-    margin-left: 15%;
+   position: relative;
+    margin-right: 25%;
+
     background: none;
     padding: 6px 10px 10px 6px;
     margin-bottom: 0;

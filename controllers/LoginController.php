@@ -131,8 +131,8 @@ class LoginController
         unset($_SESSION['user']);
         unset($_SESSION['login']);
         session_destroy();
-     header("Location: ".$_SERVER['HTTP_REFERER']);
-        //header("Location: ".$_SERVER[HTTP_ORIGIN]);
+     //header("Location: ".$_SERVER['HTTP_REFERER']);
+        header("Location: /");
         return true;
     }
 

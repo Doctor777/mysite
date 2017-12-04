@@ -84,7 +84,7 @@ $usersList = Adminpanel::getUsersList();
 								<td><input type="checkbox" class="checkbox" /></td>
 								<td><h3><a href="/blog/<?php echo $blogItem['id']; ?>"><?php echo $blogItem['title']; ?></a></h3></td>
 								<td><?php echo $blogItem['date']; ?></td>
-								<td><a href="/blogedit/<?php echo $blogItem['id']; ?>"><?php echo $blogItem['author_name']; ?></a></td>
+								<td><?php echo $blogItem['author_name']; ?></td>
 								<td><a href="/adminpanel/blogdelete/<?php echo $blogItem['id']; ?>" class="ico del">Delete</a><a href="/adminpanel/blogedit/<?php echo $blogItem['id']; ?>" class="ico edit">Edit</a></td>
 							</tr>
 							    <?php endforeach; ?>
