@@ -1,12 +1,33 @@
 body {
     background: #E4F3BC;
-    /*    background-image: url('/template/images/vedro.jpg');*/
     overflow-x: hidden;
-    /*    background-size: contain;
-        background-repeat: no-repeat;
-        background: center;*/
+
 }
 
+.left img {
+    position: relative;
+    margin-left: 15%;
+    background: none;
+    padding: 6px 10px 10px 6px;
+    margin-bottom: 0;
+}
+
+.userinfo__social-links a {
+    color: blue;
+text-decoration: none;
+    font-size: medium;
+}
+.userinfo__social-links a:hover {
+    color: blue;
+    text-decoration: none;
+    font-size: medium;
+}
+
+.userinfo__social-links li {
+    list-style-type: none;
+    display: inline;
+    padding: 2%;
+}
 .c_search_inp {
     position: relative;
     margin-top: 25px;
@@ -16,12 +37,7 @@ body {
         transition: width 0.4s ease-in-out;*/
 }
 
-/*
-!* When the input field gets focus, change its width to 100% *!
-.c_search_inp:focus {
-    width: 100%;
-}
-*/
+
 
 .userhead {
     color: yellow;

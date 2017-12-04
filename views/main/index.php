@@ -32,4 +32,4 @@ require_once(ROOT . '/header.php');
 
     <?php
     require_once ($_SERVER['DOCUMENT_ROOT'].'/footer.php');
-    ?>
+
