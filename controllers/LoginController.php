@@ -5,7 +5,6 @@
  * Date: 04.10.17
  * Time: 0:35
  */
-//echo ("LoginContoller is run");
 include_once (ROOT.'/header.php');
 
 class LoginController
@@ -17,7 +16,6 @@ class LoginController
 
         $login = '';
        $password = '';
-       // echo var_dump($_POST);
         if (isset($_POST['vhod'])) {
 
             $login = $_POST['login'];
@@ -30,7 +28,6 @@ class LoginController
                 $errors[] = 'невірний логін або пароль';
                 return $errors;
                 header("Location: ".$_SERVER['HTTP_REFERER']);
-//echo $errors;
             } else
                 LoginController::auth($userId);
            $permissions = LoginController::CheckPermissions($userId);
@@ -65,7 +62,6 @@ class LoginController
         if (session_id() == "") {
             session_start();
         }
-       // session_start();
         if (isset($_SESSION['user'])) {
             return $_SESSION['user'];
 
@@ -87,7 +83,6 @@ class LoginController
             return $user['id'];
         }
         return false;
-//echo print_r($_POST);
     }
 
     public static function CheckPermissions($userId)
@@ -131,7 +126,6 @@ class LoginController
         unset($_SESSION['user']);
         unset($_SESSION['login']);
         session_destroy();
-     //header("Location: ".$_SERVER['HTTP_REFERER']);
         header("Location: /");
         return true;
     }

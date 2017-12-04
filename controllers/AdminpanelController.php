@@ -84,7 +84,6 @@ class AdminpanelController
                         if (!isset($_POST['delete_blog'])) {
 Adminpanel::BlogDelete($id);
 header("Location: ".$_SERVER['HTTP_REFERER']);
-                          //  require_once(ROOT . '/views/adminpanel/index.php');
                             return true;
                         }
                     }
@@ -98,9 +97,8 @@ header("Location: ".$_SERVER['HTTP_REFERER']);
 
                 $context = $_POST['admin_search_input'];
                 $context = substr($context, 0, 64);
-//вирізаємо всі ненормальні символи
+                //вирізаємо всі ненормальні символи
                 $context = strip_tags($context);
-                //include_once ROOT . '/models/Adminpanel.php';
                 $blogList = Adminpanel::getBlogItemBySearch($context);
                 require_once(ROOT . '/views/adminpanel/index.php');
                 return true;

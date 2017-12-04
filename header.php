@@ -1,8 +1,6 @@
 <?php
-//$errors=$_SESSION['errors'];
 include_once(ROOT . '/controllers/LoginController.php');
-include_once(ROOT.'/models/Blog.php');
-//$lc= new LoginController;
+include_once(ROOT . '/models/Blog.php');
 LoginController::checkLogged();
 if (isset($_POST['vhod'])) {
     // echo 'submit pressed !';
@@ -11,20 +9,14 @@ if (isset($_POST['vhod'])) {
     LoginController::actionLogOut();
 } elseif (isset($_POST['registration'])) {
     $regerrors = LoginController::actionRegistration();
-        if (!isset($regerrors)) {
-            echo "<script> confirm('Ви успішно зареєстровані !');</script>";
-        }
+    if (!isset($regerrors)) {
+        echo "<script> confirm('Ви успішно зареєстровані !');</script>";
     }
-elseif (isset($_POST['publicate_blog_comment'])){
+} elseif (isset($_POST['publicate_blog_comment'])) {
 
-    Blog::AddBlogComment($_POST['id'], $_POST['comment_area'] );
+    Blog::AddBlogComment($_POST['id'], $_POST['comment_area']);
 }
 
-/*    if (isset($_POST['search'])) {
-    include_once (ROOT.'/controllers/SearchController.php');
-    }*/
-
-//echo var_dump($errors);
 ?>
 
 <html>
@@ -58,15 +50,12 @@ elseif (isset($_POST['publicate_blog_comment'])){
                                     <?php endif; ?>
                                 </div>
                                 <form action="" method="post">
-                                    <!-- <i>Авторизація</i><br>-->
                                     <input type="text" name="login" placeholder="login...">
                                     <input type="password" name="password" placeholder="*******">
                                     <button type="submit" name='vhod'>
                                         <i>Вхід</i>
                                     </button>
-                                    <!--<button type="submit"-->
                                     <br><a href="../reg/"><i>Зареєструватися</i></a>
-                                    <!--</button>-->
                                 </form>
 
                             <?php else: ?>
@@ -112,25 +101,26 @@ elseif (isset($_POST['publicate_blog_comment'])){
                     <strong>Блог</strong>
                     <small>Blog</small>
                 </a>
-                <?php $MenuBlogList=Blog::getBlogList(); ?>
+                <?php $MenuBlogList = Blog::getBlogList(); ?>
                 <?php if (isset($MenuBlogList)): ?>
-                <ul>
-                    <?php $i=0; ?>
-                    <?php foreach ($MenuBlogList as $MenuBlogItem): ?>
-                    <?php if ($i++ == 5) break; ?>
-                    <li><a href="/blog/<?php echo $MenuBlogItem['id']; ?>"><i class="fa fa-globe"></i><?php echo $MenuBlogItem['title']; ?></a></li>
-                    <?php endforeach;?>
-                </ul>
-                <?php endif;?>
+                    <ul>
+                        <?php $i = 0; ?>
+                        <?php foreach ($MenuBlogList as $MenuBlogItem): ?>
+                            <?php if ($i++ == 5) break; ?>
+                            <li><a href="/blog/<?php echo $MenuBlogItem['id']; ?>"><i
+                                            class="fa fa-globe"></i><?php echo $MenuBlogItem['title']; ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </li>
-            <?php if (isset($_SESSION['user']) && $_SESSION['user']==1): ?>
-            <li>
-                <a href="/adminpanel/" <?php if (strstr($_SERVER['REQUEST_URI'], "/adminpanel")): echo('class="active"'); endif; ?>>
-                    <i class="fa fa-gift"></i>
-                    <strong>Адміністрування</strong>
-                    <small>AdminPanel</small>
-                </a>
-            </li>
+            <?php if (isset($_SESSION['user']) && $_SESSION['user'] == 1): ?>
+                <li>
+                    <a href="/adminpanel/" <?php if (strstr($_SERVER['REQUEST_URI'], "/adminpanel")): echo('class="active"'); endif; ?>>
+                        <i class="fa fa-gift"></i>
+                        <strong>Адміністрування</strong>
+                        <small>AdminPanel</small>
+                    </a>
+                </li>
             <?php endif; ?>
             <li>
                 <a href="/about/" <?php if ($_SERVER['REQUEST_URI'] == "/about/"): echo('class="active"'); endif; ?>>
@@ -140,20 +130,13 @@ elseif (isset($_POST['publicate_blog_comment'])){
                 </a>
             </li>
             <form action="/search/" method="post">
-            <li class="float">
-                <i class="c_search"></i>
-                <input  class = "c_search_inp" type="text" name="search_text" placeholder="search...">
-           <!--     <select name="logic">
-                    <option value="OR">шукати будь-яке зі слів
-                    <option value="AND">шукати всі слова
-                </select>-->
-                <button type="submit" class="c_search" name="search"><i>пошук</i>
-                </button>
-                </a>
-             <!--   <a href="" class="search-mobile">
-                    <i class="fa fa-search"></i>
-                </a>-->
-            </li>
+                <li class="float">
+                    <i class="c_search"></i>
+                    <input class="c_search_inp" type="text" name="search_text" placeholder="search...">
+                    <button type="submit" class="c_search" name="search"><i>пошук</i>
+                    </button>
+                    </a>
+                </li>
             </form>
         </ul>
     </nav>

@@ -35,14 +35,15 @@ include_once(ROOT . '/header.php');
                             <?php else: echo "<td> </td>" ?>
                             <?php endif; ?>
                             <td>
-                                <select name="<?php echo $userItem['id']?>">
+                                <select name="<?php echo $userItem['id'] ?>">
                                     <option>--not selected--</option>
 
                                     <?php if (isset($rolelist)): ?>
                                         <?php foreach ($rolelist as $roleItem => $value): ?>
                                             <?php foreach ($value as $key => $value2): ?>
 
-                                                <option value = <?php echo $roleItem.' '; if($userItem['role_id']==$roleItem):echo 'selected'; else : echo $key; endif;?>><?php echo $key; ?></option>
+                                                <option value= <?php echo $roleItem . ' ';
+                                                if ($userItem['role_id'] == $roleItem):echo 'selected'; else : echo $key; endif; ?>><?php echo $key; ?></option>
 
 
                                             <?php endforeach; ?>

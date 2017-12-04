@@ -3,7 +3,8 @@ require_once(ROOT . '/header.php');
 ?>
 <div class="c_img">
     <h1>Реєстрація на сайті</h1>
-<div class="c_registr"><!--sign up form-->
+<div class="c_registr">
+    <!--sign up form-->
 
 
         <ul style="list-style: none;">

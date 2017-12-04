@@ -11,23 +11,23 @@ class Adminpanel
 
     private static function can_upload($file)
     {
-        // если имя пустое, значит файл не выбран
+        // якщо пусто, значить файл не вибраний
         if ($file['name'] == '')
             return 'Вы не выбрали файл.';
 
-        /* если размер файла 0, значит его не пропустили настройки
-        сервера из-за того, что он слишком большой */
+        /* если розмір файла 0, значить його не пропустили настройки
+        сервера через великий розмір */
         if ($file['size'] == 0)
             return 'Файл слишком большой.';
 
-        // разбиваем имя файла по точке и получаем массив
+        // разбиваємо ім"я файла по крапці і отримуємо масив
         $getMime = explode('.', $file['name']);
-        // нас интересует последний элемент массива - расширение
+        // нас цікавить останній елемент масиву - розширення
         $mime = strtolower(end($getMime));
-        // объявим массив допустимых расширений
+        // створимо масив допустимих розширень
         $types = array('jpg', 'png', 'gif', 'bmp', 'jpeg');
 
-        // если расширение не входит в список допустимых - return
+        // вернемо якщо розширення не входить в масив допустимих - return
         if (!in_array($mime, $types))
             return 'Недопустимый тип файла.';
 
@@ -36,7 +36,7 @@ class Adminpanel
 
     private static function make_upload($file)
     {
-        // формируем уникальное имя картинки: случайное число и name
+        // створюємо унікальне ім"я картинки: рандомне число та name
         $name = mt_rand(0, 10000);
         copy($file['tmp_name'], ROOT . '/template/images/blogimages/' . $name);
         $new_name = '/template/images/blogimages/' . $name;
@@ -46,13 +46,12 @@ class Adminpanel
     private static function Setphoto()
     {
         if (isset($_FILES['photo'])) {
-            // проверяем, можно ли загружать изображение
+            // перовіряємо чи можна  завантажувати зображення
             $check = Adminpanel::can_upload($_FILES['photo']);
 
             if ($check === true) {
-                // загружаем изображение на сервер
+                // завантажуємо зображення на сервер
                 $new_name = Adminpanel::make_upload($_FILES['photo']);
-                // echo "<strong>Файл успешно загружен!</strong>";
             } else {
                 $new_name = "";
             }
@@ -80,25 +79,17 @@ VALUES (?, ?, ?, ?, ?) ');
         $data->execute();
         return true;
 
-        //  header("Location: ".$_SERVER['HTTP_REFERER']);
 
     }
 
 
     public static function BlogEdit($id)
     {
-        //if ($_POST['preview']=='') {
         $new_name = Adminpanel::Setphoto();
-        //}else{
-        //   $new_name = $_POST['preview'];
-        //}
         //вертаємо цілочисельне значення ІД
         $id = intval($id);
-
 // якщо ІД - істина, то берем інфу з БД
         if ($id) {
-
-//echo 'id='.$id;
             $db = Db::getConnection();
             $sql = 'UPDATE blogs 
 SET title = :title, 
@@ -124,11 +115,7 @@ WHERE id = :id';
 
             }
             return $res;
-
-
         }
-
-
     }
 
     public static function BlogDelete($id)
@@ -136,11 +123,8 @@ WHERE id = :id';
 
         //вертаємо цілочисельне значення ІД
         $id = intval($id);
-
 // якщо ІД - істина, то берем інфу з БД
         if ($id) {
-
-//echo 'id='.$id;
             $db = Db::getConnection();
             $sql = 'DELETE FROM blogs WHERE id = :id';
             $data = $db->prepare($sql);
@@ -149,10 +133,7 @@ WHERE id = :id';
             if ($data->execute()) {
                 return true;
             }
-
         }
-
-
     }
 
     public static function getBlogItemBySearch($context)
@@ -164,21 +145,15 @@ WHERE id = :id';
         $result->execute();
         $blogList = $result->fetchAll(PDO::FETCH_ASSOC);
         return $blogList;
-        // header("Location: ".$_SERVER['HTTP_REFERER']);
     }
 
     public static function getUsersList()
     {
         //запрос до БД
-
         $db = Db::getConnection();
-
         $userslist = array();
-
         $result = $db->query('SELECT * FROM users ORDER BY login ASC');
         $i = 0;
-//var_dump($result);
-
         while ($row = $result->fetch()) {
             //var_dump($row);
             $userslist[$i]['id'] = $row['id'];
@@ -190,23 +165,17 @@ WHERE id = :id';
             $i++;
         }
         return $userslist;
-
     }
 
     public static function Userban($id)
     {
         //вертаємо цілочисельне значення ІД
         $id = intval($id);
-
 // якщо ІД - істина, то берем інфу з БД
         if ($id) {
-
-//echo 'id='.$id;
             $db = Db::getConnection();
             $sql = 'UPDATE users SET banned = IF(banned = 1, 0 ,1) WHERE id = :id ';
-
             // умова в  mysql якщо 1, то 0, /якщо 0, то 1
-
             $data = $db->prepare($sql);
             $data->bindValue(':id', $id, PDO::PARAM_INT);
             // $data->bindValue(':banned', 1, PDO::PARAM_INT);
@@ -215,39 +184,30 @@ WHERE id = :id';
 
                 return true;
             }
-
         }
-
     }
 
 
 
     public static function Userdelete($id)
     {
-
         //вертаємо цілочисельне значення ІД
         $id = intval($id);
-
 // якщо ІД - істина, то берем інфу з БД
         if ($id) {
-
 //echo 'id='.$id;
             $db = Db::getConnection();
             $sql = 'DELETE FROM users WHERE id = :id';
             $data = $db->prepare($sql);
             $data->bindValue(':id', $id, PDO::PARAM_INT);
-
             if ($data->execute()) {
                 return true;
             }
-
         }
-
     }
 
     private static function AddGroupName($group_name)
     {
-       // $new_group_name = array();
 $new_group_name = $_POST['add_group_name'];
         $db = Db::getConnection();
 
@@ -334,20 +294,12 @@ private static function UpdateRules()
         $searched_id = $records[$a]['id'];
 
         if (!empty($values[$searched_rule]) && (in_array($searched_id, $values[$searched_rule]))) {
-//echo 'true';
 // перевіряємо значення пишемо апдейт в базу, якщо в базі 0
             if ($records[$a]['val'] == 0) {
                 $val = 1;
                 $sql = "UPDATE priv SET val = :val WHERE id = :id AND rule = :rule";
           Adminpanel::WorkWithPriv($sql, $searched_id, $searched_rule, $val);
             }
-                // Adminpanel::WorkWithPriv($sql, $searched_id, $searched_rule, $val);
-
-
-             //   $val = 0;
-              //  $sql = "UPDATE priv SET val = :val WHERE id = :id AND rule = :rule";
-
-
         }
 
         if ($rec_val['val']==1 && !in_array($searched_id, $values[$searched_rule])){
@@ -357,14 +309,10 @@ private static function UpdateRules()
 
         }
 
-        // $value_to_delete = $searched_id; //Элемент с этим значением нужно удалить
        if (!empty($values[$searched_rule])) {
-           $values[$searched_rule] = array_flip($values[$searched_rule]); //Меняем местами ключи и значения
-           unset ($values[$searched_rule][$searched_id]); //Удаляем элемент массива
+           $values[$searched_rule] = array_flip($values[$searched_rule]); //Міняємо місцями ключі та значення
+           unset ($values[$searched_rule][$searched_id]); //Видаляємо елемент масиву
            $values[$searched_rule] = array_flip($values[$searched_rule]);
-           //  $array = array_flip($array); //Меняем местами ключи и значения
-           //unset($values[$searched_rule][$searched_id]);//!!! треба видалити по значенню
-           // $values = array_diff($values3, $searched_id);
        }
         $a++;
 
@@ -455,9 +403,6 @@ private static function UpdateRules()
 // затираємо нам непотрібний останній елемент масиву
         $values = array();
         $values = $_POST;
-        //array_splice($values, -1);
-
-
         $db = Db::getConnection();
         foreach ($values as $id => $role) {
             //перебираємо масив, поки ключі - цілі числа.
@@ -479,8 +424,6 @@ if (!is_numeric($role)) {
 
             $data->execute();
 
-            //    return true;
-           // }
         }
 
     }

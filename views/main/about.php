@@ -1,4 +1,3 @@
-
 <?php
 include_once(ROOT . '/header.php');
 ?>
@@ -8,53 +7,53 @@ include_once(ROOT . '/header.php');
 
 <div id="content">
 
-<div id="about" class="page">
-    <div align="center" class="left">
-        <img src="/template/images/myphoto.jpg" alt="photo">
-    </div>
-    <div align="center" class="right">
-        <br>
-        <h1 align="center">Сточанський Богдан Тарасович</h1>
-        <br>
-        <br>
-        <h2>Привіт! Вітаю на моєму сайті...</h2>
+    <div id="about" class="page">
+        <div align="center" class="left">
+            <img src="/template/images/myphoto.jpg" alt="photo">
+        </div>
+        <div align="center" class="right">
+            <br>
+            <h1 align="center">Сточанський Богдан Тарасович</h1>
+            <br>
+            <br>
+            <h2>Привіт! Вітаю на моєму сайті...</h2>
 
-        <p> </p>
-<br>
-        <div align="center" class="userinfo__social-links">
-            <h2>Мої контакти :</h2>
-            <ul>
-                <li>
-                    <a href="https://www.facebook.com/bogdan.stochanskyy">
-                        <span class="fa fa-facebook"></span>
+            <p></p>
+            <br>
+            <div align="center" class="userinfo__social-links">
+                <h2>Мої контакти :</h2>
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/bogdan.stochanskyy">
+                            <span class="fa fa-facebook"></span>
 
-facebook
-</span>
-                    </a>
-                </li>
+                            facebook
+                            </span>
+                        </a>
+                    </li>
 
 
-                <li>
-                    <a href="mailto:medicus1978@gmail.com">
-                        <span class="fa fa-mailto"></span>
-                        <span class="hide">
+                    <li>
+                        <a href="mailto:medicus1978@gmail.com">
+                            <span class="fa fa-mailto"></span>
+                            <span class="hide">
                         medicus1978@gmail.com
                         </span>
-                    </a>
-                </li>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="#">
-                        <span class="fa fa-phone"></span>
-                        <span class="hide">
+                    <li>
+                        <a href="#">
+                            <span class="fa fa-phone"></span>
+                            <span class="hide">
                         +38-097-7772998
                         </span>
-                    </a>
-                </li>
+                        </a>
+                    </li>
 
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
 
         <!--<ul>
             <li><img src="images/icon-print.png" alt="Print Design">Print Design</li>

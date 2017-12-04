@@ -85,11 +85,8 @@ class Blog
         $blogCommentlist = array();
 
         $result = $db->query('SELECT blog_id, comment, username, created FROM blog_comments WHERE blog_id ='. $id);
-       // $result->setFetchMode(PDO::FETCH_ASSOC);
-        //$blogCommentlist = $result->fetch();
 
         $i = 0;
-//var_dump($result);
 
         while ($row = $result->fetch()) {
             //var_dump($row);
