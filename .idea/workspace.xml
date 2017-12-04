@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ace5f485-0a76-40b8-9a43-e06febe36c2c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/header.php" afterPath="$PROJECT_DIR$/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/css/style.css" afterPath="$PROJECT_DIR$/template/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/blog/index.php" afterPath="$PROJECT_DIR$/views/blog/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/main/about.php" afterPath="$PROJECT_DIR$/views/main/about.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/main/index.php" afterPath="$PROJECT_DIR$/views/main/index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -508,7 +503,7 @@
       <workItem from="1511958867772" duration="2051000" />
       <workItem from="1512074557433" duration="15086000" />
       <workItem from="1512138227036" duration="2279000" />
-      <workItem from="1512384978677" duration="11302000" />
+      <workItem from="1512384978677" duration="11320000" />
     </task>
     <task id="LOCAL-00001" summary="301017">
       <created>1509390688928</created>
@@ -650,11 +645,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512089276928</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="041217">
+      <created>1512397192772</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1512397192772</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="348129000" />
+    <option name="totallyTimeSpent" value="348147000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -706,7 +708,8 @@
     <MESSAGE value="271117" />
     <MESSAGE value="291117" />
     <MESSAGE value="011217" />
-    <option name="LAST_COMMIT_MESSAGE" value="011217" />
+    <MESSAGE value="041217" />
+    <option name="LAST_COMMIT_MESSAGE" value="041217" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
