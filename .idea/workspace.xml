@@ -2,8 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ace5f485-0a76-40b8-9a43-e06febe36c2c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Read me.txt" afterPath="$PROJECT_DIR$/Read me.txt" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Read me.txt" afterPath="$PROJECT_DIR$/Read me.txt" />
+      <change beforePath="$PROJECT_DIR$/controllers/AdminpanelController.php" afterPath="$PROJECT_DIR$/controllers/AdminpanelController.php" />
+      <change beforePath="$PROJECT_DIR$/controllers/BlogController.php" afterPath="$PROJECT_DIR$/controllers/BlogController.php" />
+      <change beforePath="$PROJECT_DIR$/controllers/SearchController.php" afterPath="$PROJECT_DIR$/controllers/SearchController.php" />
+      <change beforePath="$PROJECT_DIR$/db_export/mvc_site.sql" afterPath="$PROJECT_DIR$/db_export/mvc_site.sql" />
+      <change beforePath="$PROJECT_DIR$/models/Adminpanel.php" afterPath="$PROJECT_DIR$/models/Adminpanel.php" />
+      <change beforePath="$PROJECT_DIR$/models/Blog.php" afterPath="$PROJECT_DIR$/models/Blog.php" />
+      <change beforePath="$PROJECT_DIR$/models/Search.php" afterPath="$PROJECT_DIR$/models/Search.php" />
+      <change beforePath="$PROJECT_DIR$/template/css/adminpanel.css" afterPath="$PROJECT_DIR$/template/css/adminpanel.css" />
+      <change beforePath="$PROJECT_DIR$/template/images/1.jpg" afterPath="$PROJECT_DIR$/template/images/1.jpg" />
+      <change beforePath="$PROJECT_DIR$/template/images/add-button.gif" afterPath="$PROJECT_DIR$/template/images/add-button.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/blogimages/1361" afterPath="$PROJECT_DIR$/template/images/blogimages/1361" />
+      <change beforePath="$PROJECT_DIR$/template/images/blogimages/3297" afterPath="$PROJECT_DIR$/template/images/blogimages/3297" />
+      <change beforePath="$PROJECT_DIR$/template/images/blogimages/4995Зняток екрану з 2017-10-05 22-13-41.png" afterPath="$PROJECT_DIR$/template/images/blogimages/4995Зняток екрану з 2017-10-05 22-13-41.png" />
+      <change beforePath="$PROJECT_DIR$/template/images/blogimages/8671Зняток екрану з 2017-10-05 22-13-41.png" afterPath="$PROJECT_DIR$/template/images/blogimages/8671Зняток екрану з 2017-10-05 22-13-41.png" />
+      <change beforePath="$PROJECT_DIR$/template/images/blogimages/8778" afterPath="$PROJECT_DIR$/template/images/blogimages/8778" />
+      <change beforePath="$PROJECT_DIR$/template/images/blogimages/9566" afterPath="$PROJECT_DIR$/template/images/blogimages/9566" />
+      <change beforePath="$PROJECT_DIR$/template/images/button.gif" afterPath="$PROJECT_DIR$/template/images/button.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/close.gif" afterPath="$PROJECT_DIR$/template/images/close.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/content-bg.jpg" afterPath="$PROJECT_DIR$/template/images/content-bg.jpg" />
+      <change beforePath="$PROJECT_DIR$/template/images/content-bg.png" afterPath="$PROJECT_DIR$/template/images/content-bg.png" />
+      <change beforePath="$PROJECT_DIR$/template/images/del.gif" afterPath="$PROJECT_DIR$/template/images/del.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/edit.gif" afterPath="$PROJECT_DIR$/template/images/edit.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/feature-bg.png" afterPath="$PROJECT_DIR$/template/images/feature-bg.png" />
+      <change beforePath="$PROJECT_DIR$/template/images/footer.gif" afterPath="$PROJECT_DIR$/template/images/footer.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/header.gif" afterPath="$PROJECT_DIR$/template/images/header.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/images.jpeg" afterPath="$PROJECT_DIR$/template/images/images.jpeg" />
+      <change beforePath="$PROJECT_DIR$/template/images/msg-error.gif" afterPath="$PROJECT_DIR$/template/images/msg-error.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/msg-ok.gif" afterPath="$PROJECT_DIR$/template/images/msg-ok.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/myphoto.jpg" afterPath="$PROJECT_DIR$/template/images/myphoto.jpg" />
+      <change beforePath="$PROJECT_DIR$/template/images/no_image.gif" afterPath="$PROJECT_DIR$/template/images/no_image.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/noimage.png" afterPath="$PROJECT_DIR$/template/images/noimage.png" />
+      <change beforePath="$PROJECT_DIR$/template/images/pagging.gif" afterPath="$PROJECT_DIR$/template/images/pagging.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/paper-sheet.jpg" afterPath="$PROJECT_DIR$/template/images/paper-sheet.jpg" />
+      <change beforePath="$PROJECT_DIR$/template/images/pattern.png" afterPath="$PROJECT_DIR$/template/images/pattern.png" />
+      <change beforePath="$PROJECT_DIR$/template/images/photo (1).jpg" afterPath="$PROJECT_DIR$/template/images/photo (1).jpg" />
+      <change beforePath="$PROJECT_DIR$/template/images/pic.png" afterPath="$PROJECT_DIR$/template/images/pic.png" />
+      <change beforePath="$PROJECT_DIR$/template/images/tab.gif" afterPath="$PROJECT_DIR$/template/images/tab.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/th.gif" afterPath="$PROJECT_DIR$/template/images/th.gif" />
+      <change beforePath="$PROJECT_DIR$/template/images/turia13.jpg" afterPath="$PROJECT_DIR$/template/images/turia13.jpg" />
+      <change beforePath="$PROJECT_DIR$/views/adminpanel/blogedit.php" afterPath="$PROJECT_DIR$/views/adminpanel/blogedit.php" />
+      <change beforePath="$PROJECT_DIR$/views/adminpanel/index.php" afterPath="$PROJECT_DIR$/views/adminpanel/index.php" />
+      <change beforePath="$PROJECT_DIR$/views/adminpanel/userpermissions.php" afterPath="$PROJECT_DIR$/views/adminpanel/userpermissions.php" />
+      <change beforePath="$PROJECT_DIR$/views/blog/index.php" afterPath="$PROJECT_DIR$/views/blog/index.php" />
+      <change beforePath="$PROJECT_DIR$/views/main/about.php" afterPath="$PROJECT_DIR$/views/main/about.php" />
+      <change beforePath="$PROJECT_DIR$/views/main/search.php" afterPath="$PROJECT_DIR$/views/main/search.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,16 +70,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/main/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="738">
-              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="registration.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/main/registration.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -48,8 +83,8 @@
       <file leaf-file-name="Search.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/Search.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+            <state relative-caret-position="252">
+              <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
               <folding>
                 <marker date="1512409800450" expanded="true" signature="203:264" ph="SELECT * FRO... blogs" />
               </folding>
@@ -132,8 +167,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -220,6 +255,7 @@
         <option value="$PROJECT_DIR$/views/main/search.php" />
         <option value="$PROJECT_DIR$/header.php" />
         <option value="$PROJECT_DIR$/views/main/registration.php" />
+        <option value="$PROJECT_DIR$/views/adminpanel/1.html" />
       </list>
     </option>
   </component>
@@ -262,6 +298,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -332,7 +369,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -434,7 +470,10 @@
       <workItem from="1512138227036" duration="2279000" />
       <workItem from="1512384978677" duration="11346000" />
       <workItem from="1512407038351" duration="2880000" />
-      <workItem from="1512410536386" duration="22000" />
+      <workItem from="1512410536386" duration="119000" />
+      <workItem from="1512650594735" duration="58000" />
+      <workItem from="1512842421792" duration="37000" />
+      <workItem from="1512842502720" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="301017">
       <created>1509390688928</created>
@@ -611,11 +650,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512410201445</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="041217">
+      <created>1512410563316</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1512410563316</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="351075000" />
+    <option name="totallyTimeSpent" value="351273000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -630,7 +676,7 @@
     <frame x="81" y="1020" width="1303" height="780" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22310758" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23505977" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39968896" sideWeight="0.5123506" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -717,7 +763,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/Session.php" />
     <entry file="file://$PROJECT_DIR$/components/location.php" />
     <entry file="file://$PROJECT_DIR$/tst.html" />
     <entry file="file://$PROJECT_DIR$/test.php" />
@@ -961,7 +1006,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -969,7 +1013,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="10" column="26" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -977,7 +1020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="738">
           <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1045,10 +1087,11 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/adminpanel/1.html" />
     <entry file="file://$PROJECT_DIR$/models/Search.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        <state relative-caret-position="252">
+          <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding>
             <marker date="1512409800450" expanded="true" signature="203:264" ph="SELECT * FRO... blogs" />
           </folding>
