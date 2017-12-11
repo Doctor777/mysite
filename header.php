@@ -21,7 +21,7 @@ if (isset($_POST['vhod'])) {
 
 <html>
 <head>
-    <title>Мій сайт на mvc</title>
+    <title><?php echo SITE_NAME?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="/template/css/style.css" rel="stylesheet" type="text/css">
 

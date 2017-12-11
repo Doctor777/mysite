@@ -16,8 +16,10 @@ class Db
 
 
         $dsn = "mysql:host={$params['host']}; dbname={$params['dbname']}; charset=utf8";
+
         try {
             $db = new PDO ($dsn, $params['user'], $params['password']);
+            $db->exec("set names utf8");
         }
         catch (PDOException $e){
             die('Помилка підключення БД :'.$e->getMessage());

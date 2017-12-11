@@ -84,7 +84,7 @@ class Blog
 
         $blogCommentlist = array();
 
-        $result = $db->query('SELECT blog_id, comment, username, created FROM blog_comments WHERE blog_id ='. $id);
+        $result = $db->query('SELECT blog_id, comment_id, comment, username, created FROM blog_comments WHERE blog_id ='. $id);
 
         $i = 0;
 
@@ -93,6 +93,7 @@ class Blog
             $blogCommentlist[$i]['username'] = $row['username'];
             $blogCommentlist[$i]['comment'] = $row['comment'];
             $blogCommentlist[$i]['created'] = $row['created'];
+            $blogCommentlist[$i]['comment_id']=$row['comment_id'];
             $i++;
         }
 
@@ -100,5 +101,40 @@ class Blog
 
     }
 
+    public static function DeleteBlogComment($comment_id)
+    {
+        $comment_id = intval($comment_id);
+// якщо ІД - істина, то берем інфу з БД
+        if ($comment_id) {
+            $db = Db::getConnection();
+            $sql = 'DELETE FROM blog_comments WHERE comment_id = :comment_id';
+            $data = $db->prepare($sql);
+            $data->bindValue(':comment_id', $comment_id, PDO::PARAM_INT);
+
+            if ($data->execute()) {
+                return true;
+            }
+        }
+
+    }
+
+    public static function EditBlogComment($comment_id)
+    {
+        $comment_id = intval($comment_id);
+// якщо ІД - істина, то берем інфу з БД
+        if ($comment_id) {
+            $db = Db::getConnection();
+            $sql = 'UPDATE blog_comments 
+SET comment = :comment 
+WHERE comment_id = :comment_id';
+            $data = $db->prepare($sql);
+            $data->bindValue(':comment', htmlentities(nl2br($_POST['blog_comment'], ENT_QUOTES)));
+            $data->bindValue(':comment_id', $comment_id, PDO::PARAM_INT);
+
+            if ($data->execute()) {
+                return true;
+            }
+        }
+    }
 
 }

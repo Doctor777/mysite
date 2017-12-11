@@ -50,19 +50,47 @@ include_once(ROOT . '/header.php');
     <br>
     <br>
     <hr>
-    <p align="center"><b>Коментарі : </b></p><br>
+    <p align="center"><b>Коментарі : </b></p>
+    <br>
+
 
     <?php $blogCommentlist = Blog::getBlogCommentsList($blogItem['id']) ?>
     <?php if ($blogCommentlist): ?>
+
         <?php foreach ($blogCommentlist as $blogCommentItem): ?>
             <div id="blog_comment">
+                <form name="delete_or_edit_blog" method="post" action="">
                 <?php echo $blogCommentItem['created']; ?><br>
                 <?php echo $blogCommentItem['username']; ?><br>
-                <?php echo $blogCommentItem['comment']; ?><br>
+                    <?php echo $blogCommentItem['comment']; ?><br>
+                <?php if (isset($_SESSION['permissions']) && strpos(serialize($_SESSION['permissions']), 'edit_comments')): ?>
+                    <?php if (isset($edit_blog_flag) && $edit_blog_flag == $blogCommentItem['comment_id']): ?>
+                        <textarea name="blog_comment" class="field size1" rows="10"
+                                  cols="30"><?php echo $blogCommentItem['comment'] ?></textarea> <br>
+                        <input type="submit" name="edit_comment&<?php echo $blogCommentItem['comment_id']; ?>"
+                               value="Внести зміни">
+                        <a href="/blog/<?php echo $blogItem['id']; ?>"><input type="button" value="Скасувати"></a>
+                    <?php endif; ?>
+
+                <?php endif; ?>
+                <br>
+
+                    <?php if (isset($_SESSION['permissions']) && strpos(serialize($_SESSION['permissions']), 'edit_comments')): ?>
+                        <?php if (isset($edit_blog_flag)!= $blogCommentItem['comment_id']): ?>
+                            <input type="submit" name="edit&<?php echo $blogCommentItem['comment_id']; ?>"
+                                   value="Редагувати">
+
+
+                    <?php if (isset($_SESSION['permissions']) && strpos(serialize($_SESSION['permissions']), 'delete_comments')): ?>
+                            <input type="submit" name="delete_comment&<?php echo $blogCommentItem['comment_id']; ?>"
+                                   value="Видалити">
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <?php endif; ?>
             </div>
             <br>
         <?php endforeach; ?>
-
+        </form>
     <?php else: ?>
         <?php echo '<p align="center"><b>Поки що ніхто не додав жодного коментаря</b></p><br>'; ?>
     <?php endif; ?>
@@ -80,6 +108,7 @@ include_once(ROOT . '/header.php');
         </form>
 
     <?php endif; ?>
+
     <br>
     <br>
 <?php endif; ?>

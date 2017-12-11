@@ -178,26 +178,31 @@ $usersList = Adminpanel::getUsersList();
                                                 <td><h3><?php echo $userItem['id']; ?></h3></td>
                                                 <td><?php if ($userItem['banned'] != 1):echo $userItem['login']; else: echo "<del><font color = 'red'>" . $userItem['login'] . "</font></del>"; endif; ?></td>
                                                 <td><?php echo $userItem['email']; ?></td>
-                                                <?php if ($userItem['online'] == 1): ?>
-                                                    <td>online</td>
-                                                <?php endif; ?>
+                                                <td><?php if ($userItem['online'] == 1): ?>
+                                                   online
+                                                    <?php endif; ?></td>
                                                 <?php if ($userItem['id'] != '1'): ?>
                                                     <td><a href="/adminpanel/userdelete/<?php echo $userItem['id'] ?>">видалити</a>
                                                     </td>
                                                     <td><a href="/adminpanel/userban/<?php echo $userItem['id'] ?>">забанити</a>
                                                     </td>
-                                                    <td><a href="/adminpanel/userpermissions/">права</a></td>
                                                 <?php endif; ?>
+
                                             </tr>
 
 
                                         <?php endforeach; ?>
                                     <?php endif; ?>
-                                </table>
 
+                                </table>
                             </div>
 
                         </div>
+                        <table>
+                            <tr>
+                                <center><a href="/adminpanel/userpermissions/">права</a></center>
+                            </tr>
+                        </table>
                     </div>
                     <!-- End Sidebar -->
 

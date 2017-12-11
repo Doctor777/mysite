@@ -41,6 +41,7 @@ class LoginController
 
     public static function auth($userId)
     {
+        session_set_cookie_params(900);
         if (session_id() == "") {
             session_start();
         }
