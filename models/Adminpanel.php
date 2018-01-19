@@ -71,7 +71,6 @@ class Adminpanel
         $data = $db->prepare('INSERT INTO blogs (title, content, short_content, author_name, preview) 
 VALUES (?, ?, ?, ?, ?) ');
         $data->bindValue(1, $_POST['blog_title']);
-        // $data->bindValue(2, $_POST['blog_content']);
         $data->bindValue(2, htmlentities(nl2br($_POST['blog_content'], ENT_QUOTES)));
         $data->bindValue(3, mb_substr($_POST['blog_content'], 0, 80));
         $data->bindValue(4, $_SESSION['login']);
@@ -102,7 +101,6 @@ WHERE id = :id';
             $data->bindValue(':title', $_POST['blog_title']);
             $data->bindValue(':content', htmlentities(nl2br($_POST['blog_content'], ENT_QUOTES)));
 
-            //$data->bindValue(':content', $_POST['blog_content']);
             $data->bindValue(':short_content', mb_substr($_POST['blog_content'], 0, 80));
             $data->bindValue(':author_name', $_SESSION['login']);
             $data->bindValue(':preview', $new_name);
@@ -178,7 +176,6 @@ WHERE id = :id';
             // умова в  mysql якщо 1, то 0, /якщо 0, то 1
             $data = $db->prepare($sql);
             $data->bindValue(':id', $id, PDO::PARAM_INT);
-            // $data->bindValue(':banned', 1, PDO::PARAM_INT);
 
             if ($data->execute()) {
 
@@ -186,7 +183,6 @@ WHERE id = :id';
             }
         }
     }
-
 
 
     public static function Userdelete($id)
@@ -208,7 +204,7 @@ WHERE id = :id';
 
     private static function AddGroupName($group_name)
     {
-$new_group_name = $_POST['add_group_name'];
+        $new_group_name = $_POST['add_group_name'];
         $db = Db::getConnection();
 
         $sql = 'SELECT * FROM roles WHERE role = :group_name';
@@ -230,7 +226,7 @@ $new_group_name = $_POST['add_group_name'];
             $data->bindValue(2, 'view_comments');
             $data->bindValue(3, 0);
             $data->execute();
-            header("Location: ".$_SERVER['HTTP_REFERER']);
+            header("Location: " . $_SERVER['HTTP_REFERER']);
             return true;
         }
 
@@ -246,9 +242,9 @@ $new_group_name = $_POST['add_group_name'];
 
         $result = $db->query("SELECT * FROM roles INNER JOIN priv ON roles.id = priv.id ORDER BY roles.role ASC");
         $i = 0;
-       while ($row = $result->fetch()) {
+        while ($row = $result->fetch()) {
 
-           $rolelist[$row['id']][$row['role']][$row['rule']] = $row['val'];
+            $rolelist[$row['id']][$row['role']][$row['rule']] = $row['val'];
             $i++;
         }
         return $rolelist;
@@ -263,89 +259,86 @@ $new_group_name = $_POST['add_group_name'];
         $data->bindValue(':rule', $rule, PDO::PARAM_INT);
         $data->bindValue(':val', $val, PDO::PARAM_INT);
         if ($data->execute()) {
-            header("Location: ".$_SERVER['HTTP_REFERER']);
+            header("Location: " . $_SERVER['HTTP_REFERER']);
             return true;
         }
     }
 
-private static function UpdateRules()
-{
+    private static function UpdateRules()
+    {
 
 // затираємо два нам непотрібних останніх елементи масиву (службові)
-    $values = array();
-    $values = $_POST;
-    array_splice($values, -2);
+        $values = array();
+        $values = $_POST;
+        array_splice($values, -2);
 
-    $db = Db::getConnection();
+        $db = Db::getConnection();
 
-    $sql = "SELECT * FROM priv ORDER BY rule ASC ";
-    // $row = $result->fetch();
-    $result = $db->prepare($sql);
-    //$result->bindParam(':group_name', $group_name, PDO::PARAM_STR);
-    $result->execute();
-    $records = $result->fetchAll(PDO::FETCH_ASSOC);
-    $a = 0;
-    //селектимо з бази всі рули, і перебираємо в циклі, порівнюючи чи є
-    //в нашому масиві з ПОСТу співпадіння по рулу та ід.
-    // оскільки в ПОСТ попадає тільки лог 1, то якщо відсутній рул в СЕЛЕКТі, пишемо 0 в базу
+        $sql = "SELECT * FROM priv ORDER BY rule ASC ";
+        $result = $db->prepare($sql);
+        $result->execute();
+        $records = $result->fetchAll(PDO::FETCH_ASSOC);
+        $a = 0;
+        //селектимо з бази всі рули, і перебираємо в циклі, порівнюючи чи є
+        //в нашому масиві з ПОСТу співпадіння по рулу та ід.
+        // оскільки в ПОСТ попадає тільки лог 1, то якщо відсутній рул в СЕЛЕКТі, пишемо 0 в базу
 
-    foreach ($records as $record => $rec_val) {
-        $searched_rule = $records[$a]['rule'];
-        $searched_id = $records[$a]['id'];
+        foreach ($records as $record => $rec_val) {
+            $searched_rule = $records[$a]['rule'];
+            $searched_id = $records[$a]['id'];
 
-        if (!empty($values[$searched_rule]) && (in_array($searched_id, $values[$searched_rule]))) {
+            if (!empty($values[$searched_rule]) && (in_array($searched_id, $values[$searched_rule]))) {
 // перевіряємо значення пишемо апдейт в базу, якщо в базі 0
-            if ($records[$a]['val'] == 0) {
-                $val = 1;
+                if ($records[$a]['val'] == 0) {
+                    $val = 1;
+                    $sql = "UPDATE priv SET val = :val WHERE id = :id AND rule = :rule";
+                    Adminpanel::WorkWithPriv($sql, $searched_id, $searched_rule, $val);
+                }
+            }
+
+            if ($rec_val['val'] == 1 && !in_array($searched_id, $values[$searched_rule])) {
+                $val = 0;
                 $sql = "UPDATE priv SET val = :val WHERE id = :id AND rule = :rule";
-          Adminpanel::WorkWithPriv($sql, $searched_id, $searched_rule, $val);
+                Adminpanel::WorkWithPriv($sql, $searched_id, $searched_rule, $val);
+
             }
+
+            if (!empty($values[$searched_rule])) {
+                $values[$searched_rule] = array_flip($values[$searched_rule]); //Міняємо місцями ключі та значення
+                unset ($values[$searched_rule][$searched_id]); //Видаляємо елемент масиву
+                $values[$searched_rule] = array_flip($values[$searched_rule]);
+            }
+            $a++;
+
         }
+        if (!empty($values)) {
+            foreach ($values as $key => $value) {
+                foreach ($value as $key2 => $value2) {
+                    $val = 1;
+                    $sql = "INSERT INTO priv SET id = :id, rule = :rule, val = :val";
+                    Adminpanel::WorkWithPriv($sql, $value2, $key, $val);
 
-        if ($rec_val['val']==1 && !in_array($searched_id, $values[$searched_rule])){
-               $val = 0;
-              $sql = "UPDATE priv SET val = :val WHERE id = :id AND rule = :rule";
-            Adminpanel::WorkWithPriv($sql, $searched_id, $searched_rule, $val);
-
-        }
-
-       if (!empty($values[$searched_rule])) {
-           $values[$searched_rule] = array_flip($values[$searched_rule]); //Міняємо місцями ключі та значення
-           unset ($values[$searched_rule][$searched_id]); //Видаляємо елемент масиву
-           $values[$searched_rule] = array_flip($values[$searched_rule]);
-       }
-        $a++;
-
-    }
-    if (!empty($values)) {
-        foreach ($values as $key => $value) {
-            foreach ($value as $key2 => $value2) {
-                $val = 1;
-                $sql = "INSERT INTO priv SET id = :id, rule = :rule, val = :val";
-                Adminpanel::WorkWithPriv($sql, $value2, $key, $val);
+                }
 
             }
 
         }
 
     }
-
-}
-
 
 
     public static function getUsersPermissionsList()
     {
 
-        if (isset($_POST['add_group_name']) && $_POST['add_group_name']!=""){
+        if (isset($_POST['add_group_name']) && $_POST['add_group_name'] != "") {
             Adminpanel::AddGroupName($_POST['add_group_name']);
         }
-        if (isset($_POST['edit_rules'])){
+        if (isset($_POST['edit_rules'])) {
 
-          Adminpanel::UpdateRules();
+            Adminpanel::UpdateRules();
         }
 
-        if (isset($_POST['edit_roles'])){
+        if (isset($_POST['edit_roles'])) {
 
             Adminpanel::UpdateRoles();
         }
@@ -383,7 +376,6 @@ private static function UpdateRules()
 // якщо ІД - істина, то берем інфу з БД
         if ($id) {
 
-//echo 'id='.$id;
             $db = Db::getConnection();
             $sql = 'DELETE FROM roles WHERE id = :id';
             $data = $db->prepare($sql);
@@ -406,12 +398,12 @@ private static function UpdateRules()
         $db = Db::getConnection();
         foreach ($values as $id => $role) {
             //перебираємо масив, поки ключі - цілі числа.
-if (!is_int($id)){
-    break;
-}
-if (!is_numeric($role)) {
-    $role=0;
-}
+            if (!is_int($id)) {
+                break;
+            }
+            if (!is_numeric($role)) {
+                $role = 0;
+            }
 
 
             $sql = "UPDATE users SET role_id = IF(role_id = :role, :role, :role) WHERE id = :id ";

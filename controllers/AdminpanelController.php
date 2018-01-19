@@ -35,7 +35,6 @@ class AdminpanelController
 
     public function actionAddblog()
     {
-//unset($add_blog_errors);
         if ($this->isAdmin()) {
             function check_length($value = "", $min, $max)
             {
@@ -57,38 +56,40 @@ class AdminpanelController
         }
     }
 
-    public function actionBlogedit($id) {
+    public function actionBlogedit($id)
+    {
         if ($this->isAdmin()) {
 
             if ($id) {
                 if (!isset($_POST['edit_blog'])) {
                     include_once ROOT . '/models/Blog.php';
                     $blogItem = Blog::getBlogItemById($id);
-                    //  Adminpanel::BlogEdit($id);
 
                     require_once(ROOT . '/views/adminpanel/blogedit.php');
                     return $blogItem;
                 } else {
                     $res = Adminpanel::BlogEdit($id);
-                    header("Location: ".$_SERVER['HTTP_REFERER']);
+                    header("Location: " . $_SERVER['HTTP_REFERER']);
                     return $res;
                 }
             }
 
         }
     }
- public function actionBlogdelete($id){
-                if ($this->isAdmin()) {
 
-                    if ($id) {
-                        if (!isset($_POST['delete_blog'])) {
-Adminpanel::BlogDelete($id);
-header("Location: ".$_SERVER['HTTP_REFERER']);
-                            return true;
-                        }
-                    }
+    public function actionBlogdelete($id)
+    {
+        if ($this->isAdmin()) {
+
+            if ($id) {
+                if (!isset($_POST['delete_blog'])) {
+                    Adminpanel::BlogDelete($id);
+                    header("Location: " . $_SERVER['HTTP_REFERER']);
+                    return true;
                 }
- }
+            }
+        }
+    }
 
     public function actionSearchadm()
     {
@@ -108,21 +109,23 @@ header("Location: ".$_SERVER['HTTP_REFERER']);
         }
     }
 
-    public function actionUserban($id) {
-     if ($this->isAdmin()){
-         Adminpanel::Userban($id);
-         header("Location: ".$_SERVER['HTTP_REFERER']);
-         return true;
+    public function actionUserban($id)
+    {
+        if ($this->isAdmin()) {
+            Adminpanel::Userban($id);
+            header("Location: " . $_SERVER['HTTP_REFERER']);
+            return true;
 
 
-     }
+        }
 
     }
 
-    public function actionUserdelete($id) {
-        if ($this->isAdmin()){
+    public function actionUserdelete($id)
+    {
+        if ($this->isAdmin()) {
             Adminpanel::Userdelete($id);
-            header("Location: ".$_SERVER['HTTP_REFERER']);
+            header("Location: " . $_SERVER['HTTP_REFERER']);
             return true;
 
 
@@ -130,10 +133,11 @@ header("Location: ".$_SERVER['HTTP_REFERER']);
 
     }
 
-    public function actionRoledelete($id) {
-        if ($this->isAdmin()){
+    public function actionRoledelete($id)
+    {
+        if ($this->isAdmin()) {
             Adminpanel::Roledelete($id);
-            header("Location: ".$_SERVER['HTTP_REFERER']);
+            header("Location: " . $_SERVER['HTTP_REFERER']);
             return true;
 
 
@@ -141,16 +145,15 @@ header("Location: ".$_SERVER['HTTP_REFERER']);
 
     }
 
-    public function actionUserpermissions(){
-        if ($this->isAdmin()){
-           $userslist= Adminpanel::getUsersPermissionsList();
+    public function actionUserpermissions()
+    {
+        if ($this->isAdmin()) {
+            $userslist = Adminpanel::getUsersPermissionsList();
             require_once(ROOT . '/views/adminpanel/userpermissions.php');
             return $userslist;
         }
 
     }
-
-
 
 
 }

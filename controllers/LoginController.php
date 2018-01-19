@@ -5,7 +5,7 @@
  * Date: 04.10.17
  * Time: 0:35
  */
-include_once (ROOT.'/header.php');
+include_once(ROOT . '/header.php');
 
 class LoginController
 {
@@ -13,9 +13,8 @@ class LoginController
 
     public static function actionLogin()
     {
-
         $login = '';
-       $password = '';
+        $password = '';
         if (isset($_POST['vhod'])) {
 
             $login = $_POST['login'];
@@ -27,13 +26,13 @@ class LoginController
 
                 $errors[] = 'невірний логін або пароль';
                 return $errors;
-                header("Location: ".$_SERVER['HTTP_REFERER']);
+                header("Location: " . $_SERVER['HTTP_REFERER']);
             } else
                 LoginController::auth($userId);
-           $permissions = LoginController::CheckPermissions($userId);
+            $permissions = LoginController::CheckPermissions($userId);
             $_SESSION['permissions'] = $permissions;
-           header("Location: ".$_SERVER['HTTP_REFERER']);
-          //  echo 'logged!';
+            header("Location: " . $_SERVER['HTTP_REFERER']);
+            //  echo 'logged!';
             return true;
         }
 
@@ -46,15 +45,15 @@ class LoginController
             session_start();
         }
         $_SESSION['user'] = $userId;
-        $_SESSION['login']=$_POST['login'];
-                   $db = Db::getConnection();
-            $sql = 'UPDATE users SET online = 1 WHERE id = '.$userId ;
+        $_SESSION['login'] = $_POST['login'];
+        $db = Db::getConnection();
+        $sql = 'UPDATE users SET online = 1 WHERE id = ' . $userId;
 
-            $data = $db->prepare($sql);
-            $data->execute();
+        $data = $db->prepare($sql);
+        $data->execute();
 
 
-                return true;
+        return true;
 
     }
 
@@ -98,19 +97,18 @@ class LoginController
         $result->bindParam(1, $userId);
         $result->execute();
         $permissions = $result->fetchAll(PDO::FETCH_ASSOC);
-        $perm=array();
-        $i=0;
+        $perm = array();
+        $i = 0;
         if ($permissions) {
-            foreach ($permissions as $key){
-             $perm[$i]['rule']=$key;
-             $i++;
+            foreach ($permissions as $key) {
+                $perm[$i]['rule'] = $key;
+                $i++;
             }
             return $perm;
-        }
-        else
+        } else
             LoginController::actionLogOut();
 
-            return false;
+        return false;
     }
 
 
@@ -120,7 +118,7 @@ class LoginController
 
         $userId = $_SESSION['user'];
         $db = Db::getConnection();
-        $sql = 'UPDATE users SET online = 0 WHERE id ='. $userId;
+        $sql = 'UPDATE users SET online = 0 WHERE id =' . $userId;
 
         $data = $db->prepare($sql);
         $data->execute();
@@ -133,7 +131,7 @@ class LoginController
 
     public static function actionRegistration()
     {
-     unset($regerrors);
+        unset($regerrors);
         $name = $_POST['name'];
         $login = $_POST['login'];
         $email = $_POST['email'];
@@ -149,32 +147,32 @@ class LoginController
         if (!empty($login) &&
             !empty($name) &&
             !empty($email) &&
-            !empty($password)&&
-        !empty($repassword)) {
-        $email_validate = filter_var($email, FILTER_VALIDATE_EMAIL);
+            !empty($password) &&
+            !empty($repassword)) {
+            $email_validate = filter_var($email, FILTER_VALIDATE_EMAIL);
 
-        if (!check_length($login, 5, 10)) {
-            $regerrors[] = 'Логін повинен бути довжиною від 5 до 10 символів';
-        }
-        if (!check_length($name, 5, 50)) {
-            $regerrors[] = 'Iм\'я та прізвище повинно займати від 5 до 10 символів';
-        }
-        if (!check_length($password, 5, 10) && !check_length($repassword, 5, 10)) {
-            $regerrors[] = 'Пароль повинен займати від 5 до 10 символів';
-        }
-        if (!$email_validate) {
-            $regerrors[] = 'Е-мейл не пройшов валідацію';
-        }
-        if ($password !== $repassword) {
-            $regerrors[] = 'Поля вводу пароля не співпадають';
-        }
-        if (isset($regerrors)){
+            if (!check_length($login, 5, 10)) {
+                $regerrors[] = 'Логін повинен бути довжиною від 5 до 10 символів';
+            }
+            if (!check_length($name, 5, 50)) {
+                $regerrors[] = 'Iм\'я та прізвище повинно займати від 5 до 10 символів';
+            }
+            if (!check_length($password, 5, 10) && !check_length($repassword, 5, 10)) {
+                $regerrors[] = 'Пароль повинен займати від 5 до 10 символів';
+            }
+            if (!$email_validate) {
+                $regerrors[] = 'Е-мейл не пройшов валідацію';
+            }
+            if ($password !== $repassword) {
+                $regerrors[] = 'Поля вводу пароля не співпадають';
+            }
+            if (isset($regerrors)) {
+                return $regerrors;
+            }
+        } else {
+            $regerrors[] = "Заповніть порожні поля";
             return $regerrors;
         }
-    } else {
-            $regerrors[] =  "Заповніть порожні поля";
-            return $regerrors;
-    }
 
         $db = Db::getConnection();
         $sql = 'SELECT login, email FROM users WHERE login= :login OR email= :email';
@@ -188,8 +186,7 @@ class LoginController
             $regerrors[] = 'Такий логін або е-мейл вже існує';
             //header("Location: ".$_SERVER['HTTP_REFERER']);
             return $regerrors;
-        }
-        else{
+        } else {
             //запис в БД нового користувача
             $db = Db::getConnection();
             $data = $db->prepare('INSERT INTO users (login, username, email, password, created, role_id, changed, banned) 

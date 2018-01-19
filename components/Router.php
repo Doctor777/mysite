@@ -78,7 +78,7 @@ class Router
                 } else {
                     Router::ErrorPage404();
                 }
-//echo var_dump($result);
+                //echo var_dump($result);
                 if ($result != null) {
                     break;  // перериває наш цикл пошуку співпадінь роутів
                 }
@@ -95,8 +95,6 @@ class Router
     function ErrorPage404()
     {
         $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
-     //   header('HTTP/1.1 404 Not Found');
-      //  header("Status: 404 Not Found");
         header('Location:' . $host . '404.html');
 
     }

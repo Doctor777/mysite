@@ -1,8 +1,5 @@
 <?php
 require_once(ROOT . '/header.php');
-/*if (isset($_POST['registration'])) {
-    require_once(ROOT . '/views/main/registration.php');
-}*/
 ?>
 
     <!-- weather widget start -->

@@ -57,21 +57,20 @@ class Blog
 
     }
 
-    public static function AddBlogComment($id, $comment){
+    public static function AddBlogComment($id, $comment)
+    {
         unset($result);
-        if ((!empty($comment))&&(strlen($comment)>5)) {
+        if ((!empty($comment)) && (strlen($comment) > 5)) {
             $db = Db::getConnection();
             $data = $db->prepare('INSERT INTO blog_comments (blog_id, comment, username, created) VALUES (?, ?, ?, CURRENT_TIMESTAMP ) ');
             $data->bindValue(1, $id);
             $data->bindValue(2, $comment);
             $data->bindValue(3, $_SESSION['login']);
             $data->execute();
-          //  header("Location: ".$_SERVER['HTTP_REFERER']);
 
-        }
-        else{
-             $result[]='Помилка! Порожній або надто короткий коментар !';
-             return $result;
+        } else {
+            $result[] = 'Помилка! Порожній або надто короткий коментар !';
+            return $result;
         }
 
     }
@@ -84,7 +83,7 @@ class Blog
 
         $blogCommentlist = array();
 
-        $result = $db->query('SELECT blog_id, comment_id, comment, username, created FROM blog_comments WHERE blog_id ='. $id);
+        $result = $db->query('SELECT blog_id, comment_id, comment, username, created FROM blog_comments WHERE blog_id =' . $id);
 
         $i = 0;
 
@@ -93,7 +92,7 @@ class Blog
             $blogCommentlist[$i]['username'] = $row['username'];
             $blogCommentlist[$i]['comment'] = $row['comment'];
             $blogCommentlist[$i]['created'] = $row['created'];
-            $blogCommentlist[$i]['comment_id']=$row['comment_id'];
+            $blogCommentlist[$i]['comment_id'] = $row['comment_id'];
             $i++;
         }
 

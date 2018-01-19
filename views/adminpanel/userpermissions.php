@@ -87,10 +87,6 @@ include_once(ROOT . '/header.php');
                             <tr>
                                 <td><?php echo $roleItem; ?></td>
                                 <td><?php echo $key; ?></td>
-
-                                <!-- <td><input type="checkbox"  <?php /*if ($roleItem['rule']=='view_comments'&& $roleItem['val']== 1):echo 'checked'; endif;*/ ?> name='view_comments=<?php /*echo "data[".$roleItem['id']."]"*/ ?>'></td>
-                                <td><input type="checkbox"  <?php /*if ($roleItem['rule']=='edit_comments'&& $roleItem['val']== 1):echo 'checked'; endif;*/ ?> name='edit_comments=<?php /*echo "data[".$roleItem['id']."]"*/ ?>'></td>
-                                <td><input type="checkbox"  <?php /*if ($roleItem['rule']=='delete_comments'&& $roleItem['val']== 1):echo 'checked'; endif;*/ ?> name='delete_comments=<?php /*echo "data[".$roleItem['id']."]"*/ ?>'></td>-->
                                 <td>
                                     <input type="checkbox" <?php if (isset($value2['add_comments']) && $value2['add_comments'] == 1):echo 'checked'; endif; ?>
                                            name='add_comments[]' value=<?php echo $roleItem ?>></td>

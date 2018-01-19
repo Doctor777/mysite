@@ -15,14 +15,6 @@ $usersList = Adminpanel::getUsersList();
     <!-- Container -->
     <div id="container">
         <div class="shell">
-            <!-- Message OK -->
-            <!--		<div class="msg msg-ok">
-                        <p><strong>Your file was uploaded succesifully!</strong></p>
-                        <a href="#" class="close">close</a>
-                    </div>-->
-            <!-- End Message OK -->
-
-            <!-- Message Error -->
             <div class="msg msg-error">
                 <?php if (isset($add_blog_errors) && is_array($add_blog_errors)): ?>
 

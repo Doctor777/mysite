@@ -9,7 +9,6 @@ include_once(ROOT . '/header.php');
             $i = 0;
             foreach ($SearchResult as $record) {
                 $i++;
-                // $category = lcfirst(str_replace('Publication','',$record['type']));
                 $link = '<a href=http://' . $_SERVER['HTTP_HOST'] . '/blog/' . $record['id'] . '>';
                 echo $i . "  " . $link . $record['title'] . "  " . $record['content'] . '</a><p>';
             }

@@ -9,16 +9,12 @@ define('SITE_NAME', "Мій сайт на MVC"); // назва сайту
 
 // підключення файлів системи
 define('ROOT', dirname(__FILE__));
-//define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 require_once (ROOT.'/components/Router.php');
 require_once (ROOT.'/components/Db.php');
 
 
 
 //виклик Router
-
-/*var_dump($_GET);
-var_dump($_SERVER["REQUEST_URI"]);*/
 
 $router = new Router();
 $router->run();
